@@ -1,0 +1,986 @@
+{
+  "audited_at": "2026-10-25",
+  "source": "https://wbfngo.org/",
+  "content_note": "Public-source snapshot, paraphrased. Source claims are not independently audited. No image reuse license was established. Product prices are historical source values, not authorized merchant offers.",
+  "organization": {
+    "name": "Well Being Foundation",
+    "address": "E-26 White House Business Tower, Khizrabad, New Friends Colony, New Delhi 110025",
+    "emails": [
+      "wbfngo@gmail.com",
+      "info@wbfngo.org"
+    ],
+    "phones": [
+      "+91 9891129635",
+      "+91 9555822425"
+    ],
+    "hours": "Monday–Saturday, 10 AM–6 PM IST",
+    "registration": "1018, dated 01-06-2015",
+    "registration_source": "https://wbfngo.org/about/",
+    "contact_source": "https://wbfngo.org/contact/",
+    "address_caveat": "Public options feed still says Office address to be confirmed; concrete address taken from contact/profile pages.",
+    "socials": {
+      "facebook": "https://www.facebook.com/wbfngo/",
+      "instagram": "https://www.instagram.com/wbfngo/",
+      "youtube": "https://www.youtube.com/@wbfngo",
+      "x": "https://x.com/wellbeingNGO"
+    }
+  },
+  "focus_areas": [
+    {
+      "slug": "education-skill",
+      "title": "Education & Skill Development",
+      "summary": "Literacy, school access, digital learning and vocational preparation. The reference describes Open Pathshala community classes, early education and support for learners with disabilities.",
+      "source": "https://wbfngo.org/focus-areas/education-skill/"
+    },
+    {
+      "slug": "women-empowerment",
+      "title": "Women Empowerment",
+      "summary": "Self-defence workshops under Naari Shakti and practical enterprise support, including stitching and small-product making.",
+      "source": "https://wbfngo.org/focus-areas/women-empowerment/"
+    },
+    {
+      "slug": "health-hygiene",
+      "title": "Health & Hygiene",
+      "summary": "Community and school sessions on sanitation, preventive health and child nutrition.",
+      "source": "https://wbfngo.org/focus-areas/health-hygiene/"
+    },
+    {
+      "slug": "legal-aid-human-rights",
+      "title": "Legal Aid & Human Rights",
+      "summary": "Legal awareness meetings and support for people who face financial barriers to legal assistance and release.",
+      "source": "https://wbfngo.org/focus-areas/legal-aid-human-rights/"
+    },
+    {
+      "slug": "environment",
+      "title": "Environment & Sustainability",
+      "summary": "Community tree-planting and care for shared outdoor spaces.",
+      "source": "https://wbfngo.org/focus-areas/environment/"
+    },
+    {
+      "slug": "sports",
+      "title": "Sports & Recreation",
+      "summary": "Cricket and girls’ football pathways combine regular practice, teamwork and competition preparation.",
+      "source": "https://wbfngo.org/focus-areas/sports/"
+    },
+    {
+      "slug": "art-culture-heritage",
+      "title": "Art, Culture & Heritage",
+      "summary": "Cultural participation and preservation of community identity. The reference page has little program detail.",
+      "source": "https://wbfngo.org/focus-areas/art-culture-heritage/"
+    },
+    {
+      "slug": "sustainable-development-goals",
+      "title": "Sustainable Development Goals",
+      "summary": "A connection between local education, health, equality and sustainability work and the UN goals.",
+      "source": "https://wbfngo.org/focus-areas/sustainable-development-goals/"
+    }
+  ],
+  "team": [
+    {
+      "name": "Saad Khan",
+      "role": "Media & Comm. Head"
+    },
+    {
+      "name": "Farha Naaz",
+      "role": "COO"
+    },
+    {
+      "name": "Shivam Mehrotra",
+      "role": "CEO"
+    },
+    {
+      "name": "Zahid Khan",
+      "role": "Manager"
+    }
+  ],
+  "posts": [
+    {
+      "id": 6,
+      "title": "Digital Communications Associate",
+      "slug": "digital-communications-associate",
+      "summary": "Create written and visual communications about program work.",
+      "type": "career",
+      "date": "2026-06-09 13:46:09",
+      "department": "Communications",
+      "location": "Hybrid",
+      "employment_type": "Contract",
+      "source": "https://wbfngo.org/careers/?slug=digital-communications-associate"
+    },
+    {
+      "id": 5,
+      "title": "Partnerships and Operations Lead",
+      "slug": "partnerships-and-operations-lead",
+      "summary": "Coordinate partnerships, program operations and internal systems.",
+      "type": "career",
+      "date": "2026-06-09 13:46:09",
+      "department": "Partnerships",
+      "location": "Delhi NCR",
+      "employment_type": "Full-time",
+      "source": "https://wbfngo.org/careers/?slug=partnerships-and-operations-lead"
+    },
+    {
+      "id": 4,
+      "title": "Program Associate, Community Learning",
+      "slug": "program-associate-community-learning",
+      "summary": "Coordinate learning sessions and support community facilitators.",
+      "type": "career",
+      "date": "2026-06-09 13:46:09",
+      "department": "Community Learning",
+      "location": "Delhi NCR",
+      "employment_type": "Full-time",
+      "source": "https://wbfngo.org/careers/?slug=program-associate-community-learning"
+    },
+    {
+      "id": 3,
+      "title": "Clean India Drive: Tree Plantation and Waste Segregation Rally",
+      "slug": "clean-india-drive-tree-plantation",
+      "summary": "A local planting and waste-awareness activity.",
+      "type": "blog",
+      "date": "2026-06-09 13:46:09",
+      "department": "",
+      "location": "",
+      "employment_type": "",
+      "source": "https://wbfngo.org/blog/?slug=clean-india-drive-tree-plantation"
+    },
+    {
+      "id": 2,
+      "title": "Announcing the 2026 Women's Skill & Entrepreneurship Graduation",
+      "slug": "announcing-2026-womens-skill-graduation",
+      "summary": "A vocational tailoring cohort completes its course.",
+      "type": "blog",
+      "date": "2026-06-09 13:46:09",
+      "department": "",
+      "location": "",
+      "employment_type": "",
+      "source": "https://wbfngo.org/blog/?slug=announcing-2026-womens-skill-graduation"
+    },
+    {
+      "id": 1,
+      "title": "Empowering Rural Communities Through Literacy",
+      "slug": "empowering-rural-communities-through-literacy",
+      "summary": "Community reading activities and distribution of learning materials.",
+      "type": "blog",
+      "date": "2026-06-09 13:46:09",
+      "department": "",
+      "location": "",
+      "employment_type": "",
+      "source": "https://wbfngo.org/blog/?slug=empowering-rural-communities-through-literacy"
+    }
+  ],
+  "events": [
+    {
+      "title": "Crochet Products Making Workshop",
+      "slug": "crochet-products-making-workshop-1790941929",
+      "location": "Khizrabad, New Friends Colony",
+      "starts_at": "2026-10-12T16:00",
+      "ends_at": "2026-10-31T17:30",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "World Mental Health Day Carnival of Well Being",
+      "slug": "world-mental-health-day-carnival-of-well-being",
+      "location": "Qutub Institution Area, New Delhi",
+      "starts_at": "2026-10-10T15:00",
+      "ends_at": "2026-10-10T19:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Crochet Products Making Workshop",
+      "slug": "crochet-products-making-workshop-1790936789",
+      "location": "Kalindi Kunj",
+      "starts_at": "2026-10-03T15:56",
+      "ends_at": "2026-10-31T15:56",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "ORIENTATION MEET",
+      "slug": "orientation-meet",
+      "location": "NEW FRIENDS COLONY",
+      "starts_at": "2026-08-09T16:00",
+      "ends_at": "2026-08-09T17:30",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Health & Hygiene Awareness Camp",
+      "slug": "health-hygiene-awareness-camp",
+      "location": "Community Centre, Noida",
+      "starts_at": "2026-08-05 09:00",
+      "ends_at": "2026-08-05 16:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Ministry of Micro, Small and Medium Enterprises Awareness Session",
+      "slug": "ministry-of-micro-small-and-medium-enterprises-awareness-session",
+      "location": "Sri Nagar, J&K",
+      "starts_at": "2026-08-01T14:00",
+      "ends_at": "2026-08-01T16:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Internship Orientation",
+      "slug": "internship-orientation",
+      "location": "Noida",
+      "starts_at": "2026-07-29T23:00",
+      "ends_at": "2026-07-30T23:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Health & Hygiene Program",
+      "slug": "health-hygiene-program",
+      "location": "Noida",
+      "starts_at": "2026-07-26T14:00",
+      "ends_at": "2026-07-26T16:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Project: HER | Livelihood Generation Workshop",
+      "slug": "project-her-livelihood-generation-workshop",
+      "location": "Noida Sector 19",
+      "starts_at": "2026-07-25T17:00",
+      "ends_at": "2026-07-25T19:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Menstrual Health Hygiene Awareness Workshop & Sanitary Napkin Distribution",
+      "slug": "menstrual-health-hygiene-awareness-workshop-sanitary-napkin-distribution-1784633808",
+      "location": "Asgarpur, Noida",
+      "starts_at": "2026-07-22T14:30",
+      "ends_at": "2026-07-22T17:00",
+      "registration_required": false,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Menstrual Health Hygiene Awareness Workshop & Sanitary Napkin Distribution",
+      "slug": "menstrual-health-hygiene-awareness-workshop-sanitary-napkin-distribution",
+      "location": "Noor Nagar",
+      "starts_at": "2026-07-19T14:30",
+      "ends_at": "2026-07-19T16:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Fellowship Program For Women",
+      "slug": "fellowship-program-for-women",
+      "location": "New Friends Colony",
+      "starts_at": "2026-07-10T14:00",
+      "ends_at": "2026-07-12T14:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Psychological First Aid Workshop",
+      "slug": "psychological-first-aid-workshop",
+      "location": "Happitude Studio, New Friends Colony",
+      "starts_at": "2026-07-05T16:00",
+      "ends_at": "2026-07-04T18:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "School Development Program",
+      "slug": "school-development-program",
+      "location": "New Delhi",
+      "starts_at": "2026-07-04T14:00",
+      "ends_at": "2026-07-04T16:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Sustainability Forum",
+      "slug": "sustainability-forum",
+      "location": "Bharat Mandapam, Hall No. 6",
+      "starts_at": "2026-07-04T12:00",
+      "ends_at": "2026-07-04T18:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Foundation's Day 2026",
+      "slug": "foundation-s-day-2026",
+      "location": "Corporate Office of Well Being New Friends Colony",
+      "starts_at": "2026-06-14T19:57",
+      "ends_at": "2026-06-14T19:57",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Tree Plantation & Eco Drive",
+      "slug": "tree-plantation-eco-drive",
+      "location": "New Friends Colony, New Delhi",
+      "starts_at": "2026-06-14T16:00",
+      "ends_at": "2026-12-14T17:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    },
+    {
+      "title": "Volunteer Orientation",
+      "slug": "volunteer-orientation",
+      "location": "Delhi NCR",
+      "starts_at": "2026-06-01T10:00",
+      "ends_at": "2026-07-10T12:00",
+      "registration_required": true,
+      "source": "https://wbfngo.org/events/"
+    }
+  ],
+  "products": [
+    {
+      "id": 69,
+      "title": "Crystal Beaded Bag",
+      "slug": "crystal-beaded-bag",
+      "category_id": 5,
+      "price": 2999,
+      "general_price": 4999,
+      "sale_price": 1999,
+      "sale_price_until": "2026-12-31T13:53",
+      "source": "https://wbfngo.org/product/?slug=crystal-beaded-bag"
+    },
+    {
+      "id": 68,
+      "title": "Beaded Neck Chain",
+      "slug": "beaded-neck-chain",
+      "category_id": 7,
+      "price": 499,
+      "general_price": 450,
+      "sale_price": 299,
+      "sale_price_until": "2026-12-31T13:47",
+      "source": "https://wbfngo.org/product/?slug=beaded-neck-chain"
+    },
+    {
+      "id": 67,
+      "title": "Crochet Sunglasses Mat",
+      "slug": "crochet-sunglasses-mat",
+      "category_id": 6,
+      "price": 499,
+      "general_price": 450,
+      "sale_price": 299,
+      "sale_price_until": "2026-12-31T13:46",
+      "source": "https://wbfngo.org/product/?slug=crochet-sunglasses-mat"
+    },
+    {
+      "id": 66,
+      "title": "Upcycled Bag",
+      "slug": "upcycled-bag",
+      "category_id": 12,
+      "price": 1000,
+      "general_price": 999,
+      "sale_price": 250,
+      "sale_price_until": "2026-12-31T13:35",
+      "source": "https://wbfngo.org/product/?slug=upcycled-bag"
+    },
+    {
+      "id": 65,
+      "title": "Handmade Crochet Décoratives",
+      "slug": "handmade-crochet-d-coratives",
+      "category_id": 6,
+      "price": 1099,
+      "general_price": 1999,
+      "sale_price": 399,
+      "sale_price_until": "2026-12-31T18:45",
+      "source": "https://wbfngo.org/product/?slug=handmade-crochet-d-coratives"
+    },
+    {
+      "id": 64,
+      "title": "Crochet Earrings",
+      "slug": "crochet-earrings",
+      "category_id": 1,
+      "price": 1099,
+      "general_price": 499,
+      "sale_price": 100,
+      "sale_price_until": "2026-12-01T18:43",
+      "source": "https://wbfngo.org/product/?slug=crochet-earrings"
+    },
+    {
+      "id": 63,
+      "title": "Crochet Key chain",
+      "slug": "crochet-key-chain",
+      "category_id": 7,
+      "price": 1099,
+      "general_price": 1099,
+      "sale_price": 499,
+      "sale_price_until": "2026-10-31T18:37",
+      "source": "https://wbfngo.org/product/?slug=crochet-key-chain"
+    },
+    {
+      "id": 62,
+      "title": "Handcrafted Co-Ord Set for Women",
+      "slug": "handcrafted-cor-set-for-women",
+      "category_id": 2,
+      "price": 5999,
+      "general_price": 5999,
+      "sale_price": 3499,
+      "sale_price_until": "2026-08-31T14:32",
+      "source": "https://wbfngo.org/product/?slug=handcrafted-cor-set-for-women"
+    },
+    {
+      "id": 60,
+      "title": "Warli Art Laptop Bag",
+      "slug": "warli-art-laptop-bag",
+      "category_id": 7,
+      "price": 3999,
+      "general_price": 2999,
+      "sale_price": 2599,
+      "sale_price_until": "2026-08-01T18:51",
+      "source": "https://wbfngo.org/product/?slug=warli-art-laptop-bag"
+    },
+    {
+      "id": 59,
+      "title": "Handcrafted Stole | Traditional Indian Hand Painted Madhubani Art",
+      "slug": "handcrafted-stole-traditional-indian-hand-painted-madhubani-art",
+      "category_id": 2,
+      "price": 10000,
+      "general_price": 10000,
+      "sale_price": 3999,
+      "sale_price_until": "2026-10-01T18:39",
+      "source": "https://wbfngo.org/product/?slug=handcrafted-stole-traditional-indian-hand-painted-madhubani-art"
+    },
+    {
+      "id": 58,
+      "title": "Madhubani Painted Paper Mache Bowl",
+      "slug": "madhubani-painted-paper-mache-bowl",
+      "category_id": 1,
+      "price": 3999,
+      "general_price": 3999,
+      "sale_price": 1599,
+      "sale_price_until": "2026-10-01T18:29",
+      "source": "https://wbfngo.org/product/?slug=madhubani-painted-paper-mache-bowl"
+    },
+    {
+      "id": 57,
+      "title": "Madhubani Painted Paper Mache Planter",
+      "slug": "madhubani-painted-paper-mache-planter",
+      "category_id": 1,
+      "price": 3999,
+      "general_price": 3999,
+      "sale_price": 1999,
+      "sale_price_until": "2026-09-01T18:27",
+      "source": "https://wbfngo.org/product/?slug=madhubani-painted-paper-mache-planter"
+    },
+    {
+      "id": 56,
+      "title": "Handcrafted Madhubani Painted Paper Mache Pen Stand",
+      "slug": "handcrafted-madhubani-painted-paper-mache-pen-stand",
+      "category_id": 1,
+      "price": 1999,
+      "general_price": 1999,
+      "sale_price": 1099,
+      "sale_price_until": "2026-08-31T18:24",
+      "source": "https://wbfngo.org/product/?slug=handcrafted-madhubani-painted-paper-mache-pen-stand"
+    },
+    {
+      "id": 53,
+      "title": "Plantable Notebook",
+      "slug": "plantable-notebook",
+      "category_id": 9,
+      "price": 1099,
+      "general_price": 1099,
+      "sale_price": 999,
+      "sale_price_until": "2026-08-31T15:57",
+      "source": "https://wbfngo.org/product/?slug=plantable-notebook"
+    },
+    {
+      "id": 51,
+      "title": "Plantable Rakhi",
+      "slug": "plantable-rakhi",
+      "category_id": 11,
+      "price": 799,
+      "general_price": 799,
+      "sale_price": 599,
+      "sale_price_until": "2026-07-31T15:44",
+      "source": "https://wbfngo.org/product/?slug=plantable-rakhi"
+    },
+    {
+      "id": 50,
+      "title": "Plantable Bookmark",
+      "slug": "plantable-bookmark",
+      "category_id": 11,
+      "price": 799,
+      "general_price": 1000,
+      "sale_price": 599,
+      "sale_price_until": "2026-07-31T15:39",
+      "source": "https://wbfngo.org/product/?slug=plantable-bookmark"
+    },
+    {
+      "id": 49,
+      "title": "Handmade Terracotta Mini Vase",
+      "slug": "handmade-terracotta-mini-vase",
+      "category_id": 6,
+      "price": 2999,
+      "general_price": 2999,
+      "sale_price": 1999,
+      "sale_price_until": "2026-09-01T15:30",
+      "source": "https://wbfngo.org/product/?slug=handmade-terracotta-mini-vase"
+    },
+    {
+      "id": 43,
+      "title": "Plantable Coasters",
+      "slug": "plantable-coasters",
+      "category_id": 6,
+      "price": 4509,
+      "general_price": 3509,
+      "sale_price": 2999,
+      "sale_price_until": "2026-08-01T23:16",
+      "source": "https://wbfngo.org/product/?slug=plantable-coasters"
+    },
+    {
+      "id": 41,
+      "title": "Handmade Bracelet",
+      "slug": "handmade-bracelet-1781631673",
+      "category_id": 7,
+      "price": 1000,
+      "general_price": 599,
+      "sale_price": 299,
+      "sale_price_until": "2026-12-31T23:10",
+      "source": "https://wbfngo.org/product/?slug=handmade-bracelet-1781631673"
+    },
+    {
+      "id": 40,
+      "title": "Handmade Bracelet",
+      "slug": "handmade-bracelet-1781631614",
+      "category_id": 7,
+      "price": 1000,
+      "general_price": 599,
+      "sale_price": 299,
+      "sale_price_until": "2026-12-31T23:10",
+      "source": "https://wbfngo.org/product/?slug=handmade-bracelet-1781631614"
+    },
+    {
+      "id": 36,
+      "title": "Handmade Bracelet",
+      "slug": "handmade-bracelet",
+      "category_id": 7,
+      "price": 2000,
+      "general_price": 599,
+      "sale_price": 299,
+      "sale_price_until": "2026-12-31T23:05",
+      "source": "https://wbfngo.org/product/?slug=handmade-bracelet"
+    },
+    {
+      "id": 35,
+      "title": "Kurti",
+      "slug": "kurti-1781631228",
+      "category_id": 2,
+      "price": 1500,
+      "general_price": 1500,
+      "sale_price": 1200,
+      "sale_price_until": "2026-08-01T23:03",
+      "source": "https://wbfngo.org/product/?slug=kurti-1781631228"
+    },
+    {
+      "id": 34,
+      "title": "Kurti",
+      "slug": "kurti-1781631177",
+      "category_id": 2,
+      "price": 1200,
+      "general_price": 1500,
+      "sale_price": 1200,
+      "sale_price_until": "2026-08-01T23:02",
+      "source": "https://wbfngo.org/product/?slug=kurti-1781631177"
+    },
+    {
+      "id": 33,
+      "title": "Kurti",
+      "slug": "kurti",
+      "category_id": 2,
+      "price": 1200,
+      "general_price": 1500,
+      "sale_price": 1200,
+      "sale_price_until": "2026-09-01T23:01",
+      "source": "https://wbfngo.org/product/?slug=kurti"
+    },
+    {
+      "id": 32,
+      "title": "Handmade Bags",
+      "slug": "handmade-bags",
+      "category_id": 5,
+      "price": 1000,
+      "general_price": 1200,
+      "sale_price": 799,
+      "sale_price_until": "2026-09-01T22:49",
+      "source": "https://wbfngo.org/product/?slug=handmade-bags"
+    },
+    {
+      "id": 31,
+      "title": "Handcrafted Coaster",
+      "slug": "handcrafted-coaster",
+      "category_id": 6,
+      "price": 1000,
+      "general_price": 799,
+      "sale_price": 699,
+      "sale_price_until": "2026-08-01T22:48",
+      "source": "https://wbfngo.org/product/?slug=handcrafted-coaster"
+    },
+    {
+      "id": 30,
+      "title": "kitchen Towel",
+      "slug": "kitchen-towel",
+      "category_id": 6,
+      "price": 1000,
+      "general_price": 1000,
+      "sale_price": 799,
+      "sale_price_until": "2026-09-01T22:45",
+      "source": "https://wbfngo.org/product/?slug=kitchen-towel"
+    },
+    {
+      "id": 28,
+      "title": "Tote Bag",
+      "slug": "tote-bag-1781629919",
+      "category_id": 5,
+      "price": 1000,
+      "general_price": 699,
+      "sale_price": 499,
+      "sale_price_until": "2026-09-01T22:41",
+      "source": "https://wbfngo.org/product/?slug=tote-bag-1781629919"
+    },
+    {
+      "id": 27,
+      "title": "Tote Bag",
+      "slug": "tote-bag-1781629870",
+      "category_id": 5,
+      "price": 1000,
+      "general_price": 699,
+      "sale_price": 499,
+      "sale_price_until": null,
+      "source": "https://wbfngo.org/product/?slug=tote-bag-1781629870"
+    },
+    {
+      "id": 26,
+      "title": "Tote Bag",
+      "slug": "tote-bag",
+      "category_id": 5,
+      "price": 1000,
+      "general_price": 699,
+      "sale_price": 499,
+      "sale_price_until": "2026-08-01T22:38",
+      "source": "https://wbfngo.org/product/?slug=tote-bag"
+    },
+    {
+      "id": 25,
+      "title": "Handmade Earrings",
+      "slug": "handmade-earrings-1781629518",
+      "category_id": 7,
+      "price": 550,
+      "general_price": 400,
+      "sale_price": 350,
+      "sale_price_until": "2026-07-01T22:34",
+      "source": "https://wbfngo.org/product/?slug=handmade-earrings-1781629518"
+    },
+    {
+      "id": 24,
+      "title": "Handmade Earrings",
+      "slug": "handmade-earrings-1781629438",
+      "category_id": 7,
+      "price": 550,
+      "general_price": 400,
+      "sale_price": 350,
+      "sale_price_until": "2026-07-01T22:33",
+      "source": "https://wbfngo.org/product/?slug=handmade-earrings-1781629438"
+    },
+    {
+      "id": 23,
+      "title": "Handmade Earrings",
+      "slug": "handmade-earrings-1781629361",
+      "category_id": 7,
+      "price": 550,
+      "general_price": 400,
+      "sale_price": 350,
+      "sale_price_until": "2026-06-16T22:32",
+      "source": "https://wbfngo.org/product/?slug=handmade-earrings-1781629361"
+    },
+    {
+      "id": 22,
+      "title": "Handmade Earrings",
+      "slug": "handmade-earrings-1781629291",
+      "category_id": 7,
+      "price": 550,
+      "general_price": 400,
+      "sale_price": 350,
+      "sale_price_until": "2026-07-01T22:31",
+      "source": "https://wbfngo.org/product/?slug=handmade-earrings-1781629291"
+    },
+    {
+      "id": 21,
+      "title": "Handmade Earrings",
+      "slug": "handmade-earrings-1781629111",
+      "category_id": 7,
+      "price": 550,
+      "general_price": 400,
+      "sale_price": 350,
+      "sale_price_until": "2026-07-01T22:27",
+      "source": "https://wbfngo.org/product/?slug=handmade-earrings-1781629111"
+    },
+    {
+      "id": 20,
+      "title": "Earrings",
+      "slug": "earrings",
+      "category_id": 7,
+      "price": 550,
+      "general_price": 400,
+      "sale_price": 350,
+      "sale_price_until": "2026-07-01T22:26",
+      "source": "https://wbfngo.org/product/?slug=earrings"
+    },
+    {
+      "id": 19,
+      "title": "Handmade Earrings",
+      "slug": "handmade-earrings-1781628955",
+      "category_id": 7,
+      "price": 550,
+      "general_price": 400,
+      "sale_price": 350,
+      "sale_price_until": "2026-07-01T22:25",
+      "source": "https://wbfngo.org/product/?slug=handmade-earrings-1781628955"
+    },
+    {
+      "id": 18,
+      "title": "Handmade Earrings",
+      "slug": "handmade-earrings-1781628890",
+      "category_id": 7,
+      "price": 550,
+      "general_price": 400,
+      "sale_price": 350,
+      "sale_price_until": "2026-06-30T22:23",
+      "source": "https://wbfngo.org/product/?slug=handmade-earrings-1781628890"
+    },
+    {
+      "id": 17,
+      "title": "Handmade Earrings",
+      "slug": "handmade-earrings",
+      "category_id": 7,
+      "price": 550,
+      "general_price": 400,
+      "sale_price": 350,
+      "sale_price_until": "2026-06-30T12:30",
+      "source": "https://wbfngo.org/product/?slug=handmade-earrings"
+    },
+    {
+      "id": 16,
+      "title": "Handmade Wax Rose Candle",
+      "slug": "handmade-wax-rose-candle",
+      "category_id": 6,
+      "price": 899,
+      "general_price": 799,
+      "sale_price": 499,
+      "sale_price_until": null,
+      "source": "https://wbfngo.org/product/?slug=handmade-wax-rose-candle"
+    },
+    {
+      "id": 15,
+      "title": "Handmade Bag",
+      "slug": "handmade-bag",
+      "category_id": 5,
+      "price": 499,
+      "general_price": 450,
+      "sale_price": 300,
+      "sale_price_until": "2026-06-30T21:08",
+      "source": "https://wbfngo.org/product/?slug=handmade-bag"
+    },
+    {
+      "id": 14,
+      "title": "Hand Painted Jars for Kitchen",
+      "slug": "hand-painted-jars-for-kitchen",
+      "category_id": 6,
+      "price": 1000,
+      "general_price": 900,
+      "sale_price": 600,
+      "sale_price_until": "2026-06-30T21:04",
+      "source": "https://wbfngo.org/product/?slug=hand-painted-jars-for-kitchen"
+    },
+    {
+      "id": 13,
+      "title": "Recycled Material Rajasthani Musician Bawla Puppets Idol",
+      "slug": "recycled-material-rajasthani-musician-bawla-puppets-idol",
+      "category_id": 17,
+      "price": 1000,
+      "general_price": 800,
+      "sale_price": 590,
+      "sale_price_until": "2026-06-30T21:03",
+      "source": "https://wbfngo.org/product/?slug=recycled-material-rajasthani-musician-bawla-puppets-idol"
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://wbfngo.org/uploads/documents/WELL-BEING-FOUNDATION-PROFILE-2025.pdf",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 200,
+      "title": "Organization profile 2025"
+    },
+    {
+      "url": "https://wbfngo.org/uploads/documents/AA0711250473579_RC14112025.pdf",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 200,
+      "title": "GST registration"
+    },
+    {
+      "url": "https://wbfngo.org/uploads/documents/WELL-BEING-FOUNDATION-ISO-9001F-779.pdf",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 200,
+      "title": "ISO certificate"
+    },
+    {
+      "url": "https://wbfngo.org/uploads/documents/12A.pdf",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 200,
+      "title": "12A certificate"
+    },
+    {
+      "url": "https://wbfngo.org/uploads/documents/80G.pdf",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 200,
+      "title": "80G certificate"
+    },
+    {
+      "url": "https://wbfngo.org/uploads/documents/CSR-1.pdf",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 200,
+      "title": "CSR approval"
+    },
+    {
+      "url": "https://wbfngo.org/uploads/documents/MSME-Print-_-Udyam-Registration-Certificate.pdf",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 200,
+      "title": "MSME registration"
+    },
+    {
+      "url": "https://wbfngo.org/uploads/documents/DARPAN-1.pdf",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 200,
+      "title": "Darpan registration"
+    },
+    {
+      "url": "https://wbfngo.org/uploads/documents/TAN.pdf",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 200,
+      "title": "TAN"
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/1.pdf",
+      "title": "Policy 01",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/2.pdf",
+      "title": "Policy 02",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/3.pdf",
+      "title": "Policy 03",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/4.pdf",
+      "title": "Policy 04",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/5.pdf",
+      "title": "Policy 05",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/6.pdf",
+      "title": "Policy 06",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/7.pdf",
+      "title": "Policy 07",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/8.pdf",
+      "title": "Policy 08",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/9.pdf",
+      "title": "Policy 09",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/10.pdf",
+      "title": "Policy 10",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/11.pdf",
+      "title": "Policy 11",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/12.pdf",
+      "title": "Policy 12",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/13.pdf",
+      "title": "Policy 13",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/14.pdf",
+      "title": "Policy 14",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/15.pdf",
+      "title": "Policy 15",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    },
+    {
+      "url": "https://wbfngo.org/wp-content/uploads/2026/05/16.pdf",
+      "title": "Policy 16",
+      "type": "application/pdf",
+      "license": "Publicly linked; reproduction rights not established; link to source rather than mirror.",
+      "http_status": 404
+    }
+  ]
+}

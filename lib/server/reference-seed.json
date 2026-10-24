@@ -1,0 +1,1207 @@
+[
+  {
+    "id": "job-6",
+    "kind": "job",
+    "slug": "digital-communications-associate",
+    "title": "Digital Communications Associate",
+    "summary": "Support digital storytelling and campaign communication.",
+    "body": "Support digital storytelling and campaign communication.\n\nThis update was published by Well Being Foundation. Visit the original source for its full account.",
+    "image": "/images/education.jpg",
+    "category": "Communications",
+    "published_at": "2026-06-09T13:46:09Z",
+    "source": "https://wbfngo.org/careers/",
+    "data": {
+      "location": "Hybrid",
+      "employmentType": "Contract",
+      "externalApply": "/contact/"
+    }
+  },
+  {
+    "id": "job-5",
+    "kind": "job",
+    "slug": "partnerships-and-operations-lead",
+    "title": "Partnerships and Operations Lead",
+    "summary": "Coordinate partnerships and day-to-day program operations.",
+    "body": "Coordinate partnerships and day-to-day program operations.\n\nThis update was published by Well Being Foundation. Visit the original source for its full account.",
+    "image": "/images/education.jpg",
+    "category": "Partnerships",
+    "published_at": "2026-06-09T13:46:09Z",
+    "source": "https://wbfngo.org/careers/",
+    "data": {
+      "location": "Delhi NCR",
+      "employmentType": "Full-time",
+      "externalApply": "/contact/"
+    }
+  },
+  {
+    "id": "job-4",
+    "kind": "job",
+    "slug": "program-associate-community-learning",
+    "title": "Program Associate, Community Learning",
+    "summary": "Help facilitators deliver community learning programs.",
+    "body": "Help facilitators deliver community learning programs.\n\nThis update was published by Well Being Foundation. Visit the original source for its full account.",
+    "image": "/images/education.jpg",
+    "category": "Community Learning",
+    "published_at": "2026-06-09T13:46:09Z",
+    "source": "https://wbfngo.org/careers/",
+    "data": {
+      "location": "Delhi NCR",
+      "employmentType": "Full-time",
+      "externalApply": "/contact/"
+    }
+  },
+  {
+    "id": "post-3",
+    "kind": "post",
+    "slug": "clean-india-drive-tree-plantation",
+    "title": "Clean India Drive: Tree Plantation and Waste Segregation Rally",
+    "summary": "Community volunteers come together for greener neighborhoods.",
+    "body": "Community volunteers come together for greener neighborhoods.\n\nThis update was published by Well Being Foundation. Visit the original source for its full account.",
+    "image": "/images/environment.jpg",
+    "category": "Environment",
+    "published_at": "2026-06-09T13:46:09Z",
+    "source": "https://wbfngo.org/blog/",
+    "data": {
+      "location": "",
+      "employmentType": "",
+      "externalApply": ""
+    }
+  },
+  {
+    "id": "post-2",
+    "kind": "post",
+    "slug": "announcing-2026-womens-skill-graduation",
+    "title": "Announcing the 2026 Women's Skill & Entrepreneurship Graduation",
+    "summary": "Celebrating a new chapter for women learning vocational skills.",
+    "body": "Celebrating a new chapter for women learning vocational skills.\n\nThis update was published by Well Being Foundation. Visit the original source for its full account.",
+    "image": "/images/women.jpg",
+    "category": "Empowerment",
+    "published_at": "2026-06-09T13:46:09Z",
+    "source": "https://wbfngo.org/blog/",
+    "data": {
+      "location": "",
+      "employmentType": "",
+      "externalApply": ""
+    }
+  },
+  {
+    "id": "post-1",
+    "kind": "post",
+    "slug": "empowering-rural-communities-through-literacy",
+    "title": "Empowering Rural Communities Through Literacy",
+    "summary": "Reading activities bring learning into local communities.",
+    "body": "Reading activities bring learning into local communities.\n\nThis update was published by Well Being Foundation. Visit the original source for its full account.",
+    "image": "/images/education.jpg",
+    "category": "Education",
+    "published_at": "2026-06-09T13:46:09Z",
+    "source": "https://wbfngo.org/blog/",
+    "data": {
+      "location": "",
+      "employmentType": "",
+      "externalApply": ""
+    }
+  },
+  {
+    "id": "event-18",
+    "kind": "event",
+    "slug": "crochet-products-making-workshop-1790941929",
+    "title": "Crochet Products Making Workshop",
+    "summary": "A WBF community event in Khizrabad, New Friends Colony.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/women.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-10-12T16:00+05:30",
+      "end": "2026-10-31T17:30+05:30",
+      "location": "Khizrabad, New Friends Colony",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-19",
+    "kind": "event",
+    "slug": "world-mental-health-day-carnival-of-well-being",
+    "title": "World Mental Health Day Carnival of Well Being",
+    "summary": "A WBF community event in Qutub Institution Area, New Delhi.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-10-10T15:00+05:30",
+      "end": "2026-10-10T19:00+05:30",
+      "location": "Qutub Institution Area, New Delhi",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-17",
+    "kind": "event",
+    "slug": "crochet-products-making-workshop-1790936789",
+    "title": "Crochet Products Making Workshop",
+    "summary": "A WBF community event in Kalindi Kunj.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/women.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-10-03T15:56+05:30",
+      "end": "2026-10-31T15:56+05:30",
+      "location": "Kalindi Kunj",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-15",
+    "kind": "event",
+    "slug": "orientation-meet",
+    "title": "ORIENTATION MEET",
+    "summary": "A WBF community event in NEW FRIENDS COLONY.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-08-09T16:00+05:30",
+      "end": "2026-08-09T17:30+05:30",
+      "location": "NEW FRIENDS COLONY",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-2",
+    "kind": "event",
+    "slug": "health-hygiene-awareness-camp",
+    "title": "Health & Hygiene Awareness Camp",
+    "summary": "A WBF community event in Community Centre, Noida.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-08-05T09:00+05:30",
+      "end": "2026-08-05T16:00+05:30",
+      "location": "Community Centre, Noida",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-13",
+    "kind": "event",
+    "slug": "ministry-of-micro-small-and-medium-enterprises-awareness-session",
+    "title": "Ministry of Micro, Small and Medium Enterprises Awareness Session",
+    "summary": "A WBF community event in Sri Nagar, J&K.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-08-01T14:00+05:30",
+      "end": "2026-08-01T16:00+05:30",
+      "location": "Sri Nagar, J&K",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-14",
+    "kind": "event",
+    "slug": "internship-orientation",
+    "title": "Internship Orientation",
+    "summary": "A WBF community event in Noida.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-07-29T23:00+05:30",
+      "end": "2026-07-30T23:00+05:30",
+      "location": "Noida",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-12",
+    "kind": "event",
+    "slug": "health-hygiene-program",
+    "title": "Health & Hygiene Program",
+    "summary": "A WBF community event in Noida.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-07-26T14:00+05:30",
+      "end": "2026-07-26T16:00+05:30",
+      "location": "Noida",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-11",
+    "kind": "event",
+    "slug": "project-her-livelihood-generation-workshop",
+    "title": "Project: HER | Livelihood Generation Workshop",
+    "summary": "A WBF community event in Noida Sector 19.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-07-25T17:00+05:30",
+      "end": "2026-07-25T19:00+05:30",
+      "location": "Noida Sector 19",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-10",
+    "kind": "event",
+    "slug": "menstrual-health-hygiene-awareness-workshop-sanitary-napkin-distribution-1784633808",
+    "title": "Menstrual Health Hygiene Awareness Workshop & Sanitary Napkin Distribution",
+    "summary": "A WBF community event in Asgarpur, Noida.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-07-22T14:30+05:30",
+      "end": "2026-07-22T17:00+05:30",
+      "location": "Asgarpur, Noida",
+      "registration": false
+    }
+  },
+  {
+    "id": "event-9",
+    "kind": "event",
+    "slug": "menstrual-health-hygiene-awareness-workshop-sanitary-napkin-distribution",
+    "title": "Menstrual Health Hygiene Awareness Workshop & Sanitary Napkin Distribution",
+    "summary": "A WBF community event in Noor Nagar.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-07-19T14:30+05:30",
+      "end": "2026-07-19T16:00+05:30",
+      "location": "Noor Nagar",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-6",
+    "kind": "event",
+    "slug": "fellowship-program-for-women",
+    "title": "Fellowship Program For Women",
+    "summary": "A WBF community event in New Friends Colony.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-07-10T14:00+05:30",
+      "end": "2026-07-12T14:00+05:30",
+      "location": "New Friends Colony",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-5",
+    "kind": "event",
+    "slug": "school-development-program",
+    "title": "School Development Program",
+    "summary": "A WBF community event in New Delhi.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-07-04T14:00+05:30",
+      "end": "2026-07-04T16:00+05:30",
+      "location": "New Delhi",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-8",
+    "kind": "event",
+    "slug": "sustainability-forum",
+    "title": "Sustainability Forum",
+    "summary": "A WBF community event in Bharat Mandapam, Hall No. 6.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-07-04T12:00+05:30",
+      "end": "2026-07-04T18:00+05:30",
+      "location": "Bharat Mandapam, Hall No. 6",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-4",
+    "kind": "event",
+    "slug": "foundation-s-day-2026",
+    "title": "Foundation's Day 2026",
+    "summary": "A WBF community event in Corporate Office of Well Being New Friends Colony.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-06-14T19:57+05:30",
+      "end": "2026-06-14T19:57+05:30",
+      "location": "Corporate Office of Well Being New Friends Colony",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-3",
+    "kind": "event",
+    "slug": "tree-plantation-eco-drive",
+    "title": "Tree Plantation & Eco Drive",
+    "summary": "A WBF community event in New Friends Colony, New Delhi.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/environment.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-06-14T16:00+05:30",
+      "end": "2026-12-14T17:00+05:30",
+      "location": "New Friends Colony, New Delhi",
+      "registration": true
+    }
+  },
+  {
+    "id": "event-1",
+    "kind": "event",
+    "slug": "volunteer-orientation",
+    "title": "Volunteer Orientation",
+    "summary": "A WBF community event in Delhi NCR.",
+    "body": "See the published event dates and venue below. Contact the team to confirm availability before attending.",
+    "image": "/images/community.jpg",
+    "category": "Community",
+    "source": "https://wbfngo.org/events/",
+    "data": {
+      "start": "2026-06-01T10:00+05:30",
+      "end": "2026-07-10T12:00+05:30",
+      "location": "Delhi NCR",
+      "registration": true
+    }
+  },
+  {
+    "id": "team-0",
+    "kind": "team",
+    "slug": "saad-khan",
+    "title": "Saad Khan",
+    "summary": "Media & Communication Head",
+    "body": "",
+    "sort": 0,
+    "source": "https://wbfngo.org/our-team/",
+    "data": {
+      "group": "Leadership"
+    }
+  },
+  {
+    "id": "team-1",
+    "kind": "team",
+    "slug": "farha-naaz",
+    "title": "Farha Naaz",
+    "summary": "Chief Operating Officer",
+    "body": "",
+    "sort": 1,
+    "source": "https://wbfngo.org/our-team/",
+    "data": {
+      "group": "Leadership"
+    }
+  },
+  {
+    "id": "team-2",
+    "kind": "team",
+    "slug": "shivam-mehrotra",
+    "title": "Shivam Mehrotra",
+    "summary": "Chief Executive Officer",
+    "body": "",
+    "sort": 2,
+    "source": "https://wbfngo.org/our-team/",
+    "data": {
+      "group": "Leadership"
+    }
+  },
+  {
+    "id": "team-3",
+    "kind": "team",
+    "slug": "zahid-khan",
+    "title": "Zahid Khan",
+    "summary": "Manager",
+    "body": "",
+    "sort": 3,
+    "source": "https://wbfngo.org/our-team/",
+    "data": {
+      "group": "Leadership"
+    }
+  },
+  {
+    "id": "product-69",
+    "kind": "product",
+    "slug": "crystal-beaded-bag",
+    "title": "Crystal Beaded Bag",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 499900,
+      "salePrice": 199900,
+      "saleUntil": "2026-12-31T13:53",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-68",
+    "kind": "product",
+    "slug": "beaded-neck-chain",
+    "title": "Beaded Neck Chain",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 45000,
+      "salePrice": 29900,
+      "saleUntil": "2026-12-31T13:47",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-67",
+    "kind": "product",
+    "slug": "crochet-sunglasses-mat",
+    "title": "Crochet Sunglasses Mat",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 45000,
+      "salePrice": 29900,
+      "saleUntil": "2026-12-31T13:46",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-66",
+    "kind": "product",
+    "slug": "upcycled-bag",
+    "title": "Upcycled Bag",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 99900,
+      "salePrice": 25000,
+      "saleUntil": "2026-12-31T13:35",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-65",
+    "kind": "product",
+    "slug": "handmade-crochet-d-coratives",
+    "title": "Handmade Crochet D\u00e9coratives",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 199900,
+      "salePrice": 39900,
+      "saleUntil": "2026-12-31T18:45",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-64",
+    "kind": "product",
+    "slug": "crochet-earrings",
+    "title": "Crochet Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 49900,
+      "salePrice": 10000,
+      "saleUntil": "2026-12-01T18:43",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-63",
+    "kind": "product",
+    "slug": "crochet-key-chain",
+    "title": "Crochet Key chain",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 109900,
+      "salePrice": 49900,
+      "saleUntil": "2026-10-31T18:37",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-62",
+    "kind": "product",
+    "slug": "handcrafted-cor-set-for-women",
+    "title": "Handcrafted Co-Ord Set for Women",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 599900,
+      "salePrice": 349900,
+      "saleUntil": "2026-08-31T14:32",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-60",
+    "kind": "product",
+    "slug": "warli-art-laptop-bag",
+    "title": "Warli Art Laptop Bag",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 299900,
+      "salePrice": 259900,
+      "saleUntil": "2026-08-01T18:51",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-59",
+    "kind": "product",
+    "slug": "handcrafted-stole-traditional-indian-hand-painted-madhubani-art",
+    "title": "Handcrafted Stole | Traditional Indian Hand Painted Madhubani Art",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 1000000,
+      "salePrice": 399900,
+      "saleUntil": "2026-10-01T18:39",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-58",
+    "kind": "product",
+    "slug": "madhubani-painted-paper-mache-bowl",
+    "title": "Madhubani Painted Paper Mache Bowl",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 399900,
+      "salePrice": 159900,
+      "saleUntil": "2026-10-01T18:29",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-57",
+    "kind": "product",
+    "slug": "madhubani-painted-paper-mache-planter",
+    "title": "Madhubani Painted Paper Mache Planter",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 399900,
+      "salePrice": 199900,
+      "saleUntil": "2026-09-01T18:27",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-56",
+    "kind": "product",
+    "slug": "handcrafted-madhubani-painted-paper-mache-pen-stand",
+    "title": "Handcrafted Madhubani Painted Paper Mache Pen Stand",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 199900,
+      "salePrice": 109900,
+      "saleUntil": "2026-08-31T18:24",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-53",
+    "kind": "product",
+    "slug": "plantable-notebook",
+    "title": "Plantable Notebook",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 109900,
+      "salePrice": 99900,
+      "saleUntil": "2026-08-31T15:57",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-51",
+    "kind": "product",
+    "slug": "plantable-rakhi",
+    "title": "Plantable Rakhi",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 79900,
+      "salePrice": 59900,
+      "saleUntil": "2026-07-31T15:44",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-50",
+    "kind": "product",
+    "slug": "plantable-bookmark",
+    "title": "Plantable Bookmark",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 100000,
+      "salePrice": 59900,
+      "saleUntil": "2026-07-31T15:39",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-49",
+    "kind": "product",
+    "slug": "handmade-terracotta-mini-vase",
+    "title": "Handmade Terracotta Mini Vase",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 299900,
+      "salePrice": 199900,
+      "saleUntil": "2026-09-01T15:30",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-43",
+    "kind": "product",
+    "slug": "plantable-coasters",
+    "title": "Plantable Coasters",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 350900,
+      "salePrice": 299900,
+      "saleUntil": "2026-08-01T23:16",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-41",
+    "kind": "product",
+    "slug": "handmade-bracelet-1781631673",
+    "title": "Handmade Bracelet",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 59900,
+      "salePrice": 29900,
+      "saleUntil": "2026-12-31T23:10",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-40",
+    "kind": "product",
+    "slug": "handmade-bracelet-1781631614",
+    "title": "Handmade Bracelet",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 59900,
+      "salePrice": 29900,
+      "saleUntil": "2026-12-31T23:10",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-36",
+    "kind": "product",
+    "slug": "handmade-bracelet",
+    "title": "Handmade Bracelet",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 59900,
+      "salePrice": 29900,
+      "saleUntil": "2026-12-31T23:05",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-35",
+    "kind": "product",
+    "slug": "kurti-1781631228",
+    "title": "Kurti",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 150000,
+      "salePrice": 120000,
+      "saleUntil": "2026-08-01T23:03",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-34",
+    "kind": "product",
+    "slug": "kurti-1781631177",
+    "title": "Kurti",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 150000,
+      "salePrice": 120000,
+      "saleUntil": "2026-08-01T23:02",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-33",
+    "kind": "product",
+    "slug": "kurti",
+    "title": "Kurti",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 150000,
+      "salePrice": 120000,
+      "saleUntil": "2026-09-01T23:01",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-32",
+    "kind": "product",
+    "slug": "handmade-bags",
+    "title": "Handmade Bags",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 120000,
+      "salePrice": 79900,
+      "saleUntil": "2026-09-01T22:49",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-31",
+    "kind": "product",
+    "slug": "handcrafted-coaster",
+    "title": "Handcrafted Coaster",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 79900,
+      "salePrice": 69900,
+      "saleUntil": "2026-08-01T22:48",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-30",
+    "kind": "product",
+    "slug": "kitchen-towel",
+    "title": "kitchen Towel",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 100000,
+      "salePrice": 79900,
+      "saleUntil": "2026-09-01T22:45",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-28",
+    "kind": "product",
+    "slug": "tote-bag-1781629919",
+    "title": "Tote Bag",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 69900,
+      "salePrice": 49900,
+      "saleUntil": "2026-09-01T22:41",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-27",
+    "kind": "product",
+    "slug": "tote-bag-1781629870",
+    "title": "Tote Bag",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 69900,
+      "salePrice": 49900,
+      "saleUntil": null,
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-26",
+    "kind": "product",
+    "slug": "tote-bag",
+    "title": "Tote Bag",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 69900,
+      "salePrice": 49900,
+      "saleUntil": "2026-08-01T22:38",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-25",
+    "kind": "product",
+    "slug": "handmade-earrings-1781629518",
+    "title": "Handmade Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 40000,
+      "salePrice": 35000,
+      "saleUntil": "2026-07-01T22:34",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-24",
+    "kind": "product",
+    "slug": "handmade-earrings-1781629438",
+    "title": "Handmade Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 40000,
+      "salePrice": 35000,
+      "saleUntil": "2026-07-01T22:33",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-23",
+    "kind": "product",
+    "slug": "handmade-earrings-1781629361",
+    "title": "Handmade Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 40000,
+      "salePrice": 35000,
+      "saleUntil": "2026-06-16T22:32",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-22",
+    "kind": "product",
+    "slug": "handmade-earrings-1781629291",
+    "title": "Handmade Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 40000,
+      "salePrice": 35000,
+      "saleUntil": "2026-07-01T22:31",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-21",
+    "kind": "product",
+    "slug": "handmade-earrings-1781629111",
+    "title": "Handmade Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 40000,
+      "salePrice": 35000,
+      "saleUntil": "2026-07-01T22:27",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-20",
+    "kind": "product",
+    "slug": "earrings",
+    "title": "Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 40000,
+      "salePrice": 35000,
+      "saleUntil": "2026-07-01T22:26",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-19",
+    "kind": "product",
+    "slug": "handmade-earrings-1781628955",
+    "title": "Handmade Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 40000,
+      "salePrice": 35000,
+      "saleUntil": "2026-07-01T22:25",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-18",
+    "kind": "product",
+    "slug": "handmade-earrings-1781628890",
+    "title": "Handmade Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 40000,
+      "salePrice": 35000,
+      "saleUntil": "2026-06-30T22:23",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-17",
+    "kind": "product",
+    "slug": "handmade-earrings",
+    "title": "Handmade Earrings",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 40000,
+      "salePrice": 35000,
+      "saleUntil": "2026-06-30T12:30",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-16",
+    "kind": "product",
+    "slug": "handmade-wax-rose-candle",
+    "title": "Handmade Wax Rose Candle",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 79900,
+      "salePrice": 49900,
+      "saleUntil": null,
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-15",
+    "kind": "product",
+    "slug": "handmade-bag",
+    "title": "Handmade Bag",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 45000,
+      "salePrice": 30000,
+      "saleUntil": "2026-06-30T21:08",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-14",
+    "kind": "product",
+    "slug": "hand-painted-jars-for-kitchen",
+    "title": "Hand Painted Jars for Kitchen",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 90000,
+      "salePrice": 60000,
+      "saleUntil": "2026-06-30T21:04",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "product-13",
+    "kind": "product",
+    "slug": "recycled-material-rajasthani-musician-bawla-puppets-idol",
+    "title": "Recycled Material Rajasthani Musician Bawla Puppets Idol",
+    "summary": "Handcrafted item listed in the WBF store.",
+    "category": "Handcrafted",
+    "source": "https://wbfngo.org/store/",
+    "data": {
+      "price": 80000,
+      "salePrice": 59000,
+      "saleUntil": "2026-06-30T21:03",
+      "referenceOnly": true
+    }
+  },
+  {
+    "id": "document-0",
+    "kind": "document",
+    "slug": "document-0",
+    "title": "Organization profile 2025",
+    "summary": "Public document hosted by Well Being Foundation.",
+    "category": "Profile",
+    "source": "https://wbfngo.org/uploads/documents/WELL-BEING-FOUNDATION-PROFILE-2025.pdf",
+    "data": {
+      "url": "https://wbfngo.org/uploads/documents/WELL-BEING-FOUNDATION-PROFILE-2025.pdf",
+      "fileType": "PDF"
+    }
+  },
+  {
+    "id": "document-1",
+    "kind": "document",
+    "slug": "document-1",
+    "title": "GST registration",
+    "summary": "Public document hosted by Well Being Foundation.",
+    "category": "Registration",
+    "source": "https://wbfngo.org/uploads/documents/AA0711250473579_RC14112025.pdf",
+    "data": {
+      "url": "https://wbfngo.org/uploads/documents/AA0711250473579_RC14112025.pdf",
+      "fileType": "PDF"
+    }
+  },
+  {
+    "id": "document-2",
+    "kind": "document",
+    "slug": "document-2",
+    "title": "ISO certificate",
+    "summary": "Public document hosted by Well Being Foundation.",
+    "category": "Registration",
+    "source": "https://wbfngo.org/uploads/documents/WELL-BEING-FOUNDATION-ISO-9001F-779.pdf",
+    "data": {
+      "url": "https://wbfngo.org/uploads/documents/WELL-BEING-FOUNDATION-ISO-9001F-779.pdf",
+      "fileType": "PDF"
+    }
+  },
+  {
+    "id": "document-3",
+    "kind": "document",
+    "slug": "document-3",
+    "title": "12A certificate",
+    "summary": "Public document hosted by Well Being Foundation.",
+    "category": "Registration",
+    "source": "https://wbfngo.org/uploads/documents/12A.pdf",
+    "data": {
+      "url": "https://wbfngo.org/uploads/documents/12A.pdf",
+      "fileType": "PDF"
+    }
+  },
+  {
+    "id": "document-4",
+    "kind": "document",
+    "slug": "document-4",
+    "title": "80G certificate",
+    "summary": "Public document hosted by Well Being Foundation.",
+    "category": "Registration",
+    "source": "https://wbfngo.org/uploads/documents/80G.pdf",
+    "data": {
+      "url": "https://wbfngo.org/uploads/documents/80G.pdf",
+      "fileType": "PDF"
+    }
+  },
+  {
+    "id": "document-5",
+    "kind": "document",
+    "slug": "document-5",
+    "title": "CSR approval",
+    "summary": "Public document hosted by Well Being Foundation.",
+    "category": "Registration",
+    "source": "https://wbfngo.org/uploads/documents/CSR-1.pdf",
+    "data": {
+      "url": "https://wbfngo.org/uploads/documents/CSR-1.pdf",
+      "fileType": "PDF"
+    }
+  },
+  {
+    "id": "document-6",
+    "kind": "document",
+    "slug": "document-6",
+    "title": "MSME registration",
+    "summary": "Public document hosted by Well Being Foundation.",
+    "category": "Registration",
+    "source": "https://wbfngo.org/uploads/documents/MSME-Print-_-Udyam-Registration-Certificate.pdf",
+    "data": {
+      "url": "https://wbfngo.org/uploads/documents/MSME-Print-_-Udyam-Registration-Certificate.pdf",
+      "fileType": "PDF"
+    }
+  },
+  {
+    "id": "document-7",
+    "kind": "document",
+    "slug": "document-7",
+    "title": "Darpan registration",
+    "summary": "Public document hosted by Well Being Foundation.",
+    "category": "Registration",
+    "source": "https://wbfngo.org/uploads/documents/DARPAN-1.pdf",
+    "data": {
+      "url": "https://wbfngo.org/uploads/documents/DARPAN-1.pdf",
+      "fileType": "PDF"
+    }
+  },
+  {
+    "id": "document-8",
+    "kind": "document",
+    "slug": "document-8",
+    "title": "TAN",
+    "summary": "Public document hosted by Well Being Foundation.",
+    "category": "Registration",
+    "source": "https://wbfngo.org/uploads/documents/TAN.pdf",
+    "data": {
+      "url": "https://wbfngo.org/uploads/documents/TAN.pdf",
+      "fileType": "PDF"
+    }
+  }
+]

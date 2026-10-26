@@ -13,6 +13,7 @@ import {
   HeartHandshake,
   ShieldCheck,
   BookOpen,
+  HeartPulse,
   Users,
   Mail,
   Play,
@@ -290,13 +291,62 @@ export function Work() {
   const { content } = useSite();
   return (
     <>
-      <PageHero
-        eyebrow="OUR WORK"
-        title="Many ways to make a difference."
-        description="Eight connected focus areas. Practical action. People at the centre."
-        image="/images/education.jpg"
-      />
-      <section className="section container">
+      <section className="work-hero" aria-labelledby="work-hero-title">
+        <img
+          className="work-hero-photo"
+          src="/images/education.jpg"
+          alt="Students writing in their notebooks in a classroom — illustrative photograph"
+          fetchPriority="high"
+        />
+        <div className="work-hero-shade" aria-hidden="true" />
+        <div className="work-hero-orbit" aria-hidden="true" />
+        <div className="container work-hero-content">
+          <nav className="work-hero-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Our Work</span>
+          </nav>
+          <p className="work-hero-eyebrow">OUR WORK <span /></p>
+          <h1 id="work-hero-title">
+            Many ways to make
+            <br />
+            a <em>difference.
+              <svg viewBox="0 0 280 20" aria-hidden="true" fill="none">
+                <path d="M4 12Q126 0 276 12M42 18Q126 1 250 8" />
+              </svg>
+            </em>
+          </h1>
+          <p className="work-hero-description">
+            Eight connected focus areas. Practical action. People at the centre.
+          </p>
+          <ul className="work-hero-pillars" aria-label="Our work at a glance">
+            {[
+              { Icon: BookOpen, title: "Education", detail: "Brighter futures" },
+              { Icon: HeartPulse, title: "Health", detail: "Stronger communities" },
+              { Icon: Sprout, title: "Livelihood", detail: "Sustainable change" },
+            ].map(({ Icon, title, detail }) => (
+              <li key={title}>
+                <span className="work-hero-icon"><Icon aria-hidden="true" /></span>
+                <span><strong>{title}</strong><small>{detail}</small></span>
+              </li>
+            ))}
+          </ul>
+          <a className="work-hero-button" href="#work-focus-areas">
+            Explore Our Work <ArrowRight size={22} aria-hidden="true" />
+          </a>
+        </div>
+        <svg className="work-hero-leaves" viewBox="0 0 160 220" fill="none" aria-hidden="true">
+          <path d="M-12 217Q45 140 55 28M22 160Q-10 112 6 85Q39 109 22 160ZM35 126Q17 69 38 43Q62 85 35 126ZM47 83Q34 32 55 8Q73 47 47 83ZM12 184Q59 128 109 145Q79 182 12 184ZM30 142Q73 95 122 105Q84 144 30 142ZM42 105Q82 58 113 66Q93 100 42 105Z" />
+          <path d="M17 176L97 149M32 135L109 110M45 98L102 71M26 147L9 98M39 115L38 58M50 72L55 24M-25 4Q71 27 149 217" />
+        </svg>
+        <svg className="work-hero-wave" viewBox="0 0 1440 115" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 40C230 150 340 16 565 88C760 150 1050 160 1440 0V115H0Z" fill="var(--ivory)" />
+          <path d="M0 32C235 143 330 10 570 83" fill="none" stroke="#d7d5bb" strokeWidth="2" />
+          <path d="M1110 115Q1290 73 1440 0V115Z" fill="#687c5c" />
+          <path d="M1225 115Q1340 78 1440 48V115Z" fill="#395c45" fillOpacity=".7" />
+        </svg>
+      </section>
+      <section className="section container work-focus-areas" id="work-focus-areas">
         <SectionTitle
           label="OUR FOCUS AREAS"
           title="A more complete picture of well-being."

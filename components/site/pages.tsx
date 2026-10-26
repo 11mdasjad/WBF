@@ -346,13 +346,40 @@ export function Work() {
           <path d="M1225 115Q1340 78 1440 48V115Z" fill="#395c45" fillOpacity=".7" />
         </svg>
       </section>
-      <section className="section container work-focus-areas" id="work-focus-areas">
-        <SectionTitle
-          label="OUR FOCUS AREAS"
-          title="A more complete picture of well-being."
-          description="Learning, health, rights, culture and the environment all shape a community’s future."
-        />
-        <ProgramGrid items={content.filter((x) => x.kind === "program")} />
+      <section className="section work-focus-areas" id="work-focus-areas" aria-labelledby="work-focus-title">
+        <div className="work-focus-heading">
+          <div className="work-focus-intro">
+            <p className="eyebrow">OUR FOCUS AREAS</p>
+            <h2 id="work-focus-title">
+              A more complete picture<br />
+              of <em>well-being.
+                <svg viewBox="0 0 230 16" fill="none" aria-hidden="true">
+                  <path d="M3 9Q99 0 226 9M65 14L193 10" />
+                </svg>
+              </em>
+            </h2>
+            <p className="work-focus-description">Learning, health, rights, culture and the environment all shape a community’s future.</p>
+          </div>
+          <div className="work-focus-art" aria-hidden="true">
+            <p>People<br />Communities<br />Stronger<br />Futures<span /></p>
+            <div className="work-focus-portrait">
+              <svg viewBox="226 202 166 155" preserveAspectRatio="xMidYMid slice">
+                <image href="/images/focus-reference.png" width="1731" height="909" />
+              </svg>
+            </div>
+            <svg className="work-focus-sprig" viewBox="0 0 130 210" fill="none">
+              <path d="M115 205Q48 125 37 12" stroke="currentColor" strokeWidth="2" />
+              <g fill="currentColor" fillOpacity=".65" stroke="currentColor" strokeWidth="1.5">
+                <path d="M45 67Q8 52 5 12Q42 27 45 67Z" />
+                <path d="M51 97Q38 60 68 36Q79 73 51 97Z" />
+                <path d="M64 130Q14 123 9 94Q43 90 64 130Z" />
+                <path d="M84 163Q65 121 100 103Q112 141 84 163Z" />
+                <path d="M104 192Q65 196 48 177Q79 161 104 192Z" />
+              </g>
+            </svg>
+          </div>
+        </div>
+        <ProgramGrid items={content.filter((x) => x.kind === "program")} split />
       </section>
       <CTABand />
     </>

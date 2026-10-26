@@ -158,18 +158,57 @@ export function ProgramGrid({
   items,
   limit,
   photographic = false,
+  split = false,
 }: {
   items: Entry[];
   limit?: number;
   photographic?: boolean;
+  split?: boolean;
 }) {
   return (
-    <div className={"program-grid" + (photographic ? " focus-photo-grid" : "")}>
+    <div className={"program-grid" + (split ? " work-focus-grid" : photographic ? " focus-photo-grid" : "")}>
       {items.slice(0, limit).map((p, i) => {
         const Icon =
           photographic && p.slug === "women-empowerment"
             ? Users
             : iconMap[p.data.icon] || Sprout;
+        if (split) {
+          // Reuse only the photographic regions of the existing supplied artwork.
+          const crops: Record<string, string> = {
+            "education-skill": "226 202 166 155",
+            "women-empowerment": "600 202 168 155",
+            "health-hygiene": "956 202 110 155",
+            "legal-aid-human-rights": "1260 202 340 155",
+            environment: "230 536 150 154",
+            sports: "630 536 150 154",
+            "art-culture-heritage": "956 536 130 154",
+            "sustainable-development-goals": "1360 536 150 154",
+          };
+          return (
+            <a className="work-focus-card" href={contentPath(p)} key={p.id} aria-label={"Explore " + p.title}>
+              <div className="work-focus-copy">
+                <div className="work-focus-card-top">
+                  <span className="work-focus-icon"><Icon size={30} strokeWidth={1.5} aria-hidden="true" /></span>
+                  <span className="work-focus-number">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <h3>{p.title}</h3>
+                <p>{p.slug === "health-hygiene" ? "Care with dignity for healthier communities." : p.summary}</p>
+                <span className="work-focus-arrow" aria-hidden="true"><ArrowUpRight size={22} /></span>
+              </div>
+              <div className="work-focus-photo" aria-hidden="true">
+                {crops[p.slug] ? (
+                  <svg viewBox={crops[p.slug]} preserveAspectRatio="xMidYMid slice">
+                    <image href="/images/focus-reference.png" width="1731" height="909" />
+                  </svg>
+                ) : <img src={p.image} alt="" loading="lazy" />}
+              </div>
+              <svg className="work-focus-card-wave" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 100Q18 37 83 28Q143 18 200 0V100Z" fill="currentColor" fillOpacity=".5" />
+                <path d="M35 100Q92 50 200 37V100Z" fill="currentColor" fillOpacity=".3" />
+              </svg>
+            </a>
+          );
+        }
         if (photographic) {
           const photos: Record<
             string,

@@ -11559,3 +11559,108 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .work-hero-button:hover { transform: none; }
 }
+
+/* Our Work focus cards pair readable live copy with illustrative photography. */
+.work-focus-areas {
+  position: relative;
+  width: min(94%, 1800px);
+  margin-inline: auto;
+  padding-top: 38px;
+  padding-bottom: 60px;
+  isolation: isolate;
+}
+.work-focus-areas::before {
+  content: "";
+  position: absolute;
+  left: -3%;
+  bottom: 0;
+  width: 250px;
+  height: 160px;
+  border-radius: 0 95% 0 0;
+  background: linear-gradient(35deg, #dbe3d4a6, transparent);
+  z-index: -1;
+  pointer-events: none;
+}
+.work-focus-heading { position: relative; padding: 0 4% 30px; min-height: 210px; }
+.work-focus-intro { position: relative; z-index: 1; max-width: 72%; }
+.work-focus-heading .eyebrow { color: #b94f2b; font-size: 12px; letter-spacing: .19em; margin-bottom: 13px; }
+#main-content .work-focus-heading h2 { font-size: clamp(38px, 3.5vw, 64px); line-height: 1.02; letter-spacing: -.025em; margin-bottom: 22px; }
+.work-focus-heading h2 em { color: #b85534; position: relative; display: inline-block; }
+.work-focus-heading h2 em svg { position: absolute; width: 72%; height: 14px; left: 12%; bottom: -10px; stroke: #aec2a0; stroke-width: 2; stroke-linecap: round; }
+.work-focus-description { color: #757b74; font-size: clamp(14px, 1.1vw, 20px); line-height: 1.6; margin: 0; }
+.work-focus-art { position: absolute; width: 32%; height: 245px; right: -1%; top: -40px; pointer-events: none; }
+.work-focus-art > p { position: absolute; left: -5%; top: 50px; color: #718072; font-family: var(--serif); font-style: italic; font-size: clamp(20px, 1.6vw, 29px); line-height: 1.2; text-align: center; transform: rotate(-13deg); }
+.work-focus-art > p span { display: block; width: 70px; border-bottom: 2px solid #c46d4b; margin: 12px auto; transform: rotate(-6deg); }
+.work-focus-portrait { position: absolute; right: 0; top: -7px; width: 65%; height: 100%; border: 9px solid #f1ecdb; border-radius: 48% 0 32% 48%; overflow: hidden; transform: rotate(-4deg); }
+.work-focus-portrait svg { display: block; width: 100%; height: 100%; transform: rotate(4deg) scale(1.1); }
+.work-focus-sprig { position: absolute; left: 24%; bottom: -3px; width: 110px; height: 185px; color: #456a4c; transform: rotate(-14deg); }
+.work-focus-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.work-focus-card {
+  --card-accent: #315e43;
+  --card-tint: #e3eadb;
+  --card-outline: #d0ddc5;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 10px;
+  min-height: 248px;
+  padding: 9px;
+  border: 1px solid #e5e7de;
+  border-radius: 15px;
+  background: #fffefa99;
+  box-shadow: 0 3px 12px #315e4303;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.work-focus-card:nth-child(even) { --card-accent: #b5522e; --card-tint: #fbe5d9; --card-outline: #f6d8c7; }
+.work-focus-copy { display: flex; flex-direction: column; align-items: flex-start; padding: 6px 0 3px 8px; position: relative; z-index: 2; min-width: 0; }
+.work-focus-card-top { display: flex; align-items: center; gap: clamp(12px, 1.4vw, 25px); margin-bottom: 9px; }
+.work-focus-icon { display: grid; place-items: center; width: clamp(45px, 3.8vw, 68px); height: clamp(45px, 3.8vw, 68px); border-radius: 50%; background: var(--card-tint); color: var(--card-accent); }
+.work-focus-number { color: #848d82; font-size: 12px; font-weight: 500; }
+#main-content .work-focus-card h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 1.8vw, 33px); line-height: 1.06; letter-spacing: -.03em; color: #21372f; margin: 0 0 11px; overflow-wrap: break-word; }
+.work-focus-card p { color: #777e74; font-size: clamp(12px, .95vw, 17px); line-height: 1.4; margin: 0 0 16px; }
+.work-focus-arrow { display: grid; place-items: center; width: 37px; height: 37px; border: 2px solid var(--card-outline); background: #fffefa99; color: var(--card-accent); border-radius: 50%; margin-top: auto; }
+.work-focus-photo { position: relative; min-height: 225px; height: 100%; border-radius: 17px 10px 10px; overflow: hidden; }
+.work-focus-photo > svg, .work-focus-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+.work-focus-card-wave { position: absolute; z-index: 1; bottom: 8px; right: 8px; width: 52%; height: 68px; color: var(--card-tint); border-bottom-right-radius: 10px; pointer-events: none; }
+.work-focus-card:hover { transform: translateY(-3px); border-color: var(--card-outline); box-shadow: 0 9px 22px #315e4310; }
+.work-focus-card:hover .work-focus-photo > svg, .work-focus-card:hover .work-focus-photo > img { transform: scale(1.035); }
+.work-focus-card:hover .work-focus-arrow { background: var(--card-tint); }
+.work-focus-card:focus-visible { outline: 3px solid var(--card-accent); outline-offset: 4px; }
+@media (min-width: 1600px) {
+  .work-focus-card { min-height: 290px; gap: 13px; }
+  .work-focus-copy { padding: 10px 0 5px 13px; }
+  .work-focus-heading { min-height: 235px; padding-bottom: 36px; }
+  .work-focus-art { height: 275px; }
+  .work-focus-arrow { width: 42px; height: 42px; }
+}
+@media (max-width: 1150px) {
+  .work-focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .work-focus-card { min-height: 265px; }
+  #main-content .work-focus-card h3 { font-size: 30px; }
+  .work-focus-card p { font-size: 15px; }
+  .work-focus-icon { width: 55px; height: 55px; }
+  .work-focus-copy { padding: 10px 6px 5px 12px; }
+  .work-focus-art { width: 30%; height: 210px; top: -15px; }
+  .work-focus-art > p { display: none; }
+  .work-focus-portrait { width: 90%; }
+  .work-focus-sprig { left: -5%; width: 85px; }
+  .work-focus-intro { max-width: 75%; }
+}
+@media (max-width: 650px) {
+  .work-focus-areas { width: 90%; padding-top: 35px; padding-bottom: 40px; }
+  .work-focus-heading { padding: 0 0 25px; min-height: 0; }
+  .work-focus-intro { max-width: none; }
+  #main-content .work-focus-heading h2 { font-size: 38px; max-width: 400px; }
+  .work-focus-description { font-size: 14px; }
+  .work-focus-art { display: none; }
+  .work-focus-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .work-focus-card { min-height: 244px; gap: 12px; }
+  #main-content .work-focus-card h3 { font-size: 29px; }
+  .work-focus-card p { font-size: 14px; }
+  .work-focus-copy { padding: 9px 0 4px 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-focus-card, .work-focus-photo > svg, .work-focus-photo > img { transition: none; }
+  .work-focus-card:hover, .work-focus-card:hover .work-focus-photo > svg, .work-focus-card:hover .work-focus-photo > img { transform: none; }
+}

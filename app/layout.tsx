@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.WBF_SITE_URL ||
-      (process.env.VERCEL_PROJECT_PRODUCTION_URL
-        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-        : "http://localhost:5173"),
-  ),
+  metadataBase: new URL("https://wbf-community.dwellmartuae.chatgpt.site"),
   title: {
     default: "Well Being Foundation — Growing Together",
     template: "%s | Well Being Foundation",

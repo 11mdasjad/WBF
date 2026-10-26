@@ -4,7 +4,7 @@ const base = process.env.WBF_BASE_URL || "http://127.0.0.1:5173";
 const vars = await readFile(".dev.vars", "utf8").catch(() => "");
 const token = process.env.SETUP_TOKEN || vars.match(/^SETUP_TOKEN=(.+)$/m)?.[1];
 if (!token)
-  throw new Error("Set SETUP_TOKEN in .env.local or the environment before starting the server.");
+  throw new Error("Set SETUP_TOKEN in .dev.vars before starting the server.");
 const credentials = {
   name: process.env.WBF_ADMIN_NAME || "Foundation Administrator",
   email: process.env.WBF_ADMIN_EMAIL || "admin@wbf.test",

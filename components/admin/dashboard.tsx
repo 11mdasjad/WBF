@@ -471,11 +471,7 @@ export function Admin({ section = "overview" }: { section?: string }) {
                     const form = e.currentTarget;
                     setBusy(true);
                     try {
-                      const data = new FormData(form);
-                      const file = data.get("file");
-                      if (file instanceof File && file.size > 4000000)
-                        throw new Error("Choose a file smaller than 4 MB.");
-                      await api("media", "POST", data);
+                      await api("media", "POST", new FormData(form));
                       form.reset();
                       setMessage("File uploaded.");
                       await load();
@@ -489,7 +485,7 @@ export function Admin({ section = "overview" }: { section?: string }) {
                   <h2>Add to your media library</h2>
                   <div className="form-grid">
                     <Field
-                      label="Image or PDF (maximum 4 MB)"
+                      label="Image or PDF (maximum 8 MB)"
                       type="file"
                       name="file"
                       accept="image/jpeg,image/png,image/webp,application/pdf"

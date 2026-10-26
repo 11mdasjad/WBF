@@ -1,7 +1,6 @@
 import { publicData } from "@/lib/server/public";
 import { routeTitles, contentPath } from "@/lib/content";
 import { escapeHtml } from "@/lib/server/security";
-export const dynamic = "force-dynamic";
 export async function GET(req: Request) {
   const data = await publicData();
   const base = new URL(req.url).origin;

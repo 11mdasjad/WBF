@@ -1,16 +1,5 @@
 # Verification report
 
-## Vercel migration — 26 October 2026
-
-- Native Next.js production build passes, including TypeScript and `.next/routes-manifest.json`, without database credentials at build time.
-- 33 API/database/security tests pass against the actual libSQL adapter and an isolated persistent SQLite database. Coverage includes atomic rollback, per-client Vercel rate limits and the 4 MB upload boundary.
-- Two runtime/storage tests pass: missing credentials and temporary production databases fail closed; Blob uploads use private access and downloads stream through the API. Blob service calls are mocked in these tests.
-- The migration command applied the schema to a fresh local database and then ran a second time without reapplying it.
-- Production HTTP smoke checks returned 200 for home, about, store, admin entry, public API, robots and sitemap.
-- Chromium loaded home, store and login without page JavaScript errors.
-
-Hosted Turso, Vercel Blob and the deployed Vercel application were not exercised: account connection and production credentials are still required. Existing Cloudflare data was not copied. The earlier checks below describe the prior Worker version, not additional Vercel acceptance coverage.
-
 Date: 25 October 2026 (Asia/Kolkata). Tests were run against the implemented application, not the original WBF service. No real payment or message to existing foundation contacts was submitted.
 
 ## Passed checks

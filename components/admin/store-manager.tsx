@@ -92,10 +92,6 @@ export function StoreManager() {
     }
   }
   async function upload(file?: File) {
-    if (file && file.size > 4000000) {
-      setError("Choose a file smaller than 4 MB.");
-      return;
-    }
     if (!file) return;
     setBusy(true);
     setError("");
@@ -384,7 +380,7 @@ export function StoreManager() {
                       onChange={(e) => upload(e.target.files?.[0])}
                     />
                   </label>
-                  <small>JPEG, PNG or WebP · up to 4 MB</small>
+                  <small>JPEG, PNG or WebP · up to 8 MB</small>
                   <Field
                     label="Or image URL"
                     value={form.image}

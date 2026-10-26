@@ -1,10 +1,7 @@
 import test, { beforeEach, after } from "node:test";
 import assert from "node:assert/strict";
 import { DatabaseSync } from "node:sqlite";
-import { readFile, readdir, mkdir, mkdtemp, rm } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
-import { createClient } from "@libsql/client";
+import { readFile, readdir, mkdir } from "node:fs/promises";
 import { build } from "esbuild";
 import { createHmac } from "node:crypto";
 import bcrypt from "bcryptjs";
@@ -17,14 +14,14 @@ await build({
   format: "esm",
   plugins: [
     {
-      name: "test-runtime-environment",
+      name: "test-worker-environment",
       setup(b) {
-        b.onResolve({ filter: /^\.\/runtime$/ }, () => ({
+        b.onResolve({ filter: /^cloudflare:workers$/ }, () => ({
           path: "env",
           namespace: "test",
         }));
         b.onLoad({ filter: /.*/, namespace: "test" }, () => ({
-          contents: "export const config=globalThis.__WBF_TEST_ENV; export const getDatabase=()=>config.DB; export const getBucket=()=>config.BUCKET;",
+          contents: "export const env=globalThis.__WBF_TEST_ENV;",
           loader: "js",
         }));
       },
@@ -42,26 +39,48 @@ const migrations = (await readdir("drizzle"))
 const sql = (
   await Promise.all(migrations.map((x) => readFile("drizzle/" + x, "utf8")))
 ).join("\n");
-await build({
-  entryPoints: ["lib/server/database.ts"],
-  outfile: "outputs/test-database.mjs",
-  bundle: true,
-  platform: "node",
-  format: "esm",
-  packages: "external",
-});
-const { createDatabase } = await import("../outputs/test-database.mjs");
-const testDirectory = await mkdtemp(join(tmpdir(), "wbf-api-"));
-const databasePath = join(testDirectory, "test.db");
-let sqlite, objects, client;
-beforeEach(async () => {
-  client?.close();
+let sqlite, objects;
+class Statement {
+  constructor(sql, args = []) {
+    this.sql = sql;
+    this.args = args;
+  }
+  bind(...args) {
+    return new Statement(this.sql, args);
+  }
+  async first() {
+    return sqlite.prepare(this.sql).get(...this.args) ?? null;
+  }
+  async all() {
+    return { results: sqlite.prepare(this.sql).all(...this.args) };
+  }
+  async run() {
+    const meta = sqlite.prepare(this.sql).run(...this.args);
+    return { success: true, meta: { changes: Number(meta.changes) } };
+  }
+}
+const db = {
+  prepare(sql) {
+    return new Statement(sql);
+  },
+  async batch(items) {
+    sqlite.exec("BEGIN");
+    try {
+      const out = [];
+      for (const s of items) out.push(await s.run());
+      sqlite.exec("COMMIT");
+      return out;
+    } catch (e) {
+      sqlite.exec("ROLLBACK");
+      throw e;
+    }
+  },
+};
+beforeEach(() => {
   sqlite?.close();
-  await rm(databasePath, { force: true });
-  sqlite = new DatabaseSync(databasePath);
+  sqlite = new DatabaseSync(":memory:");
   sqlite.exec(sql);
-  client = createClient({ url: "file:" + databasePath });
-  config.DB = createDatabase(client);
+  config.DB = db;
   config.RAZORPAY_TEST_ENABLED = "false";
   delete config.RESEND_API_KEY;
   objects = new Map();
@@ -71,11 +90,7 @@ beforeEach(async () => {
     delete: async (k) => objects.delete(k),
   };
 });
-after(async () => {
-  client?.close();
-  sqlite?.close();
-  await rm(testDirectory, { recursive: true, force: true });
-});
+after(() => sqlite?.close());
 const origin = "https://wbf.test";
 async function request(
   path,
@@ -1238,42 +1253,4 @@ test("product validation, public stock limits and employee upload restrictions",
     ).status,
     403,
   );
-});
-
-
-test("database batches roll back earlier writes when a later statement fails", async () => {
-  const db = config.DB;
-  await assert.rejects(db.batch([
-    db.prepare("INSERT INTO settings(id,value,updated_at) VALUES(?,?,?)").bind("atomic-test", "original", "2026-01-01"),
-    db.prepare("INSERT INTO settings(id,value,updated_at) VALUES(?,?,?)").bind("atomic-test", "duplicate", "2026-01-01"),
-  ]));
-  assert.equal(await db.prepare("SELECT * FROM settings WHERE id=?").bind("atomic-test").first(), null);
-});
-
-
-test("Vercel rate limiting isolates clients using the platform IP header", async () => {
-  config.VERCEL = "1";
-  try {
-    let response;
-    for (let i = 0; i < 9; i++) response = await request("auth/login", {
-      method: "POST", data: { email: "absent@example.test", password: "wrong" },
-      headers: { "x-vercel-forwarded-for": "192.0.2.1", "cf-connecting-ip": "198.51.100." + i },
-    });
-    assert.equal(response.status, 429);
-    response = await request("auth/login", {
-      method: "POST", data: { email: "absent@example.test", password: "wrong" },
-      headers: { "x-vercel-forwarded-for": "192.0.2.2" },
-    });
-    assert.equal(response.status, 401);
-  } finally { delete config.VERCEL; }
-});
-
-test("oversized uploads are rejected without storing a blob", async () => {
-  const cookie = await admin();
-  const form = new FormData();
-  form.set("file", new File([new Uint8Array(4000001)], "large.png", { type: "image/png" }));
-  const response = await request("media", { method: "POST", cookie, data: form });
-  assert.equal(response.status, 400);
-  assert.match(response.data.error, /4 MB/);
-  assert.equal(objects.size, 0);
 });

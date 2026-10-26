@@ -643,6 +643,10 @@ export async function handle(req: Request) {
         );
         assert(p, "A product is no longer available.");
         const d = JSON.parse(p.data);
+        assert(
+          d.stock === undefined || item.quantity <= d.stock,
+          "Requested quantity exceeds available stock.",
+        );
         const price =
           d.salePrice && new Date(d.saleUntil).getTime() > Date.now()
             ? d.salePrice
@@ -678,7 +682,12 @@ export async function handle(req: Request) {
       return json({ ok: true, reference: ref }, 201);
     }
     if (path === "media" && method === "POST") {
-      const u = await requireUser(db, req, "media");
+      const u = await requireUser(db, req);
+      assert(
+        u.permissions.includes("media") || u.permissions.includes("products"),
+        "Image upload access is required.",
+        403,
+      );
       assert(
         Number(req.headers.get("content-length") || 0) <= 8500000,
         "Files must be smaller than 8 MB.",
@@ -697,6 +706,14 @@ export async function handle(req: Request) {
         "application/pdf",
       ];
       assert(allowed.includes(file.type), "Use a JPEG, PNG, WebP or PDF.");
+      if (!u.permissions.includes("media")) {
+        assert(
+          file.type.startsWith("image/") &&
+            form.get("visibility") !== "private",
+          "Store employees can upload public product images only.",
+          403,
+        );
+      }
       const bytes = new Uint8Array(await file.arrayBuffer());
       const valid =
         file.type === "image/jpeg"
@@ -835,6 +852,13 @@ async function admin(db: D1Database, req: Request, path: string, url: URL) {
       const b = await body(req);
       if (b.role) {
         assert(
+          b.role !== "store_employee" ||
+            (Array.isArray(b.permissions) &&
+              b.permissions.length === 1 &&
+              b.permissions[0] === "products"),
+          "Store employee access is fixed to product listings.",
+        );
+        assert(
           roleNames.includes(b.role) && b.role !== "admin",
           "The administrator role cannot be changed.",
         );
@@ -843,6 +867,7 @@ async function admin(db: D1Database, req: Request, path: string, url: URL) {
             b.permissions.every((p: string) =>
               [
                 "content",
+                "products",
                 "media",
                 "applications",
                 "donations",
@@ -905,7 +930,42 @@ async function admin(db: D1Database, req: Request, path: string, url: URL) {
       return json({ ok: true });
     }
   }
-  if (section === "content") {
+  if (section === "users" && method === "POST") {
+    assert(
+      u.roles.includes("admin"),
+      "Only an administrator can create staff accounts.",
+      403,
+    );
+    const b = await body(req);
+    assert(b.role === "store_employee", "Choose the store employee role.");
+    const em = email(b.email),
+      name = clean(b.name, 100),
+      pw = password(b.password);
+    assert(
+      !(await first(db, "SELECT id FROM users WHERE email=?", em)),
+      "An account already uses that email.",
+      409,
+    );
+    const newId = uid();
+    await db.batch([
+      db
+        .prepare(
+          "INSERT INTO users(id,name,email,password,phone,verified,active,created_at) VALUES(?,?,?,?,?,1,1,?)",
+        )
+        .bind(newId, name, em, await hashPassword(pw), "", now()),
+      db
+        .prepare("INSERT INTO user_roles(id,user_id,role_id) VALUES(?,?,?)")
+        .bind(uid(), newId, "store_employee"),
+    ]);
+    await audit(db, u.id, "staff.create", newId, "store_employee");
+    return json({ id: newId }, 201);
+  }
+  if (section === "content" || section === "products") {
+    const productsOnly = section === "products";
+    if (productsOnly && id) {
+      const target = await first(db, "SELECT kind FROM content WHERE id=?", id);
+      assert(target?.kind === "product", "Product not found.", 404);
+    }
     if (method === "GET") {
       if (id === "revisions")
         return json({
@@ -922,13 +982,23 @@ async function admin(db: D1Database, req: Request, path: string, url: URL) {
       }
       return json({
         items: (
-          await all(db, "SELECT * FROM content ORDER BY updated_at DESC")
+          await all(
+            db,
+            productsOnly
+              ? "SELECT * FROM content WHERE kind='product' ORDER BY updated_at DESC"
+              : "SELECT * FROM content ORDER BY updated_at DESC",
+          )
         ).map(decode),
       });
     }
     if (method === "POST" || method === "PATCH") {
       const b = await body(req),
         kind = clean(b.kind, 30);
+      assert(
+        !productsOnly || kind === "product",
+        "Only product listings can be managed here.",
+        403,
+      );
       assert(
         (contentKinds as readonly string[]).includes(kind),
         "Invalid content type.",
@@ -983,6 +1053,34 @@ async function admin(db: D1Database, req: Request, path: string, url: URL) {
             data.price <= 100000000,
           "Enter a valid product price in paise.",
         );
+      if (kind === "product") {
+        assert(
+          data.salePrice === undefined ||
+            data.salePrice === null ||
+            data.salePrice === 0 ||
+            (Number.isSafeInteger(data.salePrice) &&
+              data.salePrice > 0 &&
+              data.salePrice <= data.price),
+          "Sale price must be positive and no higher than the regular price.",
+        );
+        assert(
+          data.stock === undefined ||
+            (Number.isSafeInteger(data.stock) &&
+              data.stock >= 0 &&
+              data.stock <= 1000000),
+          "Stock must be a whole number from 0 to 1,000,000.",
+        );
+        if (data.saleUntil)
+          assert(
+            Number.isFinite(Date.parse(data.saleUntil)),
+            "Enter a valid sale end date.",
+          );
+        if (b.status === "published")
+          assert(
+            b.image && b.summary,
+            "Add a product image and short description before publishing.",
+          );
+      }
       const values = [
         clean(b.title, 200),
         String(b.summary || "").slice(0, 1200),

@@ -1003,3 +1003,254 @@ test("server orders and checkout verification use provider capture state, not br
     globalThis.fetch = original;
   }
 });
+
+test("store employees manage only products; admins create and revoke their accounts", async () => {
+  const adminCookie = await admin();
+  let r = await request("admin/users", {
+    method: "POST",
+    cookie: adminCookie,
+    data: {
+      name: "Store Employee",
+      email: "store@example.test",
+      password: pass,
+      role: "store_employee",
+    },
+  });
+  assert.equal(r.status, 201);
+  const employeeId = r.data.id;
+  r = await request("auth/login", {
+    method: "POST",
+    data: { email: "store@example.test", password: pass },
+  });
+  assert.equal(r.status, 200);
+  const employeeCookie = r.cookie;
+  r = await request("auth/me", { cookie: employeeCookie });
+  assert.deepEqual(r.data.user.permissions, ["products"]);
+  for (const section of [
+    "content",
+    "users",
+    "donations",
+    "store",
+    "settings",
+    "media",
+    "applications",
+    "audit",
+  ]) {
+    assert.equal(
+      (await request("admin/" + section, { cookie: employeeCookie })).status,
+      403,
+      section,
+    );
+  }
+  const product = {
+    kind: "product",
+    slug: "test-handcrafted-bag",
+    title: "Handcrafted bag",
+    summary: "Handmade cotton bag",
+    body: "Details",
+    image: "/images/education.jpg",
+    category: "Bags",
+    status: "published",
+    data: { price: 12500, stock: 3 },
+  };
+  r = await request("admin/products", {
+    method: "POST",
+    cookie: employeeCookie,
+    data: product,
+  });
+  assert.equal(r.status, 201);
+  const id = r.data.id;
+  assert.ok((await request("public")).data.content.some((p) => p.id === id));
+  assert.ok(
+    (
+      await request("admin/products", { cookie: employeeCookie })
+    ).data.items.every((p) => p.kind === "product"),
+  );
+  r = await request("admin/products/" + id, {
+    method: "PATCH",
+    cookie: employeeCookie,
+    data: { ...product, title: "Updated bag" },
+  });
+  assert.equal(r.status, 200);
+  assert.equal(
+    (
+      await request("admin/products", {
+        method: "POST",
+        cookie: employeeCookie,
+        data: { ...product, kind: "page", slug: "bad-page" },
+      })
+    ).status,
+    403,
+  );
+  const program = (await request("public")).data.content.find(
+    (p) => p.kind === "program",
+  );
+  for (const method of ["GET", "PATCH", "DELETE"])
+    assert.equal(
+      (
+        await request("admin/products/" + program.id, {
+          method,
+          cookie: employeeCookie,
+          data: method === "PATCH" ? product : undefined,
+        })
+      ).status,
+      404,
+    );
+  assert.equal(
+    (
+      await request("admin/users", {
+        method: "POST",
+        cookie: employeeCookie,
+        data: {
+          name: "Escalation",
+          email: "bad@example.test",
+          password: pass,
+          role: "admin",
+        },
+      })
+    ).status,
+    403,
+  );
+  assert.equal(
+    (
+      await request("admin/settings", {
+        method: "PATCH",
+        cookie: adminCookie,
+        data: { role: "store_employee", permissions: ["products", "users"] },
+      })
+    ).status,
+    400,
+  );
+  r = await request("admin/products/" + id, {
+    method: "DELETE",
+    cookie: employeeCookie,
+  });
+  assert.equal(r.status, 200);
+  assert.ok(!(await request("public")).data.content.some((p) => p.id === id));
+  r = await request("admin/users/" + employeeId, {
+    method: "PATCH",
+    cookie: adminCookie,
+    data: { role: "store_employee", active: false, verified: true },
+  });
+  assert.equal(r.status, 200);
+  assert.equal(
+    (await request("admin/products", { cookie: employeeCookie })).status,
+    401,
+  );
+});
+
+test("product validation, public stock limits and employee upload restrictions", async () => {
+  const adminCookie = await admin();
+  await request("admin/users", {
+    method: "POST",
+    cookie: adminCookie,
+    data: {
+      name: "Store",
+      email: "store@example.test",
+      password: pass,
+      role: "store_employee",
+    },
+  });
+  const employeeCookie = (
+    await request("auth/login", {
+      method: "POST",
+      data: { email: "store@example.test", password: pass },
+    })
+  ).cookie;
+  const product = {
+    kind: "product",
+    slug: "stock-test",
+    title: "Stock test",
+    summary: "A real product",
+    image: "/images/education.jpg",
+    status: "published",
+    data: { price: 10000, stock: 2 },
+  };
+  for (const data of [
+    { ...product.data, price: -10 },
+    { ...product.data, salePrice: 20000 },
+    { ...product.data, stock: -1 },
+  ])
+    assert.equal(
+      (
+        await request("admin/products", {
+          method: "POST",
+          cookie: employeeCookie,
+          data: { ...product, data },
+        })
+      ).status,
+      400,
+    );
+  assert.equal(
+    (
+      await request("admin/products", {
+        method: "POST",
+        cookie: employeeCookie,
+        data: { ...product, image: "" },
+      })
+    ).status,
+    400,
+  );
+  const id = (
+    await request("admin/products", {
+      method: "POST",
+      cookie: employeeCookie,
+      data: product,
+    })
+  ).data.id;
+  assert.equal(
+    (
+      await request("store/orders", {
+        method: "POST",
+        cookie: employeeCookie,
+        data: { items: [{ id, quantity: 3 }] },
+      })
+    ).status,
+    400,
+  );
+  const image = new FormData();
+  image.set(
+    "file",
+    new File([new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10])], "photo.png", {
+      type: "image/png",
+    }),
+  );
+  image.set("alt", "Product image");
+  assert.equal(
+    (
+      await request("media", {
+        method: "POST",
+        cookie: employeeCookie,
+        data: image,
+      })
+    ).status,
+    201,
+  );
+  image.set("visibility", "private");
+  assert.equal(
+    (
+      await request("media", {
+        method: "POST",
+        cookie: employeeCookie,
+        data: image,
+      })
+    ).status,
+    403,
+  );
+  const pdf = new FormData();
+  pdf.set(
+    "file",
+    new File(["%PDF-test"], "file.pdf", { type: "application/pdf" }),
+  );
+  pdf.set("alt", "File");
+  assert.equal(
+    (
+      await request("media", {
+        method: "POST",
+        cookie: employeeCookie,
+        data: pdf,
+      })
+    ).status,
+    403,
+  );
+});

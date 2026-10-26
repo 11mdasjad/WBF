@@ -83,11 +83,12 @@ export const focusAreas = [
 ] as const;
 export const navigation = [
   ["Home", "/"],
-  ["About Us", "/about/"],
+  ["About", "/about/"],
   ["Our Work", "/our-work/"],
-  ["Our Impact", "/our-impact/"],
+  ["Events", "/events/"],
   ["Get Involved", "/get-involved/"],
-  ["News & Stories", "/blog/"],
+  ["Resources", "/resources/"],
+  ["Store", "/store/"],
 ] as const;
 export const contentKinds = [
   "page",
@@ -109,6 +110,7 @@ export const roleNames = [
   "volunteer",
   "staff",
   "editor",
+  "store_employee",
   "donation_manager",
   "volunteer_manager",
   "admin",

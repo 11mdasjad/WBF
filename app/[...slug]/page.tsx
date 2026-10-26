@@ -87,6 +87,7 @@ export default async function Page({
       "applications",
       "donations",
       "store",
+      "products",
       "users",
       "media",
       "inbox",

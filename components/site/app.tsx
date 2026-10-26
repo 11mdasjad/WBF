@@ -194,7 +194,8 @@ export function Site({
     screen = <Resources page={page} />;
   else if (page === "store" || page === "product")
     screen = <Store slug={query.slug} />;
-  else if (page === "search") screen = <SearchPage />;
+  else if (page === "search")
+    screen = <SearchPage initialQuery={query.q || ""} />;
   else if (page === "document") {
     const doc = data.content.find(
       (x) =>

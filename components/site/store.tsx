@@ -42,7 +42,14 @@ export function Store({ slug }: { slug?: string }) {
   const update = (id: string, delta: number) =>
     setCart((old) => {
       const c = { ...old };
-      c[id] = Math.max(0, Math.min(20, (c[id] || 0) + delta));
+      c[id] = Math.max(
+        0,
+        Math.min(
+          20,
+          products.find((p) => p.id === id)?.data.stock ?? 20,
+          (c[id] || 0) + delta,
+        ),
+      );
       if (!c[id]) delete c[id];
       return c;
     });
@@ -83,14 +90,14 @@ export function Store({ slug }: { slug?: string }) {
       <PageHero
         eyebrow="THE WBF STORE"
         title={product ? product.title : "Made by hand. Made with purpose."}
-        description="Discover handcrafted products listed by the foundation. Every inquiry starts a conversation with the team."
+        description="Explore thoughtful, handcrafted pieces. Find something you love and connect with our team."
         compact
       />
       <section className="section container">
         <div className="store-notice">
           <p>
-            Catalog prices reflect the audited source. Availability and shipping
-            require confirmation. Product photos await reuse authorization.
+            Choose your favorites and send an inquiry. Our team will confirm
+            availability, pricing and delivery before you place an order.
           </p>
           <button className="button secondary" onClick={() => setShow(true)}>
             <ShoppingBag size={18} /> My bag (
@@ -100,8 +107,14 @@ export function Store({ slug }: { slug?: string }) {
         {product ? (
           <div className="product-detail">
             <div className="product-placeholder">
-              <Palette size={70} strokeWidth={0.7} />
-              <span>HANDCRAFTED COLLECTION</span>
+              {product.image ? (
+                <img src={product.image} alt={product.title} />
+              ) : (
+                <>
+                  <Palette size={70} strokeWidth={0.7} />
+                  <span>HANDCRAFTED COLLECTION</span>
+                </>
+              )}
             </div>
             <div>
               <p className="eyebrow">{product.category}</p>
@@ -111,12 +124,14 @@ export function Store({ slug }: { slug?: string }) {
               <p>{product.body}</p>
               <button
                 className="button"
+                disabled={product.data.stock === 0}
                 onClick={() => {
                   update(product.id, 1);
                   setShow(true);
                 }}
               >
-                Add to bag <Plus size={18} />
+                {product.data.stock === 0 ? "Out of stock" : "Add to bag"}{" "}
+                <Plus size={18} />
               </button>
               <p>
                 <a href={product.source} target="_blank" rel="noreferrer">
@@ -172,11 +187,17 @@ export function Store({ slug }: { slug?: string }) {
                     </a>
                     <strong>{money(price(p))}</strong>
                     <button
-                      aria-label={"Add " + p.title + " to bag"}
+                      disabled={p.data.stock === 0}
+                      aria-label={
+                        p.data.stock === 0
+                          ? p.title + " is out of stock"
+                          : "Add " + p.title + " to bag"
+                      }
                       onClick={() => update(p.id, 1)}
                     >
                       <Plus size={18} />
                     </button>
+                    {p.data.stock === 0 && <small>Out of stock</small>}
                     {cart[p.id] > 0 && <small>{cart[p.id]} in your bag</small>}
                   </div>
                 </article>

@@ -36,6 +36,7 @@ import {
   Status,
   ButtonLink,
 } from "../site/shared";
+import { StoreManager } from "./store-manager";
 import { NavigationEditor } from "./navigation-editor";
 import { ContentEditor } from "./editor";
 import { api } from "@/lib/client";
@@ -45,6 +46,7 @@ const nav = [
   ["content", "Content studio", FileText, "content"],
   ["applications", "Applications", ClipboardList, "applications"],
   ["donations", "Donations", Heart, "donations"],
+  ["products", "Store", ShoppingBag, "products"],
   ["store", "Store inquiries", ShoppingBag, "donations"],
   ["users", "People & access", Users, "users"],
   ["media", "Media library", ImageIcon, "media"],
@@ -85,10 +87,18 @@ export function Admin({ section = "overview" }: { section?: string }) {
     }
   }
   useEffect(() => {
-    if (!user?.permissions?.length) return;
+    if (!user?.permissions?.length || section === "products") return;
     const timeout = setTimeout(() => load(), 180);
     return () => clearTimeout(timeout);
   }, [user?.id, section, query, status, kind, page, from, to]);
+  useEffect(() => {
+    if (
+      section === "overview" &&
+      user?.permissions?.length === 1 &&
+      user.permissions.includes("products")
+    )
+      location.replace("/admin/products/");
+  }, [section, user?.id]);
   async function mutate(
     path: string,
     method: string,
@@ -140,6 +150,17 @@ export function Admin({ section = "overview" }: { section?: string }) {
           text="Your account does not have access to administration."
           href="/user/"
           label="Go to my account"
+        />
+      </div>
+    );
+  const sectionPermission = nav.find((n) => n[0] === section)?.[3];
+  if (sectionPermission && !user.permissions.includes(sectionPermission))
+    return (
+      <div className="admin-signin">
+        <Empty
+          title="This section is not available for your account"
+          href="/admin/"
+          label="Back to workspace"
         />
       </div>
     );
@@ -240,9 +261,11 @@ export function Admin({ section = "overview" }: { section?: string }) {
               <p>
                 {section === "overview"
                   ? "Your community’s work, at a glance."
-                  : section === "content"
-                    ? "Create, refine, and publish the stories behind your work."
-                    : "Keep every record clear, current, and connected."}
+                  : section === "products"
+                    ? "Manage products, images, prices and availability in your store."
+                    : section === "content"
+                      ? "Create, refine, and publish the stories behind your work."
+                      : "Keep every record clear, current, and connected."}
               </p>
             </div>
             {section === "content" ? (
@@ -265,7 +288,7 @@ export function Admin({ section = "overview" }: { section?: string }) {
               >
                 <Plus size={17} /> Create content
               </button>
-            ) : (
+            ) : section === "products" ? null : (
               <button className="button secondary small" onClick={load}>
                 <RefreshCw size={15} /> Refresh
               </button>
@@ -281,7 +304,22 @@ export function Admin({ section = "overview" }: { section?: string }) {
               </button>
             </Notice>
           )}
-          {section === "overview" ? (
+          {section === "overview" && (
+            <div className="admin-shortcuts">
+              {nav
+                .filter((n) => n[3] && user.permissions.includes(n[3]))
+                .map(([key, label, Icon]) => (
+                  <a href={`/admin/${key}/`} key={key}>
+                    <Icon size={19} />
+                    <span>{label}</span>
+                    <ArrowUpRight size={15} />
+                  </a>
+                ))}
+            </div>
+          )}
+          {section === "products" ? (
+            <StoreManager />
+          ) : section === "overview" ? (
             <>
               <div className="overview-controls">
                 <Field
@@ -1219,6 +1257,7 @@ function SettingsPanel({ data, onSave, busy }: any) {
         <div className="interest-grid">
           {[
             "content",
+            "products",
             "media",
             "applications",
             "donations",
@@ -1231,6 +1270,7 @@ function SettingsPanel({ data, onSave, busy }: any) {
             <label className="check-label" key={p}>
               <input
                 type="checkbox"
+                disabled={role === "store_employee"}
                 checked={perms.includes(p)}
                 onChange={(e) =>
                   setPerms(

@@ -9,6 +9,7 @@ import {
   Clock,
   Search,
   Leaf,
+  Sprout,
   HeartHandshake,
   ShieldCheck,
   BookOpen,
@@ -38,47 +39,126 @@ export function About() {
   const { organization: o } = useSite();
   return (
     <>
-      <PageHero
-        eyebrow="OUR STORY"
-        title="People at the heart of change."
-        description="A shared belief in dignity. A commitment to work alongside communities."
-        image="/images/community.jpg"
-      />
-      <section className="section container intro-section">
-        <div className="intro-copy">
-          <p className="eyebrow">ROOTED IN PURPOSE</p>
-          <h2>
-            Opportunity grows
-            <br />
-            when we grow <em>together.</em>
-          </h2>
-          <p className="lead">{o.about}</p>
-          <p>
-            Our work brings education, health, livelihoods, rights, and the
-            environment into one connected view of well-being. People and their
-            priorities remain at the centre.
-          </p>
-          <p className="field-help">
-            {o.registration}{" "}
-            <a
-              href="https://wbfngo.org/about/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View source ↗
-            </a>
-          </p>
-          <ButtonLink href="/profile/" secondary>
-            Read our organization profile
-          </ButtonLink>
+      <section className="our-story-hero" aria-labelledby="our-story-title">
+        <div className="our-story-visual" aria-hidden="true">
+          <svg viewBox="990 0 1182 724" preserveAspectRatio="xMidYMid slice">
+            <image
+              href="/images/our-story-reference.png"
+              width="2172"
+              height="724"
+            />
+          </svg>
         </div>
-        <img
-          className="rounded-feature"
-          src="/images/women.jpg"
-          alt="Woman in a colorful sari — illustrative photograph"
-        />
+        <div className="our-story-panel" aria-hidden="true" />
+        <div className="container our-story-content">
+          <nav className="our-story-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Our Story</span>
+          </nav>
+          <p className="our-story-eyebrow">
+            OUR STORY <span />
+          </p>
+          <h1 id="our-story-title">
+            People at the heart
+            <br />
+            <em>of change.</em>
+          </h1>
+          <svg
+            className="our-story-underline"
+            viewBox="0 0 400 20"
+            aria-hidden="true"
+          >
+            <path d="M3 15Q175-3 395 7Q182 2 10 19Z" fill="currentColor" />
+          </svg>
+          <p className="our-story-description">
+            A shared belief in dignity. A commitment to work alongside
+            communities.
+          </p>
+        </div>
+        <svg
+          className="our-story-leaf"
+          viewBox="0 0 200 220"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M8 215Q105 140 165 8M59 169Q8 160 15 101Q58 119 59 169ZM89 130Q80 70 127 46Q127 98 89 130ZM119 82Q120 28 165 8Q160 53 119 82ZM64 164Q114 124 164 151Q119 184 64 164ZM105 105Q149 64 191 86Q152 121 105 105Z"
+            stroke="currentColor"
+            strokeWidth="1.6"
+          />
+        </svg>
+        <svg
+          className="our-story-waves"
+          viewBox="0 0 1440 125"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 90Q175 0 330 43T650 104T950 70T1220 75T1440 18V125H0Z"
+            fill="#bdc7a0"
+            fillOpacity=".75"
+          />
+          <path
+            d="M0 98C140 125 195 0 330 52S480 148 640 106S780 42 930 107S1280 95 1440 30V125H0Z"
+            fill="#f8f6ee"
+          />
+          <path
+            d="M0 105Q235 35 430 104T810 85T1130 105T1440 39"
+            stroke="#c9ceac"
+            strokeWidth="1.5"
+            fill="none"
+          />
+        </svg>
       </section>
-      <section className="values-band">
+      <section className="about-purpose-section">
+        <div className="container intro-section about-purpose-grid">
+          <div className="intro-copy">
+            <p className="eyebrow">
+              ROOTED IN PURPOSE <span />
+            </p>
+            <h2>
+              Opportunity grows
+              <br />
+              when we grow <em>together.</em>
+            </h2>
+            <p className="lead">{o.about}</p>
+            <p>
+              Our work brings education, health, livelihoods, rights, and the
+              environment into one connected view of well-being. People and
+              their priorities remain at the centre.
+            </p>
+            <p className="field-help">
+              {o.registration}{" "}
+              <a
+                href="https://wbfngo.org/about/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View source ↗
+              </a>
+            </p>
+            <ButtonLink href="/profile/">
+              Read our organization profile
+            </ButtonLink>
+          </div>
+          <div className="about-purpose-art">
+            <svg
+              viewBox="800 0 865 625"
+              role="img"
+              aria-label="Woman in a colourful sari, with botanical decoration and the message Stronger Communities, Brighter Futures"
+            >
+              <title>Stronger Communities, Brighter Futures</title>
+              <image
+                href="/images/about-purpose-reference.png"
+                width="1695"
+                height="928"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+      <section className="values-band about-purpose-values">
         <div className="container values-grid">
           {[
             [Leaf, "Our mission", o.mission],
@@ -90,44 +170,119 @@ export function About() {
             ],
           ].map(([Icon, title, text]: any) => (
             <div key={title}>
-              <Icon size={30} strokeWidth={1.2} />
+              <div className="purpose-value-icon">
+                <span>
+                  <Icon size={29} strokeWidth={1.2} />
+                </span>
+                <i />
+              </div>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
           ))}
         </div>
       </section>
-      <section className="section container">
-        <SectionTitle
-          label="LOOKING BACK. MOVING FORWARD."
-          title="A foundation built on participation."
-        />
-        <div className="timeline">
-          <div>
-            <strong>2015</strong>
-            <h3>A formal beginning</h3>
-            <p>
-              The foundation publishes its registration date as 1 June 2015.
+      <section
+        className="about-journey-section"
+        aria-labelledby="about-journey-heading"
+      >
+        <div className="about-journey-art" aria-hidden="true">
+          <svg viewBox="1040 0 767 305" preserveAspectRatio="xMidYMid slice">
+            <image
+              href="/images/about-journey-reference.png"
+              width="1807"
+              height="870"
+            />
+          </svg>
+        </div>
+        <div className="container">
+          <div className="about-journey-heading">
+            <p className="eyebrow">
+              LOOKING BACK. MOVING FORWARD. <span />
             </p>
+            <h2 id="about-journey-heading">
+              A foundation built
+              <br />
+              on <em>participation.</em>
+            </h2>
           </div>
-          <div>
-            <strong>Today</strong>
-            <h3>Connected areas of work</h3>
-            <p>
-              Eight focus areas connect learning, well-being and sustainable
-              development.
-            </p>
-          </div>
-          <div>
-            <strong>Together</strong>
-            <h3>The next chapter</h3>
-            <p>
-              Volunteers, communities and partners help shape what comes next.
-            </p>
-          </div>
+          <ol className="about-journey-milestones">
+            {[
+              {
+                date: "2015",
+                title: "A formal beginning",
+                text: "The foundation publishes its registration date as 1 June 2015.",
+                Icon: BookOpen,
+              },
+              {
+                date: "Today",
+                title: "Connected areas of work",
+                text: "Eight focus areas connect learning, well-being and sustainable development.",
+                Icon: Sprout,
+              },
+              {
+                date: "Together",
+                title: "The next chapter",
+                text: "Volunteers, communities and partners help shape what comes next.",
+                Icon: Users,
+              },
+            ].map(({ date, title, text, Icon }) => (
+              <li key={date}>
+                <span className="journey-dot" aria-hidden="true" />
+                <p className="journey-date">{date}</p>
+                <span className="journey-icon">
+                  <Icon size={27} strokeWidth={1.4} aria-hidden="true" />
+                </span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
-      <CTABand />
+      <section
+        className="about-journey-invitation"
+        aria-labelledby="journey-invitation-title"
+      >
+        <div className="container">
+          <HeartHandshake
+            className="journey-invitation-icon"
+            size={68}
+            strokeWidth={1.2}
+            aria-hidden="true"
+          />
+          <div className="journey-invitation-copy">
+            <p className="eyebrow">
+              A LITTLE OF YOUR TIME. A WORLD OF POSSIBILITY.
+            </p>
+            <h2 id="journey-invitation-title">
+              Be part of someone’s tomorrow.
+            </h2>
+            <p>
+              Bring your skills, your compassion, and your belief in a better
+              future.
+            </p>
+          </div>
+          <ButtonLink href="/become-a-volunteer/">
+            Join our community
+          </ButtonLink>
+        </div>
+        <svg
+          className="journey-invitation-leaf"
+          viewBox="0 0 180 260"
+          aria-hidden="true"
+          fill="none"
+        >
+          <path
+            d="M12 260Q72 140 133 5"
+            stroke="currentColor"
+            strokeWidth="2"
+          />
+          <g fill="currentColor" fillOpacity=".65">
+            <path d="M40 205Q-8 173 7 128Q43 155 40 205ZM62 163Q32 112 62 72Q83 118 62 163ZM94 95Q75 37 133 5Q127 61 94 95ZM38 212Q92 150 151 165Q108 217 38 212ZM67 148Q115 88 169 99Q128 150 67 148Z" />
+          </g>
+        </svg>
+      </section>
     </>
   );
 }
@@ -827,6 +982,125 @@ export function Resources({ page }: { page: string }) {
     );
   if (page === "tax-exemptions")
     docs = docs.filter((x) => /12A|80G/.test(x.title));
+  if (page === "profile")
+    return (
+      <div className="organization-profile-page">
+        <section className="profile-banner" aria-labelledby="profile-title">
+          <svg
+            className="profile-banner-art"
+            viewBox="475 0 549 403"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+          >
+            <image
+              href="/images/profile-reference.png"
+              width="1024"
+              height="1536"
+            />
+          </svg>
+          <div className="container">
+            <nav className="profile-breadcrumb" aria-label="Breadcrumb">
+              <a href="/">Home</a>
+              <span>/</span>
+              <a href="/resources/">Resources &amp; Transparency</a>
+              <span>/</span>
+              <span aria-current="page">Organization Profile</span>
+            </nav>
+            <p className="eyebrow">RESOURCES &amp; TRANSPARENCY</p>
+            <h1 id="profile-title">
+              Organization
+              <br />
+              Profile
+            </h1>
+            <p className="profile-banner-description">
+              A clearer view of the foundation, its work, and its publicly
+              available information.
+            </p>
+          </div>
+        </section>
+        <section
+          className="profile-overview container"
+          aria-labelledby="profile-overview-title"
+        >
+          <div className="profile-overview-grid">
+            <div className="profile-overview-copy">
+              <p className="eyebrow">ABOUT US</p>
+              <h2 id="profile-overview-title">Well Being Foundation</h2>
+              <p className="profile-about">{o.about}</p>
+              <p className="profile-registration">{o.registration}</p>
+              <ContactDetails />
+            </div>
+            <img
+              className="profile-community-portrait"
+              src="/images/profile-community.png"
+              alt="Smiling woman with a group of women, with the message Stronger Communities, Brighter Futures"
+              width="1238"
+              height="1271"
+            />
+          </div>
+          <div className="profile-publications">
+            {docs.length ? (
+              docs.map((d) => (
+                <article className="profile-publication" key={d.id}>
+                  <FileText size={40} strokeWidth={1.3} aria-hidden="true" />
+                  <div>
+                    <h3>{d.title}</h3>
+                    <p>{d.summary}</p>
+                    <small>
+                      {d.data.fileType || "PDF"} · Opens source document
+                    </small>
+                  </div>
+                  <a
+                    className="button"
+                    href={d.data.url || d.source}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Download size={19} /> Download PDF
+                  </a>
+                </article>
+              ))
+            ) : (
+              <Empty
+                title="No publications available yet"
+                href="/contact/"
+                label="Request information"
+              />
+            )}
+          </div>
+        </section>
+        <section
+          className="profile-purpose"
+          aria-labelledby="profile-purpose-title"
+        >
+          <svg
+            className="profile-purpose-art"
+            viewBox="510 1183 514 353"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+          >
+            <image
+              href="/images/profile-reference.png"
+              width="1024"
+              height="1536"
+            />
+          </svg>
+          <div className="container">
+            <p className="eyebrow">OUR PURPOSE</p>
+            <h2 id="profile-purpose-title">
+              People, communities
+              <br />
+              and <em>a better tomorrow.</em>
+            </h2>
+            <p>
+              We continue to work towards a more inclusive, equitable and
+              sustainable future for all.
+            </p>
+            <ButtonLink href="/our-work/">Learn more about our work</ButtonLink>
+          </div>
+        </section>
+      </div>
+    );
   return (
     <>
       <PageHero
@@ -1183,9 +1457,9 @@ export function Utility({ page }: { page: string }) {
     </>
   );
 }
-export function SearchPage() {
+export function SearchPage({ initialQuery = "" }: { initialQuery?: string }) {
   const { content } = useSite();
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState(initialQuery);
   const matches = q.trim()
     ? content
         .filter((x) =>

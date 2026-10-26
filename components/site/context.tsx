@@ -22,6 +22,7 @@ export function SiteProvider({
     try {
       const r = await api("auth/me");
       setUser(r.user);
+      return r.user;
     } finally {
       setAuthLoading(false);
     }
@@ -39,5 +40,5 @@ export const useSite = () =>
   useContext(Context) as SiteData & {
     user: any;
     authLoading: boolean;
-    refreshUser: () => Promise<void>;
+    refreshUser: () => Promise<any>;
   };

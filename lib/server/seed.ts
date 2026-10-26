@@ -8,10 +8,10 @@ export const defaults = {
   address:
     "E-26 White House Business Tower, Khizrabad, New Friends Colony, New Delhi 110025",
   hours: "Monday–Saturday, 10:00 AM–6:00 PM IST",
-  heroTitle: "Empowering communities.\nInspiring possibility.",
+  heroTitle: "Empowering Communities\nfor a Brighter Tomorrow.",
   heroText:
-    "Together, we create opportunities for people to learn, thrive, and build a brighter tomorrow.",
-  heroImage: "/images/hero.jpg",
+    "Together, we create opportunities for people to learn, thrive, and build a more inclusive and sustainable future.",
+  heroImage: "/images/community-banner.png",
   mission:
     "To support communities through education, health, skills and opportunities for lasting change.",
   vision:
@@ -34,6 +34,36 @@ export const defaults = {
 };
 const now = "2026-10-24T00:00:00.000Z";
 export async function seed(db: D1Database) {
+  // Upgrade existing installations without reseeding their content or settings.
+  if (
+    !(await db
+      .prepare("SELECT id FROM settings WHERE id='store-access-v1'")
+      .first())
+  ) {
+    await db.batch([
+      db.prepare(
+        "INSERT OR IGNORE INTO permissions(id,name) VALUES('products','Product listings')",
+      ),
+      db.prepare(
+        "INSERT OR IGNORE INTO roles(id,name) VALUES('store_employee','Store employee')",
+      ),
+      db.prepare(
+        "INSERT OR IGNORE INTO roles(id,name) VALUES('admin','admin')",
+      ),
+      db.prepare(
+        "INSERT OR IGNORE INTO role_permissions(id,role_id,permission_id) VALUES('store_employee-products','store_employee','products')",
+      ),
+      db.prepare(
+        "INSERT OR IGNORE INTO role_permissions(id,role_id,permission_id) VALUES('admin-products','admin','products')",
+      ),
+      db
+        .prepare(
+          "INSERT OR IGNORE INTO settings(id,value,updated_at) VALUES('store-access-v1','true',?)",
+        )
+        .bind(new Date().toISOString()),
+    ]);
+  }
+
   if (await db.prepare("SELECT id FROM settings WHERE id='seed-v1'").first())
     return;
   const rows: any[] = [
@@ -91,7 +121,9 @@ export async function seed(db: D1Database) {
     editor: ["content", "media"],
     donation_manager: ["donations"],
     volunteer_manager: ["applications"],
+    store_employee: ["products"],
     admin: [
+      "products",
       "content",
       "media",
       "applications",

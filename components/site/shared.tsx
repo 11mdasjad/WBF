@@ -20,6 +20,7 @@ import {
   Mail,
   Phone,
   ShieldCheck,
+  ChevronRight,
 } from "lucide-react";
 import { useSite } from "./context";
 import { contentPath, niceDate, type Entry } from "@/lib/content";
@@ -36,27 +37,32 @@ export const iconMap: Record<string, any> = {
   Leaf,
   Heart,
 };
-export function Brand({ light = false }: { light?: boolean }) {
+export function Brand({
+  light = false,
+  full = false,
+}: {
+  light?: boolean;
+  full?: boolean;
+}) {
   return (
     <a
       href="/"
-      className={"brand " + (light ? "light" : "")}
+      className={
+        "brand official-brand" +
+        (light ? " light" : "") +
+        (full ? " brand-full" : "")
+      }
       aria-label="Well Being Foundation home"
     >
-      <svg viewBox="0 0 48 58" aria-hidden="true">
-        <path
-          d="M24 53V19M24 39L10 30M24 31L36 22M24 45L37 37M24 24L15 17"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.4"
-        />
-        <path
-          d="M24 18C14 11 19 3 24 1c5 7 6 12 0 17ZM15 22C4 23 3 16 4 11c9 0 12 4 11 11ZM37 26c-2-9 2-13 10-13 0 8-3 12-10 13ZM13 36C2 37 0 31 1 25c10 1 14 5 12 11ZM36 42c-2-9 3-14 11-12 0 8-4 12-11 12ZM15 48C5 49 2 43 3 38c9 0 14 3 12 10ZM32 53c0-8 6-11 13-9-2 7-6 10-13 9Z"
-          fill="currentColor"
-        />
-      </svg>
-      <span>
-        WBF<small>WELL BEING FOUNDATION</small>
+      <img src="/brand/wbf-logo.png" width="88" height="88" alt="" />
+      <span className="brand-wordmark">
+        <strong>WBF</strong>
+        <small>Well Being Foundation</small>
+        {full && (
+          <span className="brand-tagline">
+            People <i>•</i> Community <i>•</i> Change
+          </span>
+        )}
       </span>
     </a>
   );
@@ -151,14 +157,131 @@ export function PageHero({
 export function ProgramGrid({
   items,
   limit,
+  photographic = false,
 }: {
   items: Entry[];
   limit?: number;
+  photographic?: boolean;
 }) {
   return (
-    <div className="program-grid">
+    <div className={"program-grid" + (photographic ? " focus-photo-grid" : "")}>
       {items.slice(0, limit).map((p, i) => {
-        const Icon = iconMap[p.data.icon] || Sprout;
+        const Icon =
+          photographic && p.slug === "women-empowerment"
+            ? Users
+            : iconMap[p.data.icon] || Sprout;
+        if (photographic) {
+          const photos: Record<
+            string,
+            {
+              src: string;
+              alt: string;
+              crop?: string;
+              width?: number;
+              height?: number;
+            }
+          > = {
+            "education-skill": {
+              src: "youth-education.jpeg",
+              alt: "Participants learning practical technical skills at a WBF training centre",
+            },
+            "women-empowerment": {
+              src: "../women-skill-training.jpeg",
+              alt: "Women practising sewing skills during a WBF training session",
+            },
+            "health-hygiene": {
+              src: "community-healthcare.jpeg",
+              alt: "Healthcare professionals assisting a visitor at a WBF free health check-up camp",
+            },
+            "legal-aid-human-rights": {
+              src: "Screenshot-2026-04-27-at-3.08.50-PM.png",
+              alt: "Community legal-awareness meeting with the Well Being Foundation",
+              crop: "80 197 640 470",
+              width: 796,
+              height: 1058,
+            },
+            environment: {
+              src: "Screenshot-2026-04-27-at-3.16.07-PM.png",
+              alt: "Participants planting a sapling during a WBF tree-plantation drive",
+              crop: "48 146 635 313",
+              width: 812,
+              height: 1048,
+            },
+            sports: {
+              src: "IMG_5870-3-1024x768.jpeg",
+              alt: "A coach briefing young participants at a WBF sports session",
+            },
+            "art-culture-heritage": {
+              src: "ways4.jpg",
+              alt: "Children showing their drawings at a community art activity",
+            },
+            "sustainable-development-goals": {
+              src: "from-local-to.jpeg",
+              alt: "Community outreach supporting women and families",
+            },
+          };
+          const photo = photos[p.slug];
+          const summaries: Record<string, string> = {
+            "education-skill":
+              "Learning that opens doors to brighter opportunities.",
+            "women-empowerment":
+              "Confidence. Voice. Independence for a stronger tomorrow.",
+            "health-hygiene": "Care with dignity for healthier communities.",
+            "legal-aid-human-rights":
+              "Rights, awareness and support within everyone’s reach.",
+            environment: "A healthier, cleaner and more sustainable tomorrow.",
+            sports: "Room to play. Space to grow with confidence.",
+            "art-culture-heritage": "Keeping creativity and traditions alive.",
+            "sustainable-development-goals":
+              "Progress, connected communities and lasting change.",
+          };
+          return (
+            <a
+              className="program-card focus-photo-card"
+              href={contentPath(p)}
+              key={p.id}
+              data-focus={p.slug}
+              aria-label={"Explore " + p.title}
+            >
+              <div className="focus-card-photo">
+                {photo?.crop ? (
+                  <svg
+                    viewBox={photo.crop}
+                    preserveAspectRatio="xMidYMid slice"
+                    role="img"
+                    aria-label={photo.alt}
+                  >
+                    <title>{photo.alt}</title>
+                    <image
+                      href={`/images/focus/${photo.src}`}
+                      width={photo.width}
+                      height={photo.height}
+                    />
+                  </svg>
+                ) : (
+                  <img
+                    src={photo ? `/images/focus/${photo.src}` : p.image}
+                    alt={photo?.alt || p.title}
+                    loading="lazy"
+                  />
+                )}
+              </div>
+              <div className="focus-card-copy">
+                <span className="program-icon">
+                  <Icon size={29} strokeWidth={1.6} />
+                </span>
+                <span className="program-number">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3>{p.title}</h3>
+                <p>{summaries[p.slug] || p.summary}</p>
+                <span className="circle-arrow">
+                  <ArrowUpRight size={19} />
+                </span>
+              </div>
+            </a>
+          );
+        }
         return (
           <a className="program-card" href={contentPath(p)} key={p.id}>
             <span className="program-number">0{i + 1}</span>
@@ -176,7 +299,86 @@ export function ProgramGrid({
     </div>
   );
 }
-export function StoryCards({ items }: { items: Entry[] }) {
+export function StoryCards({
+  items,
+  editorial = false,
+}: {
+  items: Entry[];
+  editorial?: boolean;
+}) {
+  if (editorial)
+    return (
+      <div className="news-photo-grid">
+        {items.map((p) => {
+          const category = (p.category || "Community").toLowerCase();
+          const Icon = category.includes("environment")
+            ? Leaf
+            : category.includes("education")
+              ? BookOpen
+              : Users;
+          const theme = category.includes("empower")
+            ? "empowerment"
+            : category.includes("education")
+              ? "education"
+              : "environment";
+          return (
+            <article
+              className="story-card news-photo-card"
+              data-theme={theme}
+              key={p.id}
+            >
+              <a
+                className="news-photo"
+                href={contentPath(p)}
+                aria-label={"Read " + p.title}
+              >
+                <img
+                  src={
+                    p.slug === "announcing-2026-womens-skill-graduation"
+                      ? "/images/womens-graduation.png"
+                      : p.image || "/images/community.jpg"
+                  }
+                  alt={
+                    p.slug === "announcing-2026-womens-skill-graduation"
+                      ? "Women celebrating graduation with caps and diplomas"
+                      : ""
+                  }
+                  loading="lazy"
+                />
+                <span className="news-category">
+                  <Icon size={15} strokeWidth={1.8} />
+                  {p.category || "Community"}
+                </span>
+                {p.published_at && (
+                  <time dateTime={p.published_at}>
+                    {niceDate(p.published_at)}
+                  </time>
+                )}
+              </a>
+              <div className="news-card-copy">
+                <h3>
+                  <a href={contentPath(p)}>{p.title}</a>
+                </h3>
+                <p>{p.summary}</p>
+                <a
+                  className="news-read"
+                  href={contentPath(p)}
+                  aria-label={"Read the story: " + p.title}
+                >
+                  <span>
+                    Read the story <ArrowUpRight size={16} />
+                  </span>
+                  <span className="news-next">
+                    <ChevronRight size={20} />
+                  </span>
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    );
+
   return (
     <div className="story-grid">
       {items.map((p) => (

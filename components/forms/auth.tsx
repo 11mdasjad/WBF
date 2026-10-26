@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowUpRight, Eye, EyeOff, ShieldCheck } from "lucide-react";
 import { api } from "@/lib/client";
 import { Brand, Field, Notice } from "../site/shared";
@@ -10,6 +10,8 @@ export function AuthForm({ mode }: { mode: string }) {
     [success, setSuccess] = useState(""),
     [show, setShow] = useState(false);
   const { refreshUser } = useSite();
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
   const register = mode === "register",
     forgot = mode === "forgot-password",
     reset = mode === "reset-password",
@@ -56,15 +58,25 @@ export function AuthForm({ mode }: { mode: string }) {
           setSuccess(result.message);
           await refreshUser();
         } else {
-          await refreshUser();
+          const signedIn = await refreshUser();
+          const staffHome = signedIn?.permissions?.length
+            ? signedIn.permissions.length === 1 &&
+              signedIn.permissions.includes("products")
+              ? "/admin/products/"
+              : "/admin/"
+            : "/user/";
           const next = new URLSearchParams(location.search).get("next");
           location.assign(
             next &&
               next.startsWith("/") &&
               !next.startsWith("//") &&
               !next.includes("\\")
-              ? next
-              : "/user/",
+              ? signedIn?.roles?.includes("store_employee") &&
+                !signedIn?.roles?.includes("admin") &&
+                next.startsWith("/admin")
+                ? "/admin/products/"
+                : next
+              : staffHome,
           );
         }
       }
@@ -124,7 +136,7 @@ export function AuthForm({ mode }: { mode: string }) {
             </a>
           </div>
         ) : (
-          <form onSubmit={submit}>
+          <form method="post" onSubmit={submit}>
             {register && (
               <Field
                 label="Full name"
@@ -193,7 +205,7 @@ export function AuthForm({ mode }: { mode: string }) {
                 Forgot your password?
               </a>
             )}
-            <button className="button full" disabled={busy}>
+            <button className="button full" disabled={busy || !ready}>
               {busy
                 ? "Please wait…"
                 : register

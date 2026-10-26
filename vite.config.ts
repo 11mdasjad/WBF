@@ -17,7 +17,9 @@ const managedLinux = readExecutionProfile() === "managed-linux";
 
 const localBindingConfig = {
   main: "./worker/index.ts",
-  compatibility_flags: ["nodejs_compat"],
+  // Workerd's native node:console exposes a throwing createTask stub. React's
+  // development runtime detects it as supported and crashes during import.
+  compatibility_flags: ["nodejs_compat", "disable_nodejs_console_module"],
   d1_databases: d1
     ? [
         {

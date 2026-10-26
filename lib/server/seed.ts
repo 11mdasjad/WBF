@@ -1,3 +1,4 @@
+import type { Database } from "./database";
 import { focusAreas, navigation } from "../content";
 import imported from "./reference-seed.json";
 export const defaults = {
@@ -33,7 +34,7 @@ export const defaults = {
   })),
 };
 const now = "2026-10-24T00:00:00.000Z";
-export async function seed(db: D1Database) {
+export async function seed(db: Database) {
   // Upgrade existing installations without reseeding their content or settings.
   if (
     !(await db

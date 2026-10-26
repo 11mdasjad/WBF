@@ -1,3 +1,4 @@
+import type { Database } from "./database";
 import {
   database,
   all,
@@ -86,9 +87,10 @@ export async function handle(req: Request) {
     if (path === "auth/me" && method === "GET")
       return json({ user: await currentUser(db, req) });
     if (path === "setup" && method === "POST") {
+      const setupToken = config.SETUP_TOKEN;
       assert(
-        config.SETUP_TOKEN?.length >= 32 &&
-          equal(req.headers.get("x-setup-token") || "", config.SETUP_TOKEN),
+        setupToken && setupToken.length >= 32 &&
+          equal(req.headers.get("x-setup-token") || "", setupToken),
         "Setup is not authorized.",
         403,
       );
@@ -576,6 +578,7 @@ export async function handle(req: Request) {
       );
       assert(order, "Order not found.", 404);
       const pid = clean(b.razorpay_payment_id, 100);
+      assert(config.RAZORPAY_KEY_SECRET, "Payments are disabled.", 503);
       assert(
         equal(
           await hmac(config.RAZORPAY_KEY_SECRET, order.provider_id + "|" + pid),
@@ -689,15 +692,15 @@ export async function handle(req: Request) {
         403,
       );
       assert(
-        Number(req.headers.get("content-length") || 0) <= 8500000,
-        "Files must be smaller than 8 MB.",
+        Number(req.headers.get("content-length") || 0) <= 4400000,
+        "Files must be smaller than 4 MB.",
         413,
       );
       const form = await req.formData(),
         file = form.get("file");
       assert(
-        file instanceof File && file.size > 0 && file.size <= 8000000,
-        "Choose a file smaller than 8 MB.",
+        file instanceof File && file.size > 0 && file.size <= 4000000,
+        "Choose a file smaller than 4 MB.",
       );
       const allowed = [
         "image/jpeg",
@@ -789,7 +792,7 @@ export async function handle(req: Request) {
   }
 }
 
-async function admin(db: D1Database, req: Request, path: string, url: URL) {
+async function admin(db: Database, req: Request, path: string, url: URL) {
   const section = path.split("/")[1] || "overview",
     id = path.split("/")[2];
   const method = req.method;

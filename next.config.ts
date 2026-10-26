@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
+  outputFileTracingRoot: process.cwd(),
+  serverExternalPackages: ["@libsql/client"],
   async headers() {
     return [
       {

@@ -4,24 +4,33 @@ A full-stack NGO website and staff workspace built from the supplied visual refe
 
 ## Run locally
 
-Requires Node 22.15+ and npm. The application uses React 19, TypeScript, Next-compatible Vinext, Cloudflare Workers, Drizzle/D1 and R2. D1 is relational SQLite; this implementation does **not** use PostgreSQL/Prisma.
+Requires Node 22.15+ (Node 22 LTS) and npm. The application runs on native Next.js, React 19 and TypeScript. Persistent storage uses Turso/libSQL (SQLite-compatible) and a private Vercel Blob store.
 
 ```sh
 npm ci
-cp .env.example .dev.vars
-# Set a cryptographically random 32+ character SETUP_TOKEN in .dev.vars.
-npm run build
+cp .env.example .env.local
+# Set a random 32+ character SETUP_TOKEN in .env.local.
 npm run db:migrate
-npm run dev -- --hostname 127.0.0.1
+npm run dev
 ```
 
-Open the printed local URL (normally http://127.0.0.1:5173). In another terminal, create the first administrator:
+Open http://localhost:5173. The example database URL creates `.data/wbf.db`, an ignored persistent local SQLite database. A remote Turso URL and token can also be used locally. Uploads require a private Blob store and `BLOB_READ_WRITE_TOKEN`; no temporary filesystem upload storage is used.
 
-```sh
-npm run admin:bootstrap
-```
+In another terminal, run `npm run admin:bootstrap` to create the first administrator. This reads `.env.local`, generates a password, and saves it to ignored `local-access.json` with mode 0600. Set `WBF_ADMIN_EMAIL` and `WBF_ADMIN_NAME` to customize the account. Bootstrap is disabled after an administrator exists. Existing Cloudflare development accounts are not copied to a new Turso database.
 
-This uses the setup token, creates a generated password and writes it to **local-access.json**, ignored by Git and restricted to mode 0600. The script defaults to `admin@wbf.test`; set `WBF_ADMIN_EMAIL`, `WBF_ADMIN_NAME` and `WBF_BASE_URL` in the environment to customize it. Bootstrap is disabled after an administrator exists. No default password is committed. The current workspace already has a local administrator; see its local-access.json.
+## Deploy on Vercel
+
+The repository contains `vercel.json` for Next.js, `npm run build`, and `.next` output. Leave the Vercel Root Directory at the repository root and use Node 22.x.
+
+Before using the deployment:
+
+1. Create a Turso database and set `TURSO_DATABASE_URL` (a remote `libsql://` URL) and `TURSO_AUTH_TOKEN` in Vercel.
+2. Create and connect a **private** Vercel Blob store to populate `BLOB_READ_WRITE_TOKEN`.
+3. Set a random 32+ character `SETUP_TOKEN` and your public HTTPS `WBF_SITE_URL`.
+4. Run `npm run db:migrate` locally with the remote Turso credentials in `.env.local` (or your shell). This applies the checked-in schema once. Do not point production at a local file.
+5. Deploy/redeploy, then run `WBF_BASE_URL=https://your-domain.example npm run admin:bootstrap` with the same setup token. Remove the production setup token after bootstrap.
+
+The build does not require database credentials, and does not mutate a production database. Runtime pages and APIs need the configured, migrated database; missing credentials do not silently switch to disposable storage. Use separate databases and Blob stores for preview and production. See [deployment.md](docs/deployment.md) for detailed setup and migration notes.
 
 ## Main destinations
 
@@ -45,7 +54,7 @@ All 48 audited public routes are retained, with additional account recovery, acc
 - Contact and CSR inquiry persistence, staff inbox, status management and notifications.
 - Content CRUD across programs, pages, articles, events, jobs, people, partners, metrics, reports, documents, gallery, videos and products. Drafts, previews, scheduled visibility, archives, revision history and restore-as-draft; ordered/hidden page sections and editable navigation.
 - Server-enforced configurable role permissions, account activation/verification controls, session revocation and append-only application audit access.
-- R2 media uploads, MIME/signature/size checks, alternative text, captions, public/private visibility, permissioned access and deletion usage checks.
+- Private Blob media uploads, MIME/signature/size checks, alternative text, captions, public/private visibility, permissioned access and deletion usage checks.
 - Real database-derived admin metrics, date/search/status/type filters, pagination and authorized CSV export with formula neutralization.
 - Server-created Razorpay **test** orders, client-signature and captured-payment verification, signed idempotent webhooks, failure handling, full-refund reconciliation and acknowledgements only for verified payments.
 - Persistent email outbox; Resend delivery and staff retry when configured.
@@ -68,12 +77,13 @@ This build is **not ready for real fundraising** until the organization has revi
 ```sh
 npm run typecheck
 npm run test:api
+npm run test:runtime
 # With the local server, migrations and bootstrap account ready:
 npx playwright install chromium
 npm run test:e2e
 ```
 
-API tests use the real route handlers, crypto and an isolated relational SQLite database via a D1-compatible test adapter. Browser tests use the actual local D1/R2 application. Browser fixtures create clearly named local test records; none are seeded in hosted production. Results and screenshots are written to ignored `outputs/` and `test-results/`. See [test-report.md](docs/test-report.md).
+API tests use the real route handlers, crypto and an isolated relational SQLite database through the actual libSQL adapter. Browser tests use the running Next.js application with its configured database and storage. Browser fixtures create clearly named local test records; none are seeded in hosted production. Results and screenshots are written to ignored `outputs/` and `test-results/`. See [test-report.md](docs/test-report.md).
 
 ## Project map
 
@@ -82,7 +92,7 @@ API tests use the real route handlers, crypto and an isolated relational SQLite 
 - `components/forms/`: accounts, applications, contact and donations
 - `components/admin/`: staff workspace and content editor
 - `lib/server/`: validation, authorization, persistence, seed and payment processing
-- `db/schema.ts`, `drizzle/`: 24-table schema and migration history
+- `db/schema.ts`, `drizzle/`: application schema and migration history
 - `tests/`: API/security and browser tests
 - `docs/`: audit, credits, admin and deployment guides, acceptance report
 

@@ -1,13 +1,14 @@
-import { env } from "cloudflare:workers";
+import type { Database } from "./database";
+import { config, getDatabase, getBucket } from "./runtime";
 import { seed, defaults } from "./seed";
 import { assert, digest, uid, now, randomToken, HttpError } from "./security";
-export const config = env as unknown as Record<string, string>;
+export { config };
 export async function database() {
-  assert(env.DB, "Database is not configured.", 503);
-  await seed(env.DB);
-  return env.DB!;
+  const db = await getDatabase();
+  await seed(db);
+  return db;
 }
-export async function all(db: D1Database, sql: string, ...args: any[]) {
+export async function all(db: Database, sql: string, ...args: any[]) {
   return (
     await db
       .prepare(sql)
@@ -15,20 +16,20 @@ export async function all(db: D1Database, sql: string, ...args: any[]) {
       .all()
   ).results as any[];
 }
-export async function first(db: D1Database, sql: string, ...args: any[]) {
+export async function first(db: Database, sql: string, ...args: any[]) {
   return db
     .prepare(sql)
     .bind(...args)
     .first() as Promise<any>;
 }
-export async function run(db: D1Database, sql: string, ...args: any[]) {
+export async function run(db: Database, sql: string, ...args: any[]) {
   return db
     .prepare(sql)
     .bind(...args)
     .run();
 }
 export async function audit(
-  db: D1Database,
+  db: Database,
   userId: string | null,
   action: string,
   target: string,
@@ -46,13 +47,15 @@ export async function audit(
   );
 }
 export async function rate(
-  db: D1Database,
+  db: Database,
   req: Request,
   scope: string,
   max = 12,
 ) {
   const bucket = Math.floor(Date.now() / 900000);
-  const ip = req.headers.get("cf-connecting-ip") || "local";
+  const ip = config.VERCEL
+    ? req.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim() || "unknown"
+    : "local";
   const key = await digest(ip + scope + bucket);
   const r = await first(
     db,
@@ -67,7 +70,7 @@ export async function rate(
   );
   await run(db, "DELETE FROM rate_limits WHERE expires_at < ?", Date.now());
 }
-export async function currentUser(db: D1Database, req: Request) {
+export async function currentUser(db: Database, req: Request) {
   const raw = req.headers
     .get("cookie")
     ?.match(/(?:^|;\s*)wbf_session=([^;]+)/)?.[1];
@@ -92,7 +95,7 @@ export async function currentUser(db: D1Database, req: Request) {
   return user;
 }
 export async function requireUser(
-  db: D1Database,
+  db: Database,
   req: Request,
   permission?: string,
 ) {
@@ -106,7 +109,7 @@ export async function requireUser(
     );
   return u;
 }
-export async function session(db: D1Database, req: Request, userId: string) {
+export async function session(db: Database, req: Request, userId: string) {
   const token = randomToken();
   await run(
     db,
@@ -119,7 +122,7 @@ export async function session(db: D1Database, req: Request, userId: string) {
   return `wbf_session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=604800${new URL(req.url).protocol === "https:" ? "; Secure" : ""}`;
 }
 export async function notify(
-  db: D1Database,
+  db: Database,
   userId: string | null,
   email: string,
   subject: string,
@@ -141,7 +144,7 @@ export async function notify(
     await sendNotification(db, id);
   return id;
 }
-export async function sendNotification(db: D1Database, id: string) {
+export async function sendNotification(db: Database, id: string) {
   const n = await first(
     db,
     "SELECT * FROM notifications WHERE id=? AND status IN ('queued','failed')",
@@ -183,7 +186,7 @@ export async function sendNotification(db: D1Database, id: string) {
   }
 }
 export async function tokenEmail(
-  db: D1Database,
+  db: Database,
   req: Request,
   u: any,
   kind: string,
@@ -219,10 +222,7 @@ export const publicEntry = (r: any) => {
     );
   return item;
 };
-export const bucket = () => {
-  assert(env.BUCKET, "File storage is not configured.", 503);
-  return env.BUCKET!;
-};
+export const bucket = getBucket;
 export function json(
   data: unknown,
   status = 200,
@@ -247,7 +247,7 @@ export function errorResponse(e: unknown) {
   );
 }
 
-export async function organizationSettings(db: D1Database) {
+export async function organizationSettings(db: Database) {
   return {
     ...defaults,
     ...JSON.parse(

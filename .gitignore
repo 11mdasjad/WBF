@@ -49,3 +49,10 @@ yarn-error.log*
 /test-results/
 /playwright-report/
 /local-access.json
+
+# Local Next.js database and deployment state
+/.data/
+/.vercel/
+*.db
+*.db-shm
+*.db-wal

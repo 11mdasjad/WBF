@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export function GET(req: Request) {
   return new Response(
     "User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /user/\nDisallow: /api/\nSitemap: " +

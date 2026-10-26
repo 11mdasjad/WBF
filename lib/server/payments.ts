@@ -1,3 +1,4 @@
+import type { Database } from "./database";
 import { config, first, run, audit } from "./core";
 import { assert, hmac, equal, uid, now } from "./security";
 export function paymentReady() {
@@ -31,7 +32,7 @@ export async function razor(path: string, method = "GET", data?: unknown) {
   );
   return r.json() as Promise<any>;
 }
-export async function settle(db: D1Database, p: any) {
+export async function settle(db: Database, p: any) {
   const order = await first(
     db,
     "SELECT * FROM payment_orders WHERE provider_id=?",
@@ -72,8 +73,9 @@ export async function settle(db: D1Database, p: any) {
   ]);
   return order.donation_id;
 }
-export async function webhook(db: D1Database, req: Request) {
+export async function webhook(db: Database, req: Request) {
   assert(paymentReady(), "Payments are disabled.", 503);
+  assert(config.RAZORPAY_WEBHOOK_SECRET, "Payments are disabled.", 503);
   const raw = await req.text();
   assert(raw.length < 100000, "Payload too large.", 413);
   assert(

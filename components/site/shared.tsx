@@ -454,17 +454,18 @@ export function StoryCards({
   );
 }
 export function CTABand() {
+  const titleId = useId();
   return (
-    <section className="cta-band">
+    <section className="cta-band" aria-labelledby={titleId}>
       <div className="container cta-inner">
-        <div className="cta-symbol">
-          <HeartHandshake size={56} strokeWidth={1} />
+        <div className="cta-symbol" aria-hidden="true">
+          <HeartHandshake size={68} strokeWidth={1.2} />
         </div>
-        <div>
+        <div className="cta-copy">
           <p className="eyebrow">
             A little of your time. A world of possibility.
           </p>
-          <h2>Be part of someone’s tomorrow.</h2>
+          <h2 id={titleId}>Be part of someone’s tomorrow.</h2>
           <p>
             Bring your skills, your compassion, and your belief in a better
             future.

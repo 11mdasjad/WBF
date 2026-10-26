@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { authenticPhoto } from "@/lib/photography";
 import { SiteProvider, type SiteData } from "./context";
 import { Header, Footer } from "./shell";
 import { Home } from "./home";
@@ -74,6 +75,27 @@ export function Site({
         <Admin section={parts[1] || "overview"} />
       </SiteProvider>
     );
+  // Retire former design-reference images without overwriting CMS content.
+  data = {
+    ...data,
+    content: data.content.map((entry) => ({
+      ...entry,
+      image: entry.image ? authenticPhoto(entry.image) : entry.image,
+      data: {
+        ...entry.data,
+        ...(entry.data.sections
+          ? {
+              sections: entry.data.sections.map((section: any) => ({
+                ...section,
+                image: section.image
+                  ? authenticPhoto(section.image)
+                  : section.image,
+              })),
+            }
+          : {}),
+      },
+    })),
+  };
   const detailKind =
     page === "focus-areas"
       ? "program"
@@ -223,9 +245,11 @@ export function Site({
   } else screen = <Utility page={page} />;
   return (
     <SiteProvider data={data}>
-      <Header path={path} />
-      <main id="main-content">{screen}</main>
-      <Footer />
+      <div className="wbf-public-site">
+        <Header path={path} />
+        <main id="main-content">{screen}</main>
+        <Footer />
+      </div>
     </SiteProvider>
   );
 }

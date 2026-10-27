@@ -111,94 +111,10 @@ export function Header({ path }: { path: string }) {
       </a>
       <header className="wbf-masthead" ref={root}>
         <div className="navigation-backdrop" aria-hidden="true" />
-        <div className="portal-utility">
-          <div>
-            <span>Well Being Foundation</span>
-            <span className="portal-utility-tagline">
-              People. Purpose. Possibility.
-            </span>
-          </div>
-          <nav aria-label="Quick links">
-            <a href="#main-content">Skip to content</a>
-            <a href="/contact/">Contact</a>
-            <a href="/accessibility/">Accessibility</a>
-          </nav>
-        </div>
         <div className="masthead-bar">
           <Brand full />
           <HeaderSearch />
-          <nav
-            id="wbf-navigation"
-            className={"masthead-nav" + (open ? " is-open" : "")}
-            aria-label="Main navigation"
-          >
-            <HeaderSearch mobile />
-            {links
-              .filter((x) => x.visible && x.href !== "/")
-              .map(({ label, href }, i) => {
-                const children = subnavigation[href];
-                const id = `header-submenu-${i}`;
-                const active =
-                  path === href ||
-                  (href !== "/" && path.startsWith(href)) ||
-                  children?.some(([, child]) => child === path) ||
-                  (href === "/store/" && path === "/product/");
-                return (
-                  <div
-                    key={href + i}
-                    className={
-                      "masthead-nav-item" + (active ? " is-active" : "")
-                    }
-                    onBlur={(e) => {
-                      if (!e.currentTarget.contains(e.relatedTarget))
-                        setExpanded((current) =>
-                          current === id ? null : current,
-                        );
-                    }}
-                  >
-                    <div className="masthead-nav-label">
-                      <a
-                        href={href}
-                        aria-current={path === href ? "page" : undefined}
-                      >
-                        {href === "/" && <Home size={17} />}
-                        {href === "/store/" && <ShoppingBag size={16} />}
-                        {label}
-                      </a>
-                      {children && (
-                        <button
-                          type="button"
-                          aria-label={`${label} submenu`}
-                          aria-expanded={expanded === id}
-                          aria-controls={id}
-                          onClick={() => toggle(id)}
-                        >
-                          <ChevronDown size={13} />
-                        </button>
-                      )}
-                    </div>
-                    {children && (
-                      <div
-                        id={id}
-                        className="masthead-dropdown"
-                        hidden={expanded !== id}
-                      >
-                        {children.map(([title, url]) => (
-                          <a
-                            key={url}
-                            href={url}
-                            aria-current={path === url ? "page" : undefined}
-                          >
-                            {title}
-                            <ArrowUpRight size={13} />
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-          </nav>
+
           <div className="masthead-actions">
             {!user && (
               <a href="/register/" className="portal-register">
@@ -280,6 +196,78 @@ export function Header({ path }: { path: string }) {
               {open ? <X size={23} /> : <Menu size={23} />}
             </button>
           </div>
+          <nav
+            id="wbf-navigation"
+            className={"masthead-nav" + (open ? " is-open" : "")}
+            aria-label="Main navigation"
+          >
+            <HeaderSearch mobile />
+            {links
+              .filter((x) => x.visible && x.href !== "/")
+              .map(({ label, href }, i) => {
+                const children = subnavigation[href];
+                const id = `header-submenu-${i}`;
+                const active =
+                  path === href ||
+                  (href !== "/" && path.startsWith(href)) ||
+                  children?.some(([, child]) => child === path) ||
+                  (href === "/store/" && path === "/product/");
+                return (
+                  <div
+                    key={href + i}
+                    className={
+                      "masthead-nav-item" + (active ? " is-active" : "")
+                    }
+                    onBlur={(e) => {
+                      if (!e.currentTarget.contains(e.relatedTarget))
+                        setExpanded((current) =>
+                          current === id ? null : current,
+                        );
+                    }}
+                  >
+                    <div className="masthead-nav-label">
+                      <a
+                        href={href}
+                        aria-current={path === href ? "page" : undefined}
+                      >
+                        {href === "/" && <Home size={17} />}
+                        {href === "/store/" && <ShoppingBag size={16} />}
+                        {label}
+                      </a>
+                      {children && (
+                        <button
+                          type="button"
+                          aria-label={`${label} submenu`}
+                          aria-expanded={expanded === id}
+                          aria-controls={id}
+                          onClick={() => toggle(id)}
+                        >
+                          <ChevronDown size={13} />
+                        </button>
+                      )}
+                    </div>
+                    {children && (
+                      <div
+                        id={id}
+                        className="masthead-dropdown"
+                        hidden={expanded !== id}
+                      >
+                        {children.map(([title, url]) => (
+                          <a
+                            key={url}
+                            href={url}
+                            aria-current={path === url ? "page" : undefined}
+                          >
+                            {title}
+                            <ArrowUpRight size={13} />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+          </nav>
         </div>
       </header>
     </>

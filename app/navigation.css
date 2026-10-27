@@ -1,25 +1,23 @@
-/* Reference-style frosted navigation: transparent tint, real backdrop blur,
-   fine edges and restrained highlights instead of raised white surfaces. */
+/* Two-row reference header: brand/search/actions above a full-width menu. */
 .glass-site .wbf-masthead {
-  --nav-ink: #f4f8f3;
-  --nav-glass: rgba(16, 48, 40, 0.76);
-  --nav-edge: rgba(255, 255, 255, 0.24);
-  background: transparent;
+  --nav-ink: #235c36;
+  --nav-glass: rgba(255, 255, 255, 0.91);
+  --nav-edge: #26773c33;
   color: var(--nav-ink);
-  border-bottom: 1px solid var(--nav-edge);
-  box-shadow: 0 8px 26px #0c29231a;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dce6db;
+  box-shadow: 0 5px 18px #234c3210;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
-/* Blur a sibling behind the header, not a parent of the dropdowns. This lets
-   each dropdown sample and blur the actual page beneath it. */
+/* The independent backdrop lets dropdowns blur the actual page below them. */
 .navigation-backdrop {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background:
-    linear-gradient(115deg, #ffffff0c, transparent 55%), var(--nav-glass);
+  background: var(--nav-glass);
   backdrop-filter: blur(20px) saturate(120%);
   -webkit-backdrop-filter: blur(20px) saturate(120%);
 }
@@ -27,40 +25,35 @@
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
-.glass-site .portal-utility {
-  background: #092d2866;
-  color: #edf5ee;
-  box-shadow: inset 0 -1px 0 #ffffff12;
-}
 .glass-site .brand-full :is(strong, small) {
-  color: #f4f8f1;
+  color: var(--nav-ink);
 }
 .glass-site .brand-full .brand-wordmark {
-  border-color: #ffffff40;
+  border-color: #b9cdbb;
 }
 .glass-site .brand-full .brand-tagline {
-  color: #d0e0d4;
+  color: #5c735f;
 }
 .glass-site .brand-tagline i {
-  color: #bad2bc;
+  color: var(--brand-leaf);
 }
 .glass-site .masthead-search,
 .glass-site .masthead-bar > .masthead-search {
-  background: #ffffff09;
-  border: 1px solid var(--nav-edge);
-  border-radius: 12px;
-  box-shadow: inset 0 1px 0 #ffffff08;
+  background: #ffffffb3;
+  border: 1px solid #a9b9ac;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 2px #19482e05;
 }
 .glass-site .masthead-search input[name="q"],
 .glass-site .masthead-search button {
   color: var(--nav-ink);
 }
 .glass-site .masthead-search input::placeholder {
-  color: #d7e3da;
+  color: #6d7b70;
 }
 .glass-site .masthead-search:focus-within {
-  border-color: #d8ebd6;
-  box-shadow: 0 0 0 3px #d0e6ca26;
+  border-color: var(--brand-action);
+  box-shadow: 0 0 0 3px #26773c1a;
 }
 .glass-site
   :is(
@@ -70,48 +63,48 @@
     .masthead-donate
   ) {
   color: var(--nav-ink);
-  background: linear-gradient(125deg, #ffffff0e, #ffffff02);
-  border: 1px solid var(--nav-edge);
-  border-radius: 12px;
-  box-shadow: inset 0 1px 0 #ffffff0d;
+  background: #ffffff80;
+  border: 1px solid var(--brand-action);
+  border-radius: 9px;
+  box-shadow: none;
   transition:
     background-color 160ms ease,
     border-color 160ms ease;
 }
 .glass-site .portal-register {
-  padding-inline: 16px;
-}
-.glass-site .masthead-donate {
-  background-color: #b1d0ac1a;
-  border-color: #d0e4c873;
+  padding: 11px 22px;
+  background: var(--brand-action);
+  color: #fff;
+  font-weight: 700;
 }
 .glass-site
-  :is(
-    .masthead-account-button,
-    .masthead-toggle,
-    .portal-register,
-    .masthead-donate
-  ):hover,
+  :is(.masthead-account-button, .masthead-toggle, .masthead-donate):hover,
 .glass-site
   :is(.masthead-account-button, .masthead-toggle)[aria-expanded="true"] {
-  color: #fff;
-  background-color: #ffffff16;
-  border-color: #ffffff80;
-  box-shadow: inset 0 1px 0 #ffffff1a;
+  background-color: #e9f2e4;
+  color: var(--nav-ink);
+  box-shadow: none;
   transform: none;
 }
+.glass-site .portal-register:hover {
+  background: #1c5e2f;
+  color: #fff;
+}
 .glass-site .masthead-nav {
+  grid-column: 1 / -1;
+  grid-row: 2;
   justify-self: stretch;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 100%;
-  gap: 10px;
-  padding: 4px 14px;
-  margin: 0;
-  border: 1px solid var(--nav-edge);
-  border-radius: 16px;
-  background: linear-gradient(115deg, #ffffff09, transparent 55%);
-  box-shadow: inset 0 1px 0 #ffffff0c;
+  justify-content: flex-start;
+  width: calc(100% + 48px);
+  max-width: none;
+  gap: 26px;
+  padding: 0 24px;
+  margin: 0 -24px;
+  border: 0;
+  border-top: 1px solid #cfdacf;
+  border-radius: 0;
+  background: #ffffff30;
+  box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
@@ -119,53 +112,56 @@
   display: none;
 }
 .glass-site .masthead-nav-label {
-  border: 1px solid transparent;
-  border-radius: 10px;
-  color: var(--nav-ink);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: #415b48;
   transition:
     background-color 160ms ease,
     border-color 160ms ease;
 }
 .glass-site .masthead-nav-label > a {
-  padding: 8px 10px 8px 12px;
+  padding: 12px 8px;
   color: inherit;
+  font-size: 15px;
+  font-weight: 550;
 }
 .glass-site .masthead-nav-label > button {
-  margin-right: 4px;
-  border-radius: 8px;
+  margin-right: 3px;
+  border-radius: 6px;
   color: inherit;
 }
 .glass-site .masthead-nav-label:hover,
 .glass-site .masthead-nav-label:focus-within,
 .glass-site .masthead-nav-item.is-active > .masthead-nav-label {
-  color: #fff;
-  background: #ffffff10;
-  border-color: #ffffff33;
+  color: var(--brand-action);
+  background: #e7f1df66;
+  border-bottom-color: var(--brand-action);
   box-shadow: none;
 }
 .glass-site .masthead-nav-label > button[aria-expanded="true"] {
-  background: #ffffff0f;
+  background: #26773c0d;
 }
 .glass-site .masthead-dropdown,
 .glass-site .masthead-nav-item > .masthead-dropdown {
-  padding: 12px;
-  border: 1px solid var(--nav-edge);
-  border-radius: 18px;
-  background:
-    linear-gradient(120deg, #ffffff0c, transparent 55%), var(--nav-glass);
+  padding: 10px;
+  border: 1px solid #ffffffeb;
+  border-radius: 14px;
+  background: linear-gradient(125deg, #ffffff55, #e6f2df29), var(--nav-glass);
   box-shadow:
-    0 14px 36px #08251e29,
-    inset 0 1px 0 #ffffff12;
-  backdrop-filter: blur(20px) saturate(125%);
-  -webkit-backdrop-filter: blur(20px) saturate(125%);
+    0 14px 36px #1b4b3026,
+    inset 0 1px 0 #fff;
+  backdrop-filter: blur(22px) saturate(120%);
+  -webkit-backdrop-filter: blur(22px) saturate(120%);
 }
 .glass-site .masthead-nav-item > .masthead-dropdown {
-  top: calc(100% + 12px);
+  top: calc(100% + 8px);
+  left: 0;
 }
 .glass-site .masthead-dropdown > a {
   min-height: 44px;
   border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: 8px;
   color: var(--nav-ink);
   transition:
     background-color 160ms ease,
@@ -177,39 +173,84 @@
 .glass-site
   .masthead-dropdown
   > a:is(:hover, :focus-visible, [aria-current="page"]) {
-  background: #ffffff12;
-  border-color: #ffffff29;
+  background: #e4efddc9;
+  border-color: #c6d9bf;
   box-shadow: none;
-  color: #fff;
+  color: #1c5e2f;
 }
 .glass-site .masthead-dropdown > a svg {
-  color: #d7e7d7;
+  color: #4a7a50;
 }
 .glass-site .account-dropdown p {
-  color: #d7e7da;
-  border-color: #ffffff26;
+  color: #627463;
+  border-color: #cbdac7;
   margin-bottom: 8px;
 }
-.glass-site .wbf-masthead :is(a, button):focus-visible {
-  outline-color: #d2e6bc;
-}
-@media (min-width: 1200px) {
-  .glass-site .masthead-nav {
-    grid-column: 1 / -1;
-    justify-self: end;
-    width: calc(100% - 320px);
+@media (min-width: 901px) {
+  .glass-site .masthead-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 28vw, 420px) minmax(
+        0,
+        1fr
+      );
+    gap: 12px 24px;
+    padding: 12px 24px 0;
+    align-items: center;
+  }
+  .glass-site .brand-full {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .glass-site .masthead-bar > .masthead-search {
+    min-height: 48px;
+  }
+  .glass-site .masthead-search input[name="q"] {
+    font-size: 14px;
+  }
+  .glass-site :is(.masthead-donate, .masthead-account-button) {
+    min-height: 46px;
+    padding: 11px 18px;
+    font-size: 14px;
+  }
+  .glass-site .portal-register {
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .glass-site .masthead-nav .masthead-nav-label > button {
+    height: 44px;
   }
 }
-@media (min-width: 901px) and (max-width: 1199px) {
-  .glass-site .masthead-nav {
-    justify-self: center;
-    width: max-content;
-    justify-content: center;
+@media (min-width: 901px) and (max-width: 1360px) {
+  .glass-site .masthead-bar {
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 24vw, 300px) minmax(
+        0,
+        1fr
+      );
+    gap: 10px 16px;
   }
-}
-@media (max-width: 1100px) and (min-width: 901px) {
+  .glass-site .portal-register {
+    display: none;
+  }
+  .glass-site :is(.masthead-donate, .masthead-account-button) {
+    padding-inline: 12px;
+    font-size: 13px;
+  }
   .glass-site .masthead-nav {
-    gap: 10px;
+    gap: 18px;
+  }
+  .glass-site .brand-full > img {
+    width: 72px;
+    height: 72px;
+  }
+  .glass-site .brand-full strong {
+    font-size: 34px;
+  }
+  .glass-site .brand-full small {
+    font-size: 13px;
+  }
+  .glass-site .brand-full .brand-tagline {
+    font-size: 9px;
   }
 }
 @media (max-width: 900px) {
@@ -219,14 +260,15 @@
     max-width: none;
     margin: 8px 0 0;
     padding: 16px;
-    border-radius: 20px;
-    background:
-      linear-gradient(120deg, #ffffff0c, transparent 55%), var(--nav-glass);
-    box-shadow:
-      0 14px 36px #08251e29,
-      inset 0 1px 0 #ffffff12;
-    backdrop-filter: blur(20px) saturate(125%);
-    -webkit-backdrop-filter: blur(20px) saturate(125%);
+    border: 1px solid #ffffffeb;
+    border-radius: 16px;
+    background: var(--nav-glass);
+    box-shadow: 0 14px 36px #1b4b3026;
+    backdrop-filter: blur(22px) saturate(120%);
+    -webkit-backdrop-filter: blur(22px) saturate(120%);
+  }
+  .glass-site .masthead-nav-label {
+    border-radius: 8px;
   }
   .glass-site .masthead-nav-item + .masthead-nav-item {
     margin-top: 5px;
@@ -237,8 +279,9 @@
   .glass-site .masthead-nav-item > .masthead-dropdown {
     margin: 6px 4px 12px;
     padding: 8px;
-    border-radius: 12px;
-    background: #ffffff07;
+    border-radius: 10px;
+    background: #eaf3e4a3;
+    border-color: #ccddc5;
     box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -254,7 +297,7 @@
   .glass-site .masthead-nav,
   .glass-site .masthead-dropdown,
   .glass-site .masthead-nav-item > .masthead-dropdown {
-    background: #193f34;
+    background: #f7fbf5;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
@@ -266,6 +309,6 @@
   .glass-site .masthead-nav,
   .glass-site .masthead-dropdown,
   .glass-site .masthead-nav-item > .masthead-dropdown {
-    background: #193f34;
+    background: #f7fbf5;
   }
 }

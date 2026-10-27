@@ -91,7 +91,7 @@ test("header Donate and combined Login & Register stay visible across screen siz
     await expect(register).toBeVisible();
     const header = page.getByRole("banner");
     await expect(
-      header.getByText("Non-Profit Organisation", { exact: true }),
+      header.getByText("Non profitable organization", { exact: true }),
     ).toBeVisible();
     await expect(
       header.getByRole("button", { name: "Dashboards", exact: true }),

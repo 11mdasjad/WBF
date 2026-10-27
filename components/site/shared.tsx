@@ -58,7 +58,7 @@ export function Brand({
       <img src="/brand/wbf-logo.png" width="88" height="88" alt="" />
       <span className="brand-wordmark">
         {full && (
-          <span className="brand-classification">Non-Profit Organisation</span>
+          <span className="brand-classification">Non profitable organization</span>
         )}
         <strong>WBF</strong>
         <small>Well Being Foundation</small>

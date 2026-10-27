@@ -507,6 +507,10 @@
 @media (min-width: 901px) {
   .glass-site .masthead-bar {
     grid-template-columns: minmax(0, 1fr) auto;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding: 16px 24px 0;
+    row-gap: 16px;
   }
   .glass-site .masthead-actions {
     grid-column: 2;
@@ -514,6 +518,11 @@
   }
   .glass-site .masthead-nav {
     grid-row: 2;
+    width: 100%;
+    margin: 0;
+    padding: 8px 0;
+    gap: 12px;
+    justify-content: space-between;
   }
 }
 .glass-site .masthead-actions .masthead-donate {

@@ -110,8 +110,22 @@ export function Header({ path }: { path: string }) {
         Skip to content
       </a>
       <header className="wbf-masthead" ref={root}>
+        <div className="portal-utility">
+          <div>
+            <span>Well Being Foundation</span>
+            <span className="portal-utility-tagline">
+              People. Purpose. Possibility.
+            </span>
+          </div>
+          <nav aria-label="Quick links">
+            <a href="#main-content">Skip to content</a>
+            <a href="/contact/">Contact</a>
+            <a href="/accessibility/">Accessibility</a>
+          </nav>
+        </div>
         <div className="masthead-bar">
           <Brand full />
+          <HeaderSearch />
           <nav
             id="wbf-navigation"
             className={"masthead-nav" + (open ? " is-open" : "")}
@@ -185,7 +199,11 @@ export function Header({ path }: { path: string }) {
               })}
           </nav>
           <div className="masthead-actions">
-            <HeaderSearch />
+            {!user && (
+              <a href="/register/" className="portal-register">
+                Register
+              </a>
+            )}
             <a className="masthead-donate" href="/donate/">
               <Heart size={19} />
               <span>

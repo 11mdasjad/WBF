@@ -1,24 +1,12 @@
 "use client";
+import { useState } from "react";
 import {
-  ArrowUpRight,
   ArrowRight,
-  ArrowDown,
-  CircleArrowRight,
-  HeartHandshake,
-  Heart,
-  MoveUpRight,
-  Check,
-  Sprout,
-  BookOpen,
-  Users,
-  ShieldCheck,
-  Sun,
-  Ear,
-  MapPin,
-  CalendarDays,
+  ArrowUpRight,
+  ChevronLeft,
   ChevronRight,
-  GraduationCap,
-  Handshake,
+  CalendarDays,
+  MapPin,
 } from "lucide-react";
 import { authenticPhoto } from "@/lib/photography";
 import { niceDate } from "@/lib/content";
@@ -31,601 +19,463 @@ import {
   CTABand,
 } from "./shared";
 
+const partners = [
+  ["inDrive", "indrive.svg", "https://indrive.com/"],
+  ["Medanta", "medanta.svg", "https://www.medanta.org/"],
+  [
+    "National Skill Development Corporation",
+    "nsdc.svg",
+    "https://nsdcindia.org/",
+  ],
+  ["Skill Council for Green Jobs", "scgj.jpg", "https://sscgj.in/"],
+  ["Skill India", "skill-india.svg", "https://www.skillindiadigital.gov.in/"],
+  [
+    "Ministry of Skill Development and Entrepreneurship",
+    "government-partners.jpg",
+    "https://www.msde.gov.in/",
+  ],
+];
+const pathways = [
+  { value: "volunteer", label: "Give my time", href: "/become-a-volunteer/" },
+  {
+    value: "internship",
+    label: "Build experience through an internship",
+    href: "/volunteering-internships/",
+  },
+  {
+    value: "partner",
+    label: "Partner with the foundation",
+    href: "/csr-partnerships/",
+  },
+  { value: "support", label: "Support the work", href: "/donate/" },
+];
+
 export function Home() {
-  const { content, organization: o } = useSite();
-  const programs = content.filter((x) => x.kind === "program"),
-    posts = content.filter((x) => x.kind === "post");
-  const upcomingEvents = content
+  const { content, organization: o, user } = useSite();
+  const [slide, setSlide] = useState(0);
+  const [pathway, setPathway] = useState(pathways[0].value);
+  const programs = content.filter((x) => x.kind === "program");
+  const posts = content.filter((x) => x.kind === "post").slice(0, 3);
+  const events = content
     .filter(
-      (e) => e.kind === "event" && new Date(e.data.end).getTime() > Date.now(),
+      (x) => x.kind === "event" && new Date(x.data.end).getTime() > Date.now(),
     )
     .sort(
       (a, b) =>
-        new Date(b.data.start).getTime() - new Date(a.data.start).getTime(),
+        new Date(a.data.start).getTime() - new Date(b.data.start).getTime(),
     )
     .slice(0, 2);
-  const useReferenceTitle =
-    !o.heroTitle ||
-    [
-      "Empowering communities.\nInspiring possibility.",
-      "Empowering Communities\nfor a Brighter Tomorrow.",
-    ].includes(o.heroTitle);
-  const heroDescription =
-    o.heroText ===
-    "Together, we create opportunities for people to learn, thrive, and build a brighter tomorrow."
-      ? "Together, we create opportunities for people to learn, thrive, and build a more inclusive and sustainable future."
-      : o.heroText;
+  const selectedPath = pathways.find((x) => x.value === pathway)!;
+  const slides = [
+    {
+      eyebrow: "PEOPLE. PURPOSE. POSSIBILITY.",
+      title: o.heroTitle || "Empowering communities.\nFor a brighter tomorrow.",
+      text:
+        o.heroText ||
+        "Together, we create opportunities for people to learn, thrive and build a better future.",
+      image: authenticPhoto(o.heroImage, "/images/hero.jpg"),
+      alt: "Schoolchildren gathered together — illustrative photograph",
+      link: "/our-work/",
+      action: "Explore our work",
+      note: "Illustrative photography",
+    },
+    {
+      eyebrow: "SKILLS FOR EVERYDAY POSSIBILITY",
+      title: "Learning together.\nGrowing with confidence.",
+      text: "Discover our work in education, practical skills and opportunities for women and communities.",
+      image: "/images/women-skill-training.jpeg",
+      alt: "Women practising sewing at a WBF skills training session",
+      link: "/focus-areas/women-empowerment/",
+      action: "Discover skills programmes",
+      note: "WBF skills training",
+    },
+  ];
+  const active = slides[slide];
   return (
     <>
       <section
-        className="home-hero editorial-hero"
-        aria-labelledby="home-banner-title"
+        className="portal-hero"
+        aria-roledescription="carousel"
+        aria-label="Foundation highlights"
       >
-        <div className="banner-visual">
+        <div
+          className="portal-hero-stage"
+          id="foundation-highlight"
+          role="group"
+          aria-roledescription="slide"
+          aria-label={`${slide + 1} of ${slides.length}`}
+        >
           <img
-            className="hero-photo"
-            src={authenticPhoto(o.heroImage, "/images/hero.jpg")}
-            alt="Community photograph — illustrative photography"
-            width={1800}
-            height={1200}
+            className="hero-photo portal-hero-photo"
+            src={active.image}
+            alt={active.alt}
+            width={2400}
+            height={1600}
             fetchPriority="high"
           />
-
-          <a
-            className="banner-scroll"
-            href="#our-purpose"
-            aria-label="Explore our purpose"
-          >
-            <ArrowDown size={26} />
-          </a>
-          <span className="hero-photo-credit">Illustrative image</span>
-        </div>
-
-        <div className="banner-inner">
-          <div className="banner-copy">
-            <p className="banner-eyebrow">
-              People <b>·</b> <span>Purpose</span> <b>·</b> Possibility
-            </p>
-            <h1 id="home-banner-title">
-              {useReferenceTitle ? (
-                <>
-                  <span>Empowering</span>
-                  <span>Communities</span>
-                  <span>
-                    for a <em>Brighter</em>
-                  </span>
-                  <span className="banner-tomorrow">Tomorrow.</span>
-                </>
-              ) : (
-                o.heroTitle
-                  .split("\n")
-                  .map((line: string, i: number) => <span key={i}>{line}</span>)
-              )}
-            </h1>
-            <p className="banner-description">{heroDescription}</p>
-            <div className="banner-buttons">
-              <a href="/donate/" className="banner-primary">
-                Make a Difference <ArrowRight size={18} />
-              </a>
-              <a href="/about/" className="banner-story">
-                <CircleArrowRight size={27} strokeWidth={1.5} /> Discover Our
-                Story
-              </a>
-            </div>
-            <div className="banner-community">
-              <p>
-                <strong>Small acts. Lasting change.</strong>
-                <span>It starts with people like you.</span>
-              </p>
-              <a href="/become-a-volunteer/">
-                Join Our Journey <ArrowUpRight size={15} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section
-        className="banner-purpose"
-        id="our-purpose"
-        aria-label="Our shared purpose"
-      >
-        <div className="banner-purpose-card">
-          <div className="banner-fact">
-            <BookOpen size={35} strokeWidth={1.3} />
-            <p>
-              <strong>2015</strong>
-              <span>Foundation registered</span>
-            </p>
-          </div>
-          <div className="banner-fact">
-            <Users size={35} strokeWidth={1.3} />
-            <p>
-              <strong>{programs.length}</strong>
-              <span>Connected focus areas</span>
-            </p>
-          </div>
-          <div className="banner-fact">
-            <HeartHandshake size={35} strokeWidth={1.3} />
-            <p>
-              <strong>People first.</strong>
-              <span>Community-led change</span>
-            </p>
-          </div>
-          <p className="banner-purpose-quote">
-            “Real change begins when
-            <br />
-            people come together.”
-          </p>
-          <a href="/our-approach/" className="banner-sustainability">
-            <Sprout size={28} strokeWidth={1.4} />
-            <span>
-              Sustainable
-              <br />
-              Communities
-            </span>
-            <ArrowUpRight size={16} />
-          </a>
-        </div>
-      </section>
-      <section
-        className="about-showcase"
-        aria-labelledby="about-showcase-title"
-      >
-        <div className="container about-showcase-grid">
-          <div className="about-collage about-classroom-collage">
-            <img
-              className="about-portrait"
-              src="/images/women-skill-training.jpeg"
-              alt="Women practising sewing in a WBF training session"
-              loading="lazy"
-            />
-          </div>
-          <div className="about-showcase-copy">
-            <p className="eyebrow">
-              <span /> WHO WE ARE
-            </p>
-            <h2 id="about-showcase-title">
-              Change begins
-              <br />
-              with <em>all of us.</em>
-            </h2>
-            <p className="about-lead">
-              We believe everyone deserves the chance to build a life of dignity
-              and possibility.
-            </p>
-            <p className="about-description">
-              At Well Being Foundation, we work alongside communities to turn
-              that belief into everyday action. From learning and well-being to
-              skills and livelihoods, our work connects people with
-              opportunities to thrive.
-            </p>
-            <ul className="about-values">
-              <li>
-                <div>
-                  <h3>Community-led action</h3>
-                  <p>Solutions shaped with, not for, communities.</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h3>Inclusive opportunity</h3>
-                  <p>Leaving no one behind.</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h3>Sustainable progress</h3>
-                  <p>Building lasting change for future generations.</p>
-                </div>
-              </li>
-            </ul>
-            <div className="about-showcase-actions">
-              <a className="about-discover" href="/about/">
-                Discover our story <ArrowRight size={18} />
-              </a>
-              <a className="about-journey" href="/our-approach/">
-                <CircleArrowRight size={29} strokeWidth={1.5} /> Explore our
-                journey
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="partners-showcase" aria-labelledby="partners-title">
-        <div className="container">
-          <div className="partners-heading">
-            <span className="partners-eyebrow">TOGETHER, WE GO FURTHER</span>
-            <h2 id="partners-title">Our CSR &amp; Government Partners</h2>
-            <p>Trusted by leading organizations across India</p>
-          </div>
-          <div className="partners-marquee">
-            <div className="partners-track">
-              {[0, 1].map((copy) => (
-                <ul
-                  key={copy}
-                  className="partners-grid"
-                  aria-label={copy === 0 ? "Our partners" : undefined}
-                  aria-hidden={copy === 1 ? true : undefined}
-                  inert={copy === 1 ? true : undefined}
+          <div className="portal-hero-shade" aria-hidden="true" />
+          <div className="container portal-hero-inner">
+            <div className="portal-hero-copy">
+              <p className="eyebrow">{active.eyebrow}</p>
+              <h1>{active.title}</h1>
+              <p className="portal-hero-description">{active.text}</p>
+              <div className="portal-hero-actions">
+                <ButtonLink href={active.link} light>
+                  {active.action}
+                </ButtonLink>
+                <a
+                  className="portal-hero-secondary"
+                  href="/become-a-volunteer/"
                 >
-                  {[
-                    {
-                      name: "inDrive",
-                      image: "indrive.svg",
-                      url: "https://indrive.com/",
-                    },
-                    {
-                      name: "Medanta",
-                      image: "medanta.svg",
-                      url: "https://www.medanta.org/",
-                    },
-                    {
-                      name: "Ministry of Skill Development and Entrepreneurship",
-                      image: "government-partners.jpg",
-                      url: "https://www.msde.gov.in/",
-                    },
-                    {
-                      name: "National Skill Development Corporation",
-                      image: "nsdc.svg",
-                      url: "https://nsdcindia.org/",
-                    },
-                    {
-                      name: "Skill Council for Green Jobs",
-                      image: "scgj.jpg",
-                      url: "https://sscgj.in/",
-                    },
-                    {
-                      name: "Skill India",
-                      image: "skill-india.svg",
-                      url: "https://www.skillindiadigital.gov.in/",
-                    },
-                  ].map((partner) => (
-                    <li key={partner.name}>
-                      <a
-                        href={partner.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${partner.name} — official website (opens in a new tab)`}
-                      >
-                        {partner.image === "government-partners.jpg" ? (
-                          <svg
-                            className="partner-ministry-mark"
-                            viewBox="0 0 222 60"
-                            role="img"
-                            aria-label={partner.name}
-                          >
-                            <title>{partner.name}</title>
-                            <image
-                              href="/partners/government-partners.jpg"
-                              width="900"
-                              height="60"
-                            />
-                          </svg>
-                        ) : (
-                          <img
-                            src={`/partners/${partner.image}`}
-                            alt={partner.name}
-                            width="220"
-                            height="110"
-                            loading="lazy"
-                          />
-                        )}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ))}
+                  Become a volunteer <ArrowRight size={17} />
+                </a>
+              </div>
             </div>
+            <span className="portal-photo-note">{active.note}</span>
           </div>
         </div>
-      </section>
-      <section
-        className="section focus-section focus-showcase"
-        aria-labelledby="focus-showcase-title"
-      >
-        <div className="container">
-          <div className="focus-showcase-heading">
-            <div className="focus-showcase-intro">
-              <p className="eyebrow">
-                <span /> WHERE WE FOCUS
-              </p>
-              <h2 id="focus-showcase-title">
-                Many paths. One <em>shared purpose.</em>
-              </h2>
-              <p>
-                Eight connected areas of work. One belief in a better future for
-                every community.
-              </p>
-            </div>
-            <div className="focus-showcase-actions">
-              <a href="/our-work/" className="focus-explore">
-                Explore our work{" "}
-                <span>
-                  <ArrowUpRight size={18} />
-                </span>
-              </a>
-            </div>
-          </div>
-          <ProgramGrid items={programs} photographic />
-        </div>
-      </section>
-      <section
-        className="change-showcase"
-        aria-labelledby="change-showcase-title"
-      >
-        <div className="change-photo">
-          <img
-            src="/images/focus/from-local-to.jpeg"
-            alt="Community outreach with women and families"
-            loading="lazy"
-          />
-        </div>
-        <div className="change-content">
-          <div className="change-heading">
-            <p className="eyebrow">
-              HOW CHANGE HAPPENS <span />
-            </p>
-          </div>
-          <div className="change-main">
-            <div className="change-copy">
-              <h2 id="change-showcase-title">
-                Listen closely.
-                <br />
-                Work together.
-                <br />
-                <em>Grow, sustainably.</em>
-              </h2>
-              <p>
-                Meaningful change starts by understanding what matters to
-                people. We listen, collaborate, and build practical solutions
-                that communities can make their own.
-              </p>
-              <a href="/our-approach/" className="change-approach-link">
-                Our approach <ArrowUpRight size={19} />
-              </a>
-            </div>
-            <ol className="change-steps">
-              <li>
-                <div>
-                  <h3>Listen</h3>
-                  <p>Understand real needs on the ground.</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h3>Collaborate</h3>
-                  <p>Work with communities and local partners.</p>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h3>Create impact</h3>
-                  <p>Build sustainable solutions for lasting change.</p>
-                </div>
-              </li>
-            </ol>
-          </div>
-          <div
-            className="change-principles"
-            aria-label="Our approach at a glance"
+        <div className="portal-hero-controls">
+          <button
+            type="button"
+            aria-label="Previous highlight"
+            aria-controls="foundation-highlight"
+            onClick={() =>
+              setSlide((slide + slides.length - 1) % slides.length)
+            }
           >
-            <div>
-              <Users size={28} strokeWidth={1.4} />
-              <p>
-                <strong>People first</strong>
-                <span>Local voices</span>
-              </p>
-            </div>
-            <div>
-              <HeartHandshake size={28} strokeWidth={1.4} />
-              <p>
-                <strong>Shared action</strong>
-                <span>Community partnerships</span>
-              </p>
-            </div>
-            <a href="/our-work/">
-              <Sprout size={28} strokeWidth={1.4} />
-              <p>
-                <strong>{programs.length} focus areas</strong>
-                <span>Connected change</span>
-              </p>
-            </a>
-          </div>
+            <ChevronLeft size={18} />
+          </button>
+          {slides.map((s, i) => (
+            <button
+              className={slide === i ? "selected" : ""}
+              key={s.eyebrow}
+              type="button"
+              aria-label={`Show highlight ${i + 1}`}
+              aria-pressed={slide === i}
+              aria-controls="foundation-highlight"
+              onClick={() => setSlide(i)}
+            >
+              <span>{String(i + 1).padStart(2, "0")}</span>
+            </button>
+          ))}
+          <button
+            type="button"
+            aria-label="Next highlight"
+            aria-controls="foundation-highlight"
+            onClick={() => setSlide((slide + 1) % slides.length)}
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
       </section>
-      <section className="news-showcase" aria-labelledby="news-showcase-title">
+
+      <section className="portal-partners" aria-labelledby="partners-title">
         <div className="container">
-          <div className="news-showcase-heading">
-            <div>
-              <p className="eyebrow">
-                VOICES &amp; UPDATES <span />
-              </p>
-              <h2 id="news-showcase-title">
-                Stories of <em>possibility.</em>
-              </h2>
-              <p>Ideas, initiatives, and updates from the foundation.</p>
-            </div>
-            <a href="/blog/" className="section-soft-link">
-              All news &amp; stories <ArrowRight size={17} />
-            </a>
+          <div className="portal-section-heading">
+            <p className="eyebrow">TOGETHER, WE GO FURTHER</p>
+            <h2 id="partners-title">Our CSR &amp; Government Partners</h2>
           </div>
-          <StoryCards items={posts.slice(0, 3)} editorial />
+          <ul className="portal-partner-grid">
+            {partners.map(([name, src, url]) => (
+              <li key={name}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${name} — official website`}
+                >
+                  {src === "government-partners.jpg" ? (
+                    <svg viewBox="0 0 222 60" role="img" aria-label={name}>
+                      <title>{name}</title>
+                      <image
+                        href="/partners/government-partners.jpg"
+                        width="900"
+                        height="60"
+                      />
+                    </svg>
+                  ) : (
+                    <img src={`/partners/${src}`} alt={name} loading="lazy" />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
+
       <section
-        className="gather-showcase"
-        aria-labelledby="gather-showcase-title"
+        className="portal-intro section"
+        aria-label="About the foundation"
       >
-        <div className="container gather-grid">
-          <div className="gather-intro">
-            <p className="eyebrow">
-              COME TOGETHER <span />
-            </p>
-            <h2 id="gather-showcase-title">
-              Make time for <em>community.</em>
-            </h2>
-            <p>
-              Good things happen when we come together. There’s more than one
-              way to make a difference. Find the one that feels right for you.
-            </p>
-            <a href="/our-team/" className="gather-team-link">
-              Meet the people behind the work <ArrowRight size={17} />
-            </a>
-          </div>
-          <div className="gather-photo">
+        <div className="container">
+          <article className="portal-intro-card">
             <img
               src="/images/focus/youth-education.jpeg"
-              alt="Participants at a community skills session"
+              alt="Participants learning practical skills at a WBF training centre"
               loading="lazy"
             />
-          </div>
-          <div className="gather-events">
-            <div className="gather-events-heading">
-              <p className="eyebrow">
-                UPCOMING &amp; ONGOING <span />
-              </p>
-              <a href="/events/" className="section-soft-link">
-                Explore all events <ArrowRight size={16} />
+            <div>
+              <p className="eyebrow">WELL BEING FOUNDATION</p>
+              <h2>Opportunity begins with people.</h2>
+              <p>{o.about}</p>
+              <a className="text-link" href="/about/">
+                Get to know us <ArrowUpRight size={18} />
               </a>
             </div>
-            <div className="gather-event-list">
-              {upcomingEvents.map((e) => (
+          </article>
+          <article className="portal-intro-card portal-intro-reverse">
+            <img
+              src="/images/focus/from-local-to.jpeg"
+              alt="Community outreach with women and families"
+              loading="lazy"
+            />
+            <div>
+              <p className="eyebrow">OUR SHARED PURPOSE</p>
+              <h2>Working together. Moving forward.</h2>
+              <p>{o.mission}</p>
+              <a className="text-link" href="/our-approach/">
+                How we work <ArrowUpRight size={18} />
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        className="section container portal-opportunities"
+        aria-label="Ways to participate and upcoming events"
+      >
+        <article className="portal-feature-card">
+          <div>
+            <p className="eyebrow">YOUR SKILLS CAN MAKE A DIFFERENCE</p>
+            <h2>
+              A place for you.
+              <br />A purpose we share.
+            </h2>
+            <p>
+              Bring your time, experience and ideas. Find a way to contribute to
+              your community.
+            </p>
+            <ButtonLink href="/get-involved/">Find your opportunity</ButtonLink>
+          </div>
+          <img
+            src="/images/volunteering.jpg"
+            alt="People bringing their hands together — illustrative photograph"
+            loading="lazy"
+          />
+        </article>
+        <aside className="portal-events">
+          <div className="portal-events-title">
+            <h2>Coming together</h2>
+            <a href="/events/" aria-label="Browse all events">
+              <ArrowUpRight size={20} />
+            </a>
+          </div>
+          <div className="portal-event-grid">
+            {events.length ? (
+              events.map((e) => (
                 <a
-                  className="gather-event"
-                  href={"/events/" + e.slug + "/"}
                   key={e.id}
-                  aria-label={e.title + " in " + e.data.location}
+                  href={`/events/${e.slug}/`}
+                  className="portal-event-card"
                 >
-                  <time className="gather-date" dateTime={e.data.start}>
-                    <strong>
-                      {new Date(e.data.start).toLocaleDateString("en-IN", {
-                        day: "2-digit",
-                        timeZone: "Asia/Kolkata",
-                      })}
-                    </strong>
-                    <span>
-                      {new Date(e.data.start).toLocaleDateString("en-IN", {
-                        month: "short",
-                        timeZone: "Asia/Kolkata",
-                      })}
-                    </span>
-                    <small>
-                      {new Date(e.data.start).toLocaleDateString("en-IN", {
-                        year: "numeric",
-                        timeZone: "Asia/Kolkata",
-                      })}
-                    </small>
-                  </time>
-                  <div className="gather-event-copy">
-                    <h3>{e.title}</h3>
-                    <p>
-                      <MapPin size={14} />
-                      <span>{e.data.location}</span>
-                    </p>
-                    <p>
-                      <CalendarDays size={14} />
-                      <span>Until {niceDate(e.data.end)}</span>
-                    </p>
-                  </div>
-                  <div className="gather-event-photo">
-                    <img
-                      src={authenticPhoto(e.image)}
-                      alt="Illustrative event photograph"
-                      loading="lazy"
-                    />
-                  </div>
-                  <span className="gather-event-arrow">
-                    <ChevronRight size={19} />
+                  <span className="portal-event-label">COMMUNITY EVENT</span>
+                  <h3>{e.title}</h3>
+                  <p>
+                    <CalendarDays size={15} />
+                    <time dateTime={e.data.start}>
+                      {niceDate(e.data.start)}
+                    </time>
+                  </p>
+                  <p>
+                    <MapPin size={15} />
+                    {e.data.location}
+                  </p>
+                  <span className="text-link">
+                    View event <ArrowRight size={16} />
                   </span>
                 </a>
-              ))}
-              {!upcomingEvents.length && (
-                <div className="gather-empty">
-                  <CalendarDays size={28} />
-                  <h3>More ways to come together, soon.</h3>
-                  <p>Explore past events and check back for new dates.</p>
-                  <a href="/events/">
-                    View all events <ArrowRight size={15} />
-                  </a>
-                </div>
-              )}
-            </div>
+              ))
+            ) : (
+              <p>
+                New activities will appear here when dates are confirmed.
+                Explore past events to see how communities come together.
+              </p>
+            )}
+          </div>
+          <a href="/events/" className="portal-all-link">
+            Explore all events <ArrowRight size={16} />
+          </a>
+        </aside>
+      </section>
+
+      <section className="section portal-principles">
+        <div className="container">
+          <div className="portal-section-heading">
+            <p className="eyebrow">BUILDING STRONGER COMMUNITIES</p>
+            <h2>People at the heart of progress.</h2>
+          </div>
+          <div className="portal-principle-grid">
+            {[
+              [
+                "01",
+                "Community-led",
+                "Listen to local priorities and work alongside the people involved.",
+              ],
+              [
+                "02",
+                "Opportunity-focused",
+                "Connect learning, health and practical skills with everyday possibilities.",
+              ],
+              [
+                "03",
+                "Working together",
+                "Bring communities, volunteers and partners around a shared purpose.",
+              ],
+            ].map(([number, title, copy]) => (
+              <article key={number}>
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </article>
+            ))}
+          </div>
+          <ButtonLink href="/our-approach/">Explore our approach</ButtonLink>
+        </div>
+      </section>
+
+      <section
+        className="portal-discovery section"
+        aria-label="Find your next step"
+      >
+        <div className="container">
+          <SectionTitle
+            label="FIND YOUR WAY"
+            title="Your next step starts here."
+            description="Explore a focus area, contribute your time, or find the right opportunity for you."
+            link="View careers"
+            href="/careers/"
+          />
+          <div className="portal-discovery-grid">
+            <article className="portal-discovery-card">
+              <p className="eyebrow">I WANT TO EXPLORE</p>
+              <h3>Our work</h3>
+              <img
+                src="/images/focus/youth-education.jpeg"
+                alt="A WBF learning session"
+                loading="lazy"
+              />
+              <p>
+                Education, skills, health and five more connected areas of
+                community work.
+              </p>
+              <ButtonLink href="/our-work/">Find a focus area</ButtonLink>
+            </article>
+            <article className="portal-discovery-card">
+              <p className="eyebrow">I WANT TO CONTRIBUTE</p>
+              <h3>My time &amp; skills</h3>
+              <img
+                src="/images/women-skill-training.jpeg"
+                alt="Women learning sewing skills together"
+                loading="lazy"
+              />
+              <p>
+                Explore volunteering, internships and partnerships with the
+                foundation.
+              </p>
+              <ButtonLink href="/get-involved/">
+                Explore opportunities
+              </ButtonLink>
+            </article>
+            <article className="portal-pathfinder">
+              <p className="eyebrow">A LITTLE GUIDANCE</p>
+              <h3>
+                Not sure
+                <br />
+                where to begin?
+              </h3>
+              <p>
+                Choose what interests you. We’ll point you towards the right
+                place.
+              </p>
+              <label htmlFor="wbf-interest">
+                How would you like to take part?
+              </label>
+              <select
+                id="wbf-interest"
+                value={pathway}
+                onChange={(e) => setPathway(e.target.value)}
+              >
+                {pathways.map((p) => (
+                  <option key={p.value} value={p.value}>
+                    {p.label}
+                  </option>
+                ))}
+              </select>
+              <ButtonLink href={selectedPath.href} light>
+                Explore this option
+              </ButtonLink>
+              <a className="portal-pathfinder-contact" href="/contact/">
+                Or speak with our team <ArrowRight size={16} />
+              </a>
+            </article>
           </div>
         </div>
       </section>
-      <section
-        className="participation-showcase"
-        aria-labelledby="participation-title"
-      >
-        <div className="container participation-grid">
-          <div className="participation-copy">
-            <p className="eyebrow">
-              YOUR PLACE IN THE STORY <span />
-            </p>
-            <h2 id="participation-title">
-              Good things happen
+
+      <section className="section container portal-programmes" id="our-purpose">
+        <SectionTitle
+          label="EIGHT CONNECTED FOCUS AREAS"
+          title="Many paths. One shared purpose."
+          description="Practical work that connects learning, well-being, rights and the environment."
+          link="View all focus areas"
+          href="/our-work/"
+        />
+        <ProgramGrid items={programs} photographic />
+      </section>
+
+      <section className="portal-account-band">
+        <div className="container">
+          <div>
+            <p className="eyebrow">STAY CONNECTED TO YOUR JOURNEY</p>
+            <h2>
+              Your community.
               <br />
-              when we come
-              <br />
-              <em>together.</em>
+              Your next chapter.
             </h2>
             <p>
-              There’s more than one way to make a difference.
-              <br />
-              Find the one that feels right for you.
+              Keep track of your applications and contributions, and stay
+              connected with the foundation.
             </p>
-            <a href="/our-team/" className="participation-team">
-              Meet the people behind the work <ArrowUpRight size={19} />
-            </a>
           </div>
-          <div className="participation-photo">
-            <img
-              src="/images/volunteering.jpg"
-              alt="People bringing their hands together — illustrative photograph"
-              loading="lazy"
-            />
-          </div>
-          <nav
-            className="participation-options"
-            aria-label="Ways to get involved"
-          >
-            {[
-              {
-                number: "01",
-                title: "Give your time",
-                description: "Volunteer with our community",
-                href: "/become-a-volunteer/",
-                Icon: HeartHandshake,
-              },
-              {
-                number: "02",
-                title: "Share your expertise",
-                description: "Explore internships and careers",
-                href: "/careers/",
-                Icon: GraduationCap,
-              },
-              {
-                number: "03",
-                title: "Build a partnership",
-                description: "Create meaningful change together",
-                href: "/csr-partnerships/",
-                Icon: Handshake,
-              },
-            ].map(({ number, title, description, href, Icon }) => (
-              <a href={href} className="participation-option" key={number}>
-                <span className="participation-number">{number}</span>
-
-                <div>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </div>
-                <span className="participation-arrow">
-                  <ArrowUpRight size={20} />
-                </span>
+          <div className="portal-account-panel">
+            <h3>{user ? "Welcome back." : "Start with a simple step."}</h3>
+            <p>
+              {user
+                ? "Visit your account to follow your applications and updates."
+                : "Create your account to start your journey with WBF."}
+            </p>
+            <ButtonLink href={user ? "/user/" : "/register/"} light>
+              {user ? "Open my dashboard" : "Join the WBF community"}
+            </ButtonLink>
+            {!user && (
+              <a href="/login/">
+                Already a member? Sign in <ArrowRight size={16} />
               </a>
-            ))}
-          </nav>
+            )}
+          </div>
         </div>
+      </section>
+
+      <section className="section container portal-stories">
+        <SectionTitle
+          label="NEWS & STORIES"
+          title="From our community."
+          description="Read about the work, activities and people connected with the foundation."
+          link="All stories"
+          href="/blog/"
+        />
+        <StoryCards items={posts} editorial />
       </section>
       <CTABand />
     </>

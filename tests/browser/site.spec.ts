@@ -40,6 +40,42 @@ test("home renders eight programs, photos and real navigation without runtime er
   await expect(page).toHaveURL(/our-work/);
   expect(errors).toEqual([]);
 });
+test("home highlights and interest guide lead to the selected WBF programme", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Next highlight", exact: true })
+    .click();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Learning together.",
+  );
+  await expect(
+    page.getByRole("button", { name: "Show highlight 2" }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await page
+    .getByRole("link", { name: "Discover skills programmes", exact: true })
+    .click();
+  await expect(page).toHaveURL(/focus-areas\/women-empowerment/);
+  await page.goto("/");
+  await page
+    .getByLabel("How would you like to take part?")
+    .selectOption("partner");
+  await page
+    .getByRole("link", { name: "Explore this option", exact: true })
+    .click();
+  await expect(page).toHaveURL(/csr-partnerships/);
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Next highlight", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Previous highlight", exact: true })
+    .click();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Empowering",
+  );
+});
 test("all audited routes return successfully and unexpected routes return 404", async ({
   request,
 }) => {
@@ -300,9 +336,7 @@ test("structured CMS sections preview and publish with visibility controls", asy
     .getByRole("dialog")
     .getByLabel("Content type")
     .selectOption("page");
-  await page
-    .getByLabel(/^Title/)
-    .fill("Structured community page");
+  await page.getByLabel(/^Title/).fill("Structured community page");
   await page.getByLabel("URL slug").fill(slug);
   await page.getByRole("button", { name: "Add section" }).click();
   await page.getByLabel("Section heading").fill("A published section");

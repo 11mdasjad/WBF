@@ -134,15 +134,18 @@ export function Header({ path }: { path: string }) {
         <div className="navigation-backdrop" aria-hidden="true" />
         <div className="masthead-bar">
           <Brand full />
-          <LocationPicker />
-          <div className="masthead-actions">
-            <a className="masthead-donate header-action" href="/donate/">
-              <Heart size={19} aria-hidden="true" />
-              <span>Donate</span>
-            </a>
-            <a href="/login/" className="portal-register header-action">
-              Login &amp; Register
-            </a>
+          <HeaderSearch />
+          <div className="masthead-tools">
+            <LocationPicker />
+            <div className="masthead-actions">
+              <a className="masthead-donate header-action" href="/donate/">
+                <Heart size={19} aria-hidden="true" />
+                <span>Donate</span>
+              </a>
+              <a href="/login/" className="portal-register header-action">
+                Login &amp; Register
+              </a>
+            </div>
           </div>
           <button
             type="button"

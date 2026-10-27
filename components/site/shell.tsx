@@ -11,6 +11,7 @@ import {
   ShoppingBag,
 } from "lucide-react";
 import { Brand } from "./shared";
+import { LocationPicker } from "./location-picker";
 import { navigation } from "@/lib/content";
 import { useSite } from "./context";
 
@@ -133,6 +134,7 @@ export function Header({ path }: { path: string }) {
         <div className="navigation-backdrop" aria-hidden="true" />
         <div className="masthead-bar">
           <Brand full />
+          <LocationPicker />
           <div className="masthead-actions">
             <a className="masthead-donate header-action" href="/donate/">
               <Heart size={19} aria-hidden="true" />

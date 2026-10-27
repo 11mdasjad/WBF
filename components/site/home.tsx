@@ -27,18 +27,6 @@ import { ButtonLink, SectionTitle, ProgramGrid, StoryCards } from "./shared";
 
 export function Home() {
   const { content, organization: o } = useSite();
-  const useSelectedBanner =
-    !o.heroImage ||
-    [
-      "/images/hero.jpg",
-      "/images/community-banner.png",
-      "/images/community-learning-banner.png",
-      "/images/community-learning-banner-v2.png",
-      "/images/community-learning-hero.jpg",
-    ].includes(o.heroImage);
-  const bannerPhoto = useSelectedBanner
-    ? "/images/community-learning-hero.jpg"
-    : authenticPhoto(o.heroImage);
   const programs = content.filter((x) => x.kind === "program"),
     posts = content.filter((x) => x.kind === "post");
   const upcomingEvents = content
@@ -64,43 +52,27 @@ export function Home() {
   return (
     <>
       <section
-        className="home-hero editorial-hero community-banner"
+        className="home-hero editorial-hero"
         aria-labelledby="home-banner-title"
       >
         <div className="banner-visual">
           <img
             className="hero-photo"
-            src={bannerPhoto}
-            srcSet={
-              useSelectedBanner
-                ? "/images/community-learning-hero-small.jpg 1200w, /images/community-learning-hero.jpg 2400w"
-                : undefined
-            }
-            sizes="(max-width: 760px) 94vw, (max-width: 1100px) 80vw, 56vw"
-            alt={
-              useSelectedBanner
-                ? "Four children smiling together in a classroom with alphabet charts on the walls"
-                : "Community photograph selected by the foundation"
-            }
-            width={2400}
-            height={1600}
+            src={authenticPhoto(o.heroImage, "/images/hero.jpg")}
+            alt="Community photograph — illustrative photography"
+            width={1800}
+            height={1200}
             fetchPriority="high"
           />
-          <div className="banner-photo-footer">
-            <p>
-              Learning today. <strong>Possibilities for tomorrow.</strong>
-            </p>
-            {useSelectedBanner && (
-              <a
-                className="hero-photo-credit"
-                href="https://www.pexels.com/photo/smiling-girl-and-boys-sitting-under-walls-with-letters-at-school-20556421/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Kunal Lakhotia / Pexels · Illustrative photo
-              </a>
-            )}
-          </div>
+
+          <a
+            className="banner-scroll"
+            href="#our-purpose"
+            aria-label="Explore our purpose"
+          >
+            <ArrowDown size={26} />
+          </a>
+          <span className="hero-photo-credit">Illustrative image</span>
         </div>
 
         <div className="banner-inner">
@@ -112,10 +84,11 @@ export function Home() {
               {useReferenceTitle ? (
                 <>
                   <span>Empowering</span>
-                  <span>Communities.</span>
-                  <span className="banner-promise">
-                    For a <em>brighter tomorrow.</em>
+                  <span>Communities</span>
+                  <span>
+                    for a <em>Brighter</em>
                   </span>
+                  <span className="banner-tomorrow">Tomorrow.</span>
                 </>
               ) : (
                 o.heroTitle
@@ -136,6 +109,7 @@ export function Home() {
             <div className="banner-community">
               <p>
                 <strong>Small acts. Lasting change.</strong>
+                <span>It starts with people like you.</span>
               </p>
               <a href="/become-a-volunteer/">
                 Join Our Journey <ArrowUpRight size={15} />

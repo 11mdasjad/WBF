@@ -1,13 +1,5 @@
 # Photography and asset credits
 
-## Researched homepage banner — 27 October 2026
-
-- Photographer: **Kunal Lakhotia**; [original Pexels photograph](https://www.pexels.com/photo/smiling-girl-and-boys-sitting-under-walls-with-letters-at-school-20556421/).
-- License: [Pexels License](https://www.pexels.com/license/), checked before downloading; permits website use. Photograph is illustrative, not evidence of a WBF programme or endorsement by the people shown.
-- Local files: `/images/community-learning-hero.jpg` (2400 × 1600) and `/images/community-learning-hero-small.jpg` (1200 × 800), downloaded directly from the original Pexels photo CDN. Responsive `srcset` selects an appropriate size. The photo is not generated, retouched or composited.
-- Selection: compared seven classroom/community photographs from Pexels and Unsplash. Chosen for natural expressions, visible classroom context, landscape composition and a colour palette that works with the foundation’s green glass UI. The text panel sits alongside the photograph so it does not obscure faces.
-- The prior `/images/hero.jpg` remains available for other existing uses; its source credit below is unchanged. Custom CMS banner choices are preserved.
-
 ## Current glass UI — 27 October 2026
 
 The glass theme preserves the existing pages and content, removes botanical drawings, decorative waves and badges, and replaces the former reference collages with actual photographs. The focus cards use the WBF programme photographs credited below. Banners use licensed illustrative photographs; these do not identify WBF beneficiaries. Earlier reference-art notes below document historical versions; those images are no longer rendered in the public UI. Legacy CMS references are mapped for display without changing saved content.
@@ -21,12 +13,12 @@ The [Unsplash License](https://unsplash.com/license) permits free downloading, c
 | Local asset                | Photographer and source                                                                                   | Subject / suggested alt text                       | Download size    |
 | -------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ---------------- |
 | `/images/hero.jpg`         | [Church of the King](https://unsplash.com/photos/group-of-children-taking-picture-j9jZSqfH5YI)            | A group of smiling schoolchildren in blue uniforms | 2400 × 1600      |
-| `/images/education.jpg`    | [Swastik Arora](https://unsplash.com/photos/two-young-girls-sitting-at-a-desk-in-a-classroom-TcKmus54ij0) | Two girls studying together at a classroom desk    | 2400 × 1350      |
+| `/images/education.jpg`    | [Swastik Arora](https://unsplash.com/photos/two-young-girls-sitting-at-a-desk-in-a-classroom-TcKmus54ij0) | Two girls studying together at a classroom desk    | 2400 × 1350       |
 | `/images/women.jpg`        | [Prateek Jaiswal](https://unsplash.com/photos/woman-in-red-and-brown-sari-XbEWASqbaVo)                    | A woman wearing a colorful sari outdoors           | 1100 × 1650      |
 | `/images/health.jpg`       | [Online Marketing](https://unsplash.com/photos/doctor-holding-red-stethoscope-hIgeoQjS_iE)                | A healthcare professional holding a stethoscope    | 1100 pixels wide |
 | `/images/environment.jpg`  | [Atharva Tulsi](https://unsplash.com/photos/waterfall-in-lush-misty-mountain-valley-XQKd1UN7gUU)          | A waterfall in a lush, misty mountain valley       | 1600 × 1060      |
 | `/images/community.jpg`    | [Yannis H](https://unsplash.com/photos/group-of-childrens-sitting-on-ground-uaPaEM7MiQQ)                  | Children sitting together during a group activity  | 1400 × 933       |
-| `/images/volunteering.jpg` | [Hannah Busing](https://unsplash.com/photos/group-stacking-hands-in-colorful-sweaters-Zyx1bK9mqmA)        | A group of people stacking their hands together    | 2400 × 1600      |
+| `/images/volunteering.jpg` | [Hannah Busing](https://unsplash.com/photos/group-stacking-hands-in-colorful-sweaters-Zyx1bK9mqmA)        | A group of people stacking their hands together    | 2400 × 1600       |
 
 Photographs were downloaded at quality 85 via Unsplash's image CDN with `auto=format&fit=crop`. No generative images or unlicensed WBF reference photographs were used. Geographic location should not be inferred from a person's appearance: `community.jpg`, `health.jpg`, and `volunteering.jpg` are general thematic images, not verified Indian program locations.
 

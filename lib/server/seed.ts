@@ -11,7 +11,7 @@ export const defaults = {
   heroTitle: "Empowering Communities\nfor a Brighter Tomorrow.",
   heroText:
     "Together, we create opportunities for people to learn, thrive, and build a more inclusive and sustainable future.",
-  heroImage: "/images/community-learning-hero.jpg",
+  heroImage: "/images/hero.jpg",
   mission:
     "To support communities through education, health, skills and opportunities for lasting change.",
   vision:

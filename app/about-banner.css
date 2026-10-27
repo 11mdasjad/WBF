@@ -1,0 +1,130 @@
+/* The supplied artwork already includes the desktop headline. */
+.glass-site.is-about {
+  --site-header-height: 190px;
+}
+.about-banner {
+  position: relative;
+  margin-top: calc(-1 * var(--site-header-height));
+  overflow: hidden;
+  background: #174a2b;
+  color: #fff;
+}
+.about-banner-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
+.about-banner-inner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(680px, 45vw, 860px);
+  padding-top: calc(var(--site-header-height) + 40px);
+  padding-bottom: 38px;
+}
+.glass-site .about-banner-link {
+  background: #eef6e4dc;
+  border: 1px solid #ffffff99;
+  border-radius: 14px;
+  box-shadow:
+    0 8px 24px #0b2b2426,
+    inset 0 1px 0 #fff8;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-weight: 650;
+}
+#our-purpose {
+  /* The document already contributes 145px of scroll padding. */
+  scroll-margin-top: max(0px, calc(var(--site-header-height) + 20px - 145px));
+}
+@media (min-width: 901px) {
+  .about-banner-copy > :is(h1, .about-banner-description) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+@media (max-width: 900px) {
+  .glass-site.is-about {
+    --site-header-height: 140px;
+  }
+  .about-banner-photo {
+    height: max(calc(var(--site-header-height) + 285px), 75vw);
+    object-position: right center;
+  }
+  .about-banner-inner {
+    display: block;
+    min-height: 0;
+    padding-top: max(
+      calc(var(--site-header-height) + 250px),
+      calc(75vw - 35px)
+    );
+    padding-bottom: 38px;
+  }
+  .about-banner-copy {
+    position: relative;
+    width: min(100%, 600px);
+    padding: 28px;
+    margin-inline: auto;
+    border: 1px solid #ffffff52;
+    border-radius: 22px;
+    background: linear-gradient(125deg, #ffffff0c, transparent 65%), #174a2be6;
+    box-shadow:
+      0 16px 46px #143b2226,
+      inset 0 1px 0 #ffffff12;
+    backdrop-filter: blur(16px) saturate(110%);
+    -webkit-backdrop-filter: blur(16px) saturate(110%);
+  }
+  .glass-site.is-about #main-content .about-banner-copy h1 {
+    color: #fff;
+    font-size: clamp(30px, 5.3vw, 46px);
+    line-height: 1.15;
+    margin: 0 0 18px;
+  }
+  .about-banner-copy h1 span {
+    color: #d0e7a4;
+  }
+  .glass-site.is-about #main-content .about-banner-description {
+    margin: 0 0 24px;
+    color: #e2edda;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+@media (max-width: 600px) {
+  #our-purpose {
+    scroll-margin-top: max(0px, calc(var(--site-header-height) + 20px - 105px));
+  }
+  .about-banner-copy {
+    padding: 25px 22px;
+  }
+  .glass-site.is-about #main-content .about-banner-copy h1 {
+    font-size: 34px;
+  }
+}
+@media (max-width: 370px) {
+  .glass-site.is-about #main-content .about-banner-copy h1 {
+    font-size: 30px;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .about-banner-copy {
+    background: #174a2b;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .glass-site .about-banner-link {
+    background: #eef6e4;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

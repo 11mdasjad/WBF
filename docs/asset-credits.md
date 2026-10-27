@@ -113,3 +113,7 @@ The Our Work focus-area section also reuses photographic regions from `/images/f
 ### Shared homepage header and landscape banner
 
 - `public/images/community-landscape-banner.png`: User-supplied image `eaa6199f-e43c-4522-8cc0-dadc86e9e000.png` (1672 × 941), copied unchanged at the user's request. Displayed as one continuous image behind the homepage header and opening banner. This is illustrative artwork, not evidence of a WBF event.
+
+### About community banner
+
+`public/images/about-community-banner.png` is the image supplied by the user on 28 October 2026 (`014c21fe-5d0f-44be-a898-5e9e97f21c1e.png`), copied without pixel edits. The supplied headline is preserved on desktop, with equivalent accessible HTML text and a responsive glass text panel on smaller screens. Provenance beyond the user-provided artwork is not asserted.

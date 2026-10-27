@@ -245,7 +245,12 @@ export function Site({
   } else screen = <Utility page={page} />;
   return (
     <SiteProvider data={data}>
-      <div className={"glass-site" + (page === "home" ? " is-home" : "")}>
+      <div
+        className={
+          "glass-site" +
+          (page === "home" ? " is-home" : page === "about" ? " is-about" : "")
+        }
+      >
         <Header path={path} />
         <main id="main-content">{screen}</main>
         <Footer />

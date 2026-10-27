@@ -40,37 +40,31 @@ export function About() {
   const { organization: o } = useSite();
   return (
     <>
-      <section className="our-story-hero" aria-labelledby="our-story-title">
-        <div className="our-story-visual" aria-hidden="true">
-          <img
-            src="/images/community.jpg"
-            alt="Children gathered for a group activity — illustrative photograph"
-            loading="lazy"
-          />
-        </div>
-        <div className="our-story-panel" aria-hidden="true" />
-        <div className="container our-story-content">
-          <nav className="our-story-breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">Our Story</span>
-          </nav>
-          <p className="our-story-eyebrow">
-            OUR STORY <span />
-          </p>
-          <h1 id="our-story-title">
-            People at the heart
-            <br />
-            <em>of change.</em>
-          </h1>
-
-          <p className="our-story-description">
-            A shared belief in dignity. A commitment to work alongside
-            communities.
-          </p>
+      <section className="about-banner" aria-labelledby="our-story-title">
+        <img
+          className="about-banner-photo"
+          src="/images/about-community-banner.png"
+          width={2048}
+          height={768}
+          alt="Children and a volunteer gathered for a community activity"
+          fetchPriority="high"
+        />
+        <div className="about-banner-inner container">
+          <div className="about-banner-copy">
+            <h1 id="our-story-title">
+              People at the heart <span>of change.</span>
+            </h1>
+            <p className="about-banner-description">
+              A shared belief in dignity. A commitment to work alongside
+              communities.
+            </p>
+            <a className="button light about-banner-link" href="#our-purpose">
+              Explore our story <ArrowRight size={17} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
-      <section className="about-purpose-section">
+      <section id="our-purpose" className="about-purpose-section">
         <div className="container intro-section about-purpose-grid">
           <div className="intro-copy">
             <p className="eyebrow">

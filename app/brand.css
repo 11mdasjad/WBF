@@ -1,0 +1,205 @@
+/* Greens sampled from the WBF logo; darker variants keep text readable. */
+:root {
+  --brand-green: #2f8b5f;
+  --brand-leaf: #74a622;
+  --brand-lime: #8dc23e;
+  --brand-action: #26773c;
+  --brand-deep: #1b6837;
+  --brand-soft: #edf5e4;
+  --forest: #235c36;
+  --forest-dark: #174a2b;
+  --terra: var(--brand-action);
+  --terra-dark: #1c5e2f;
+}
+.glass-site,
+.admin-app {
+  --forest: #235c36;
+  --forest-dark: #174a2b;
+  --terra: var(--brand-action);
+  --terra-dark: #1c5e2f;
+  --portal-green: var(--brand-green);
+  --sage: var(--brand-soft);
+  --line: #d6e5d2;
+  --glass-shadow: 0 14px 38px #26773c12, inset 0 1px 0 #fff;
+  background: linear-gradient(
+    125deg,
+    #e2efe3,
+    #f6f9ef 36%,
+    #eaf3dd 70%,
+    #edf5e9
+  );
+}
+.glass-site .wbf-masthead {
+  --nav-glass: rgba(27, 104, 55, 0.9);
+  --nav-edge: #d9efba40;
+}
+.glass-site .portal-utility {
+  background: #174a2b66;
+}
+.glass-site .masthead-donate {
+  background-color: #74a62238;
+  border-color: #b4d58180;
+}
+.glass-site .masthead-search:focus-within {
+  border-color: #cde5a8;
+  box-shadow: 0 0 0 3px #8dc23e29;
+}
+.glass-site .masthead-nav-label > button[aria-expanded="true"],
+.glass-site
+  .masthead-dropdown
+  > a:is(:hover, :focus-visible, [aria-current="page"]) {
+  background-color: #a9cf701c;
+}
+.glass-site :is(.button, .banner-primary):not(.light):not(.secondary) {
+  background: var(--brand-action);
+  border-color: var(--brand-action);
+  color: #fff;
+}
+.glass-site :is(.button, .banner-primary):not(.light):not(.secondary):hover {
+  background: #1c5e2f;
+  border-color: #1c5e2f;
+}
+.glass-site :is(.button.light, .button.secondary) {
+  color: #235c36;
+}
+.glass-site :is(.text-link, .portal-all-link) {
+  color: var(--brand-action);
+}
+.glass-site :is(.text-link, .portal-all-link):hover {
+  color: #1c5e2f;
+}
+.glass-site #main-content :is(.eyebrow, .community-callout-eyebrow),
+.glass-site .work-focus-heading h2 em,
+.glass-site .community-callout h2 span {
+  color: var(--brand-action);
+}
+.glass-site :is(.program-card, .work-focus-card) {
+  --card-accent: var(--brand-action);
+  --card-tint: #e7f1da;
+  --card-outline: #c8ddb2;
+}
+.glass-site .portal-hero-copy {
+  background: #1b68378c;
+  border-color: #d4e8b952;
+}
+.glass-site .portal-hero-shade {
+  background: linear-gradient(
+    90deg,
+    #174a2be0,
+    #235c367d 42%,
+    #2f8b5f12 70%,
+    transparent
+  );
+}
+.glass-site :is(.portal-hero-stage, .portal-hero-controls button.selected) {
+  background: var(--brand-deep);
+}
+.glass-site .portal-photo-note {
+  background: #1b6837bd;
+}
+.glass-site :is(.portal-pathfinder, .community-callout-action) {
+  background: linear-gradient(130deg, #26773cef, #1b6837f2);
+  border-color: #a5cf7b66;
+}
+.glass-site .portal-account-band {
+  background: linear-gradient(115deg, #26773c, #226d36 65%, #347a39);
+  border-color: #a5cf7b66;
+}
+.glass-site .portal-discovery {
+  background: #deedce6b;
+}
+.glass-site .community-callout {
+  background: linear-gradient(115deg, #e3efda, #f4f8ed 52%, #e1efe1);
+}
+.glass-site .community-callout-action > .button {
+  background: #e9f3d8;
+  border-color: #d6e8bc;
+  color: #235c36;
+}
+.glass-site .community-callout-action > .button:hover {
+  background: #f3fae9;
+}
+.glass-site
+  #main-content
+  :is(.portal-hero-copy, .portal-pathfinder, .portal-account-band)
+  .eyebrow,
+.glass-site #main-content .community-callout-kicker {
+  color: #d6ebb5;
+}
+.glass-site .work-hero-shade {
+  background: linear-gradient(90deg, #174a2be6, #1b683780 48%, #26773c08);
+}
+.glass-site .our-story-panel {
+  background: linear-gradient(90deg, #174a2bd9, #26773c0d);
+}
+.glass-site
+  :is(
+    .work-hero h1 em,
+    .work-hero-eyebrow,
+    .our-story-content h1 em,
+    .our-story-eyebrow
+  ) {
+  color: #d6ebb5;
+}
+.glass-site .page-hero:not(.with-image),
+.glass-site .profile-banner {
+  background: #e4efdcc9;
+}
+.glass-site .page-hero.with-image {
+  background: #1b6837;
+}
+.glass-site .forest-footer {
+  background: linear-gradient(120deg, #235c36f5, #26773cf5);
+}
+.glass-site .footer-newsletter {
+  background-color: #ffffff0d;
+}
+.glass-site :is(a, button, select, input, textarea):focus-visible {
+  outline-color: var(--brand-leaf);
+}
+.glass-site .wbf-masthead :is(a, button):focus-visible,
+.glass-site .community-callout-action a:focus-visible {
+  outline-color: #d6ebb5;
+}
+.admin-app .admin-sidebar {
+  background: linear-gradient(155deg, #235c36f5, #26773cf5);
+}
+@media (max-width: 600px) {
+  .glass-site .portal-hero-copy {
+    background: #1b6837e0;
+  }
+  .glass-site .work-hero-shade {
+    background:
+      linear-gradient(90deg, #174a2bec, #1b683799),
+      linear-gradient(0deg, #174a2bde, transparent 85%);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .navigation-backdrop,
+  .glass-site .masthead-nav,
+  .glass-site .masthead-dropdown,
+  .glass-site .masthead-nav-item > .masthead-dropdown,
+  .glass-site .portal-hero-copy {
+    background: var(--brand-deep);
+  }
+}
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .navigation-backdrop,
+  .glass-site .masthead-nav,
+  .glass-site .masthead-dropdown,
+  .glass-site .masthead-nav-item > .masthead-dropdown {
+    background: var(--brand-deep);
+  }
+}
+.glass-site #main-content .community-callout .eyebrow,
+.glass-site #main-content h2 em {
+  color: var(--brand-action);
+}
+.glass-site
+  #main-content
+  :is(.page-hero.with-image, .auth-story, .cta-inner, .approach-copy)
+  .eyebrow {
+  color: #d6ebb5;
+}

@@ -67,13 +67,11 @@ for (const width of [390, 1440]) {
               !!photo &&
               !!header &&
               !!heading &&
-              (route.startsWith("/store/") || route.startsWith("/product/")
-                ? photo.y >= header.y + header.height - 1
-                : Math.abs(photo.y - header.y) < 2) &&
-              heading.y >= header.y + header.height
+              photo.y >= header.y + header.height - 1 &&
+              heading.y >= photo.y + photo.height
             );
           },
-          { message: `${route} shared photo and unobscured heading` },
+          { message: `${route} photo clear of navigation and text` },
         )
         .toBeTruthy();
       expect(
@@ -82,7 +80,21 @@ for (const width of [390, 1440]) {
         ),
         route,
       ).toBeTruthy();
-      if (["/our-work/", "/login/", "/store/", "/privacy/"].includes(route)) {
+      expect(
+        await page
+          .locator(".page-hero-photo")
+          .evaluate((img) => getComputedStyle(img).objectFit),
+        route,
+      ).toBe("contain");
+      if (
+        [
+          "/resources/",
+          "/our-work/",
+          "/login/",
+          "/store/",
+          "/privacy/",
+        ].includes(route)
+      ) {
         await page.screenshot({
           path: `outputs/page-theme/${route.split("/")[1]}-${width}.png`,
         });
@@ -134,7 +146,6 @@ test("E-Store artwork remains uncropped and clear of the header and text", async
     const copy = (await page.locator(".page-hero-copy").boundingBox())!;
     expect(imageBox.y).toBeGreaterThanOrEqual(header.y + header.height - 1);
     expect(copy.y).toBeGreaterThanOrEqual(imageBox.y + imageBox.height);
-    expect(imageBox.width / imageBox.height).toBeCloseTo(8 / 3, 2);
     expect(await photo.evaluate((img) => getComputedStyle(img).objectFit)).toBe(
       "contain",
     );

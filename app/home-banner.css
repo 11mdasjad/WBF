@@ -1,126 +1,74 @@
-/* Photography continues beneath the shared glass header on public pages. */
-.glass-site.is-home {
-  --site-header-height: 166px;
-}
+/* Complete artwork sits below navigation; copy never covers the image. */
 .glass-site.is-home .portal-hero {
-  margin-top: calc(-1 * var(--site-header-height));
+  margin-top: 0;
 }
 .glass-site.is-home .portal-hero-stage {
-  background: #174a2b;
+  background: linear-gradient(120deg, #174a2b, #286646);
 }
 .glass-site.is-home .portal-hero-photo {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  display: block;
+  inset: auto;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  max-height: 640px;
+  object-fit: contain;
+  opacity: 1;
 }
 .glass-site.is-home .portal-hero-shade {
-  background:
-    linear-gradient(90deg, #12371f08 30%, #12371f1a 70%, #12371f33),
-    linear-gradient(0deg, #12371f26, transparent 40%);
+  display: none;
 }
 .glass-site.is-home .portal-hero-inner {
-  min-height: clamp(730px, 56.3vw, 1000px);
-  padding-top: calc(var(--site-header-height) + 42px);
-  padding-bottom: 80px;
-  align-items: center;
-  justify-content: flex-end;
+  display: block;
+  min-height: 0;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 .glass-site.is-home .portal-hero-copy {
-  width: min(560px, 49%);
-  padding: 30px;
-  background: linear-gradient(125deg, #ffffff0c, transparent 65%), #174a2bd9;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 40px;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 28px;
+  background: #ffffff0a;
   border: 1px solid #ffffff52;
+  border-radius: 24px;
   box-shadow:
     0 16px 46px #143b2226,
     inset 0 1px 0 #ffffff12;
-  backdrop-filter: blur(16px) saturate(110%);
-  -webkit-backdrop-filter: blur(16px) saturate(110%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.glass-site.is-home .portal-hero-copy > .eyebrow,
+.glass-site.is-home .portal-hero-actions {
+  grid-column: 1 / -1;
+  margin: 0;
 }
 .glass-site.is-home #main-content .portal-hero-copy h1 {
-  font-size: clamp(36px, 3.3vw, 52px);
+  margin: 0;
+  font-size: clamp(30px, 2.8vw, 42px);
+}
+.glass-site.is-home .portal-hero-description {
+  margin: 0;
 }
 .glass-site.is-home .portal-photo-note {
-  right: 0;
-  bottom: 18px;
-  top: auto;
-  background: #174a2bbf;
+  position: static;
+  display: inline-block;
+  margin-top: 14px;
+  background: #174a2b;
 }
-.glass-site:is(.is-home, .is-about, .is-interior)
-  .wbf-masthead:not([data-scrolled="true"]) {
-  box-shadow: none;
-  border-bottom-color: #ffffff29;
+/* Keep navigation green even when the artwork starts below it. */
+.glass-site .wbf-masthead:not([data-scrolled="true"]) .navigation-backdrop {
+  background: linear-gradient(120deg, #174a2bf5, #286646ed);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-.glass-site:is(.is-home, .is-about, .is-interior)
-  .wbf-masthead:not([data-scrolled="true"])
-  .navigation-backdrop {
-  background: linear-gradient(180deg, #103c24b3, #103c2499);
-  backdrop-filter: blur(10px) saturate(110%);
-  -webkit-backdrop-filter: blur(10px) saturate(110%);
-}
-.glass-site:is(.is-home, .is-about, .is-interior)
-  .wbf-masthead:not([data-scrolled="true"])
-  .masthead-nav {
-  background-color: #174a2b0d;
-  border-top-color: #ffffff26;
-}
-@media (min-width: 901px) and (max-width: 1360px) {
-  .glass-site.is-home {
-    --site-header-height: 148px;
-  }
-}
-@media (min-width: 601px) and (max-width: 900px) {
-  .glass-site.is-home {
-    --site-header-height: 88px;
-  }
-  .glass-site.is-home .portal-hero-inner {
-    min-height: 770px;
-    padding-bottom: 55px;
-  }
+@media (max-width: 700px) {
   .glass-site.is-home .portal-hero-copy {
-    width: min(500px, 68%);
-  }
-  .glass-site.is-home .portal-hero-photo {
-    object-position: 38% center;
-  }
-}
-@media (max-width: 600px) {
-  .glass-site.is-home {
-    --site-header-height: 71px;
-  }
-  .glass-site.is-home .portal-hero-photo {
-    height: calc(var(--site-header-height) + 285px);
-    object-position: 38% center;
-  }
-  .glass-site.is-home .portal-hero-shade {
-    height: calc(var(--site-header-height) + 286px);
-    background: linear-gradient(0deg, #174a2b, transparent 20%);
-  }
-  .glass-site.is-home .portal-hero-inner {
-    display: block;
-    min-height: 0;
-    padding-top: calc(var(--site-header-height) + 250px);
-    padding-bottom: 46px;
-  }
-  .glass-site.is-home .portal-hero-copy {
-    width: 100%;
-    margin: 0;
-    padding: 25px 22px;
-    background: #174a2be6;
-  }
-  .glass-site.is-home #main-content .portal-hero-copy h1 {
-    font-size: 34px;
-  }
-  .glass-site.is-home .portal-photo-note {
-    bottom: 12px;
-    font-size: 9px;
-  }
-}
-@media (max-width: 370px) {
-  .glass-site.is-home {
-    --site-header-height: 61px;
+    grid-template-columns: 1fr;
+    padding: 24px 22px;
   }
   .glass-site.is-home #main-content .portal-hero-copy h1 {
     font-size: 30px;
@@ -128,21 +76,9 @@
 }
 @media (prefers-reduced-transparency: reduce) {
   .glass-site.is-home .portal-hero-copy,
-  .glass-site:is(.is-home, .is-about, .is-interior)
-    .wbf-masthead:not([data-scrolled="true"])
-    .navigation-backdrop {
+  .glass-site .wbf-masthead:not([data-scrolled="true"]) .navigation-backdrop {
     background: #174a2b;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-  }
-}
-@supports not (
-  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
-) {
-  .glass-site.is-home .portal-hero-copy,
-  .glass-site:is(.is-home, .is-about, .is-interior)
-    .wbf-masthead:not([data-scrolled="true"])
-    .navigation-backdrop {
-    background: #174a2bed;
   }
 }

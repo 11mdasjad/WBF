@@ -117,19 +117,19 @@
   display: none;
 }
 .glass-site .masthead-nav-label {
-  border: 0;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
+  border: 1px solid transparent;
+  border-radius: 16px;
   color: var(--nav-ink);
   transition:
     background-color 160ms ease,
-    border-color 160ms ease;
+    border-color 160ms ease,
+    box-shadow 160ms ease;
 }
 .glass-site .masthead-nav-label > a {
-  padding: 12px 8px;
+  padding: 12px 14px;
   color: inherit;
-  font-size: 15px;
-  font-weight: 550;
+  font-size: 17px;
+  font-weight: 650;
 }
 .glass-site .masthead-nav-label > button {
   margin-right: 3px;
@@ -140,9 +140,13 @@
 .glass-site .masthead-nav-label:focus-within,
 .glass-site .masthead-nav-item.is-active > .masthead-nav-label {
   color: #fff;
-  background: #ffffff10;
-  border-bottom-color: #cde5a8;
-  box-shadow: none;
+  background: linear-gradient(135deg, #ffffff28, #ffffff0d);
+  border-color: #ffffff50;
+  box-shadow:
+    inset 0 1px 0 #ffffff33,
+    0 5px 16px #102e2320;
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
 }
 .glass-site .masthead-nav-label > button[aria-expanded="true"] {
   background: #26773c0d;
@@ -544,5 +548,61 @@
     min-height: 44px;
     padding: 9px 12px;
     font-size: 13px;
+  }
+}
+
+/* Emphasize header content without changing the logo or wordmark. */
+.glass-site .brand-classification {
+  font-weight: 600;
+}
+.glass-site .masthead-dropdown > a {
+  font-size: 15px;
+  font-weight: 600;
+}
+.glass-site .masthead-actions > .header-action {
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 16px;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+.glass-site .masthead-actions > .header-action:is(:hover, :focus-visible) {
+  color: #fff;
+  background: linear-gradient(135deg, #ffffff30, #ffffff12);
+  border-color: #ffffff80;
+  box-shadow:
+    inset 0 1px 0 #ffffff40,
+    0 5px 18px #102e2326;
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+}
+@media (min-width: 1200px) {
+  .glass-site .brand-classification {
+    font-size: 16px;
+    max-width: 145px;
+  }
+}
+@media (max-width: 900px) {
+  .glass-site .masthead-nav-label {
+    border-radius: 14px;
+  }
+  .glass-site .masthead-actions > .header-action {
+    font-size: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glass-site .masthead-actions > .header-action {
+    transition: none;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass-site .masthead-nav-label:is(:hover, :focus-within),
+  .glass-site .masthead-nav-item.is-active > .masthead-nav-label,
+  .glass-site .masthead-actions > .header-action:is(:hover, :focus-visible) {
+    background: #276b47;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }

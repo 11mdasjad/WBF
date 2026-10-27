@@ -71,7 +71,7 @@ export function Site({
   }, []);
   if (page === "admin")
     return (
-      <SiteProvider data={data}>
+      <SiteProvider data={data} path={path}>
         <Admin section={parts[1] || "overview"} />
       </SiteProvider>
     );
@@ -193,7 +193,18 @@ export function Site({
     ].includes(page)
   )
     screen = <AuthForm mode={page} />;
-  else if (page === "user") screen = <Account />;
+  else if (page === "user")
+    screen = (
+      <>
+        <PageHero
+          eyebrow="YOUR WBF COMMUNITY"
+          title="Your place in the community."
+          description="Manage your applications, contributions and account details."
+          compact
+        />
+        <Account />
+      </>
+    );
   else if (page === "donate" || page === "donate-now") screen = <DonateForm />;
   else if (page === "contact" || page === "csr-partnerships")
     screen = <Contact partnership={page === "csr-partnerships"} />;
@@ -244,11 +255,15 @@ export function Site({
     );
   } else screen = <Utility page={page} />;
   return (
-    <SiteProvider data={data}>
+    <SiteProvider data={data} path={path}>
       <div
         className={
           "glass-site" +
-          (page === "home" ? " is-home" : page === "about" ? " is-about" : "")
+          (page === "home" && !custom
+            ? " is-home"
+            : page === "about" && !custom
+              ? " is-about"
+              : " is-interior")
         }
       >
         <Header path={path} />

@@ -177,62 +177,22 @@ export function Work() {
   const { content } = useSite();
   return (
     <>
-      <section className="work-hero" aria-labelledby="work-hero-title">
-        <img
-          className="work-hero-photo"
-          src="/images/education.jpg"
-          alt="Students writing in their notebooks in a classroom — illustrative photograph"
-          fetchPriority="high"
-        />
-        <div className="work-hero-shade" aria-hidden="true" />
-
-        <div className="container work-hero-content">
-          <nav className="work-hero-breadcrumb" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">Our Work</span>
-          </nav>
-          <p className="work-hero-eyebrow">
-            OUR WORK <span />
-          </p>
-          <h1 id="work-hero-title">
-            Many ways to make
-            <br />a <em>difference.</em>
-          </h1>
-          <p className="work-hero-description">
-            Eight connected focus areas. Practical action. People at the centre.
-          </p>
-          <ul className="work-hero-pillars" aria-label="Our work at a glance">
-            {[
-              {
-                Icon: BookOpen,
-                title: "Education",
-                detail: "Brighter futures",
-              },
-              {
-                Icon: HeartPulse,
-                title: "Health",
-                detail: "Stronger communities",
-              },
-              {
-                Icon: Sprout,
-                title: "Livelihood",
-                detail: "Sustainable change",
-              },
-            ].map(({ Icon, title, detail }) => (
-              <li key={title}>
-                <span>
-                  <strong>{title}</strong>
-                  <small>{detail}</small>
-                </span>
-              </li>
-            ))}
-          </ul>
-          <a className="work-hero-button" href="#work-focus-areas">
-            Explore Our Work <ArrowRight size={22} aria-hidden="true" />
-          </a>
+      <PageHero
+        eyebrow="OUR WORK"
+        title="Many ways to make a difference."
+        description="Eight connected focus areas. Practical action. People at the centre."
+        image="/images/education.jpg"
+        imageAlt="Students learning in a classroom — illustrative photograph"
+      >
+        <div className="page-hero-topics">
+          <span>Education</span>
+          <span>Health</span>
+          <span>Livelihood</span>
         </div>
-      </section>
+        <a className="button light" href="#work-focus-areas">
+          Explore Our Work <ArrowRight size={18} aria-hidden="true" />
+        </a>
+      </PageHero>
       <section
         className="section work-focus-areas"
         id="work-focus-areas"
@@ -940,33 +900,13 @@ export function Resources({ page }: { page: string }) {
   if (page === "profile")
     return (
       <div className="organization-profile-page">
-        <section className="profile-banner" aria-labelledby="profile-title">
-          <img
-            className="profile-banner-art"
-            src="/images/volunteering.jpg"
-            alt="People bringing their hands together — illustrative photograph"
-            loading="lazy"
-          />
-          <div className="container">
-            <nav className="profile-breadcrumb" aria-label="Breadcrumb">
-              <a href="/">Home</a>
-              <span>/</span>
-              <a href="/resources/">Resources &amp; Transparency</a>
-              <span>/</span>
-              <span aria-current="page">Organization Profile</span>
-            </nav>
-            <p className="eyebrow">RESOURCES &amp; TRANSPARENCY</p>
-            <h1 id="profile-title">
-              Organization
-              <br />
-              Profile
-            </h1>
-            <p className="profile-banner-description">
-              A clearer view of the foundation, its work, and its publicly
-              available information.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="RESOURCES & TRANSPARENCY"
+          title="Organization Profile"
+          description="A clearer view of the foundation, its work, and its publicly available information."
+          image="/images/volunteering.jpg"
+          compact
+        />
         <section
           className="profile-overview container"
           aria-labelledby="profile-overview-title"
@@ -1322,7 +1262,7 @@ export function Utility({ page }: { page: string }) {
                 <p>
                   Accounts store your name, email, optional phone number and a
                   password hash. Applications, contact messages, donation
-                  records and store inquiries are saved so authorized staff can
+                  records and E-Store inquiries are saved so authorized staff can
                   review and respond to them.
                 </p>
                 <h2>Control and access</h2>

@@ -1,4 +1,4 @@
-/* Homepage and About artwork extend beneath their shared glass header. */
+/* Photography continues beneath the shared glass header on public pages. */
 .glass-site.is-home {
   --site-header-height: 166px;
 }
@@ -48,18 +48,19 @@
   top: auto;
   background: #174a2bbf;
 }
-.glass-site:is(.is-home, .is-about) .wbf-masthead:not([data-scrolled="true"]) {
+.glass-site:is(.is-home, .is-about, .is-interior)
+  .wbf-masthead:not([data-scrolled="true"]) {
   box-shadow: none;
   border-bottom-color: #ffffff29;
 }
-.glass-site:is(.is-home, .is-about)
+.glass-site:is(.is-home, .is-about, .is-interior)
   .wbf-masthead:not([data-scrolled="true"])
   .navigation-backdrop {
   background: linear-gradient(180deg, #103c24b3, #103c2499);
   backdrop-filter: blur(10px) saturate(110%);
   -webkit-backdrop-filter: blur(10px) saturate(110%);
 }
-.glass-site:is(.is-home, .is-about)
+.glass-site:is(.is-home, .is-about, .is-interior)
   .wbf-masthead:not([data-scrolled="true"])
   .masthead-nav {
   background-color: #174a2b0d;
@@ -127,7 +128,7 @@
 }
 @media (prefers-reduced-transparency: reduce) {
   .glass-site.is-home .portal-hero-copy,
-  .glass-site:is(.is-home, .is-about)
+  .glass-site:is(.is-home, .is-about, .is-interior)
     .wbf-masthead:not([data-scrolled="true"])
     .navigation-backdrop {
     background: #174a2b;
@@ -139,7 +140,7 @@
   (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
 ) {
   .glass-site.is-home .portal-hero-copy,
-  .glass-site:is(.is-home, .is-about)
+  .glass-site:is(.is-home, .is-about, .is-interior)
     .wbf-masthead:not([data-scrolled="true"])
     .navigation-backdrop {
     background: #174a2bed;

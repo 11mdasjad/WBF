@@ -88,7 +88,7 @@ export function Store({ slug }: { slug?: string }) {
   return (
     <>
       <PageHero
-        eyebrow="THE WBF STORE"
+        eyebrow="THE WBF E-STORE"
         title={product ? product.title : "Made by hand. Made with purpose."}
         description="Explore thoughtful, handcrafted pieces. Find something you love and connect with our team."
         compact

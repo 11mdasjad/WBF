@@ -196,7 +196,9 @@ export function Header({ path }: { path: string }) {
                       >
                         {href === "/" && <Home size={17} />}
                         {href === "/store/" && <ShoppingBag size={16} />}
-                        {label}
+                        {href.replace(/\/$/, "") === "/store"
+                          ? "E-Store"
+                          : label}
                       </a>
                       {children && (
                         <button
@@ -252,7 +254,7 @@ const footerGroups = [
     ["Internships & careers", "/careers/"],
     ["Partner with us", "/csr-partnerships/"],
     ["Donate", "/donate/"],
-    ["Shop with purpose", "/store/"],
+    ["E-Store", "/store/"],
   ],
   [
     "Stay connected",

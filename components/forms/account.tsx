@@ -89,7 +89,7 @@ export function Account() {
           ["Overview", User],
           ["Applications", ClipboardList],
           ["Donations", Heart],
-          ["Store inquiries", ShoppingBag],
+          ["E-Store inquiries", ShoppingBag],
           ["Settings", Settings],
         ].map(([label, Icon]: any) => (
           <button
@@ -122,11 +122,11 @@ export function Account() {
       </aside>
       <div className="account-content">
         <p className="eyebrow">YOUR WBF COMMUNITY</p>
-        <h1>
+        <h2>
           {tab === "Overview"
             ? "Good to see you, " + user.name.split(" ")[0] + "."
             : tab}
-        </h1>
+        </h2>
         {error && <Notice error>{error}</Notice>}
         {message && <Notice>{message}</Notice>}
         {!user.verified && (
@@ -298,7 +298,7 @@ export function Account() {
               label="Visit donations"
             />
           )
-        ) : tab === "Store inquiries" ? (
+        ) : tab === "E-Store inquiries" ? (
           data.orders.length ? (
             data.orders.map((o: any) => (
               <div className="account-record record-heading" key={o.id}>
@@ -313,10 +313,10 @@ export function Account() {
             ))
           ) : (
             <Empty
-              title="No store inquiries yet"
-              text="Explore handcrafted products in the store."
+              title="No E-Store inquiries yet"
+              text="Explore handcrafted products in the E-Store."
               href="/store/"
-              label="Browse the store"
+              label="Browse the E-Store"
             />
           )
         ) : (

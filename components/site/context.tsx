@@ -11,9 +11,11 @@ export type SiteData = {
 const Context = createContext<any>(null);
 export function SiteProvider({
   data,
+  path = "/",
   children,
 }: {
   data: SiteData;
+  path?: string;
   children: React.ReactNode;
 }) {
   const [user, setUser] = useState<any>(null),
@@ -31,13 +33,14 @@ export function SiteProvider({
     refreshUser();
   }, []);
   return (
-    <Context.Provider value={{ ...data, user, authLoading, refreshUser }}>
+    <Context.Provider value={{ ...data, path, user, authLoading, refreshUser }}>
       {children}
     </Context.Provider>
   );
 }
 export const useSite = () =>
   useContext(Context) as SiteData & {
+    path: string;
     user: any;
     authLoading: boolean;
     refreshUser: () => Promise<any>;

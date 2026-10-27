@@ -88,7 +88,7 @@ export const navigation = [
   ["Events", "/events/"],
   ["Get Involved", "/get-involved/"],
   ["Resources", "/resources/"],
-  ["Store", "/store/"],
+  ["E-Store", "/store/"],
 ] as const;
 export const contentKinds = [
   "page",
@@ -174,7 +174,7 @@ export const routeTitles: Record<string, string> = {
   faq: "Frequently Asked Questions",
   accessibility: "Accessibility",
   profile: "Organization Profile",
-  store: "Made with Purpose",
+  store: "E-Store · Made with Purpose",
   login: "Welcome Back",
   register: "Join the Community",
   "forgot-password": "Reset Your Password",

@@ -1,4 +1,5 @@
 "use client";
+import { pageBanner } from "@/lib/page-banners";
 import { useId, cloneElement, isValidElement } from "react";
 import {
   ArrowUpRight,
@@ -58,7 +59,9 @@ export function Brand({
       <img src="/brand/wbf-logo.png" width="88" height="88" alt="" />
       <span className="brand-wordmark">
         {full && (
-          <span className="brand-classification">Non profitable organization</span>
+          <span className="brand-classification">
+            Non profitable organization
+          </span>
         )}
         <strong>WBF</strong>
         <small>Well Being Foundation</small>
@@ -130,35 +133,52 @@ export function PageHero({
   title,
   description,
   image,
+  imageAlt,
   compact = false,
+  children,
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   compact?: boolean;
+  children?: React.ReactNode;
 }) {
+  const { path } = useSite();
+  const fallback = pageBanner(path);
+  const photo = authenticPhoto(image, fallback.image);
+  const headingId = useId();
   return (
     <section
-      className={
-        "page-hero " + (image ? "with-image " : "") + (compact ? "compact" : "")
-      }
+      className={"page-hero with-image" + (compact ? " compact" : "")}
+      aria-labelledby={headingId}
     >
-      {image && (
-        <img
-          src={authenticPhoto(image)}
-          alt="Illustrative community photography"
-        />
-      )}
-      <div className="container">
-        <div className="breadcrumbs">
-          <a href="/">Home</a>
-          <span>/</span>
-          <span>{eyebrow || title}</span>
+      <img
+        className="page-hero-photo"
+        src={photo}
+        alt={
+          imageAlt || (image ? "Community programme photograph" : fallback.alt)
+        }
+        fetchPriority="high"
+        onError={(event) => {
+          if (event.currentTarget.getAttribute("src") !== fallback.image)
+            event.currentTarget.src = fallback.image;
+        }}
+      />
+      <div className="page-hero-shade" aria-hidden="true" />
+      <div className="container page-hero-inner">
+        <div className="page-hero-copy">
+          <nav className="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{eyebrow || title}</span>
+          </nav>
+          <p className="eyebrow">{eyebrow || "Well Being Foundation"}</p>
+          <h1 id={headingId}>{title}</h1>
+          {description && <p className="hero-description">{description}</p>}
+          {children && <div className="page-hero-extras">{children}</div>}
         </div>
-        <p className="eyebrow">{eyebrow || "Well Being Foundation"}</p>
-        <h1>{title}</h1>
-        {description && <p className="hero-description">{description}</p>}
       </div>
     </section>
   );

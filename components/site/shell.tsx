@@ -110,6 +110,7 @@ export function Header({ path }: { path: string }) {
         Skip to content
       </a>
       <header className="wbf-masthead" ref={root}>
+        <div className="navigation-backdrop" aria-hidden="true" />
         <div className="portal-utility">
           <div>
             <span>Well Being Foundation</span>

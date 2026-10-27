@@ -345,21 +345,46 @@ export function StoryCards({
 export function CTABand() {
   const titleId = useId();
   return (
-    <section className="cta-band" aria-labelledby={titleId}>
-      <div className="container cta-inner">
-        <div className="cta-copy">
+    <section className="community-callout" aria-labelledby={titleId}>
+      <div className="container community-callout-card">
+        <div className="community-callout-copy">
           <p className="eyebrow">
-            A little of your time. A world of possibility.
+            A LITTLE OF YOUR TIME. A WORLD OF POSSIBILITY.
           </p>
-          <h2 id={titleId}>Be part of someone’s tomorrow.</h2>
-          <p>
+          <h2 id={titleId}>
+            Be part of someone’s <span>tomorrow.</span>
+          </h2>
+          <p className="community-callout-description">
             Bring your skills, your compassion, and your belief in a better
             future.
           </p>
+          <nav
+            className="community-callout-paths"
+            aria-label="Ways to contribute"
+          >
+            <a href="/become-a-volunteer/">
+              Give your time <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+            <a href="/volunteering-internships/">
+              Share your skills <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+            <a href="/csr-partnerships/">
+              Partner with us <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </nav>
         </div>
-        <ButtonLink href="/become-a-volunteer/" light>
-          Join our community
-        </ButtonLink>
+        <div className="community-callout-action">
+          <p className="community-callout-kicker">LET’S MAKE A DIFFERENCE</p>
+          <h3>It starts with you.</h3>
+          <p>Discover how you can contribute to the work we do together.</p>
+          <ButtonLink href="/become-a-volunteer/" light>
+            Join our community
+          </ButtonLink>
+          <a className="community-callout-contact" href="/contact/">
+            Have a question? Let’s talk{" "}
+            <ArrowRight size={16} aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </section>
   );

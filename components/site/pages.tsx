@@ -175,28 +175,7 @@ export function About() {
           </ol>
         </div>
       </section>
-      <section
-        className="about-journey-invitation"
-        aria-labelledby="journey-invitation-title"
-      >
-        <div className="container">
-          <div className="journey-invitation-copy">
-            <p className="eyebrow">
-              A LITTLE OF YOUR TIME. A WORLD OF POSSIBILITY.
-            </p>
-            <h2 id="journey-invitation-title">
-              Be part of someone’s tomorrow.
-            </h2>
-            <p>
-              Bring your skills, your compassion, and your belief in a better
-              future.
-            </p>
-          </div>
-          <ButtonLink href="/become-a-volunteer/">
-            Join our community
-          </ButtonLink>
-        </div>
-      </section>
+      <CTABand />
     </>
   );
 }

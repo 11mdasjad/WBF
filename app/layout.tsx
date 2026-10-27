@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./glass.css";
+import "./typography.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://wbf-community.dwellmartuae.chatgpt.site"),
   title: {

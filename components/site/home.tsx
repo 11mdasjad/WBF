@@ -23,7 +23,13 @@ import {
 import { authenticPhoto } from "@/lib/photography";
 import { niceDate } from "@/lib/content";
 import { useSite } from "./context";
-import { ButtonLink, SectionTitle, ProgramGrid, StoryCards } from "./shared";
+import {
+  ButtonLink,
+  SectionTitle,
+  ProgramGrid,
+  StoryCards,
+  CTABand,
+} from "./shared";
 
 export function Home() {
   const { content, organization: o } = useSite();
@@ -621,33 +627,7 @@ export function Home() {
           </nav>
         </div>
       </section>
-      <section
-        className="community-invitation"
-        aria-labelledby="community-invitation-title"
-      >
-        <div className="container invitation-grid">
-          <div className="invitation-copy">
-            <p className="eyebrow">
-              A LITTLE OF YOUR TIME. A WORLD OF POSSIBILITY.
-            </p>
-            <h2 id="community-invitation-title">
-              Be part of someone’s <em>tomorrow.</em>
-            </h2>
-            <p>
-              Bring your skills, your compassion, and your belief in a better
-              future.
-            </p>
-          </div>
-          <div className="invitation-action">
-            <a href="/become-a-volunteer/">
-              Join our community{" "}
-              <span>
-                <ArrowUpRight size={25} />
-              </span>
-            </a>
-          </div>
-        </div>
-      </section>
+      <CTABand />
     </>
   );
 }

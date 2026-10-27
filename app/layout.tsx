@@ -5,6 +5,7 @@ import "./typography.css";
 import "./portal.css";
 import "./navigation.css";
 import "./brand.css";
+import "./home-banner.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://wbf-community.dwellmartuae.chatgpt.site"),
   title: {

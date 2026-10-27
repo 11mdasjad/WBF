@@ -109,3 +109,7 @@ Retrieved unchanged from WBF's public website on 25 October 2026. No generated i
 - `public/images/community-learning-banner-v2.png`: User-supplied replacement `10499cc6-b337-4beb-9696-86677ee8f447.png` (1672 × 941), copied unchanged. Replaces the wider learning photo in the existing split banner.
 
 The Our Work focus-area section also reuses photographic regions from `/images/focus-reference.png` through SVG viewports for its split cards and decorative heading portrait. These are illustrative images, not evidence of specific WBF activities. Headings, descriptions, icons and card links remain native HTML.
+
+### Shared homepage header and landscape banner
+
+- `public/images/community-landscape-banner.png`: User-supplied image `eaa6199f-e43c-4522-8cc0-dadc86e9e000.png` (1672 × 941), copied unchanged at the user's request. Displayed as one continuous image behind the homepage header and opening banner. This is illustrative artwork, not evidence of a WBF event.

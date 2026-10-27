@@ -40,6 +40,47 @@ test("home renders eight programs, photos and real navigation without runtime er
   await expect(page).toHaveURL(/our-work/);
   expect(errors).toEqual([]);
 });
+test("homepage image continues behind the header and sticky navigation remains usable", async ({
+  page,
+}) => {
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    await expect(page.locator(".hero-photo")).toHaveAttribute(
+      "src",
+      "/images/community-landscape-banner.png",
+    );
+    await expect
+      .poll(async () => {
+        const header = await page.getByRole("banner").boundingBox();
+        const photo = await page.locator(".hero-photo").boundingBox();
+        return (
+          !!header &&
+          !!photo &&
+          Math.abs(photo.y - header.y) < 1 &&
+          photo.y + photo.height > header.y + header.height
+        );
+      })
+      .toBeTruthy();
+    await page.evaluate(() => window.scrollTo(0, 500));
+    await expect(page.getByRole("banner")).toHaveAttribute(
+      "data-scrolled",
+      "true",
+    );
+    await page
+      .getByRole("button", { name: "Account menu", exact: true })
+      .click();
+    await expect(
+      page.getByRole("link", { name: "Sign in", exact: true }),
+    ).toBeVisible();
+    await page.keyboard.press("Escape");
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await expect(page.getByRole("banner")).toHaveAttribute(
+      "data-scrolled",
+      "false",
+    );
+  }
+});
 test("header Register stays visible and opens registration across screen sizes", async ({
   page,
 }) => {

@@ -8,7 +8,6 @@ import {
   CalendarDays,
   MapPin,
 } from "lucide-react";
-import { authenticPhoto } from "@/lib/photography";
 import { niceDate } from "@/lib/content";
 import { useSite } from "./context";
 import {
@@ -73,17 +72,21 @@ export function Home() {
       text:
         o.heroText ||
         "Together, we create opportunities for people to learn, thrive and build a better future.",
-      image: authenticPhoto(o.heroImage, "/images/hero.jpg"),
-      alt: "Schoolchildren gathered together — illustrative photograph",
+      image: "/images/community-landscape-banner.png",
+      width: 1672,
+      height: 941,
+      alt: "Community gathering beneath a tree overlooking a lake and mountains — illustrative image",
       link: "/our-work/",
       action: "Explore our work",
-      note: "Illustrative photography",
+      note: "Illustrative image",
     },
     {
       eyebrow: "SKILLS FOR EVERYDAY POSSIBILITY",
       title: "Learning together.\nGrowing with confidence.",
       text: "Discover our work in education, practical skills and opportunities for women and communities.",
       image: "/images/women-skill-training.jpeg",
+      width: 2976,
+      height: 1984,
       alt: "Women practising sewing at a WBF skills training session",
       link: "/focus-areas/women-empowerment/",
       action: "Discover skills programmes",
@@ -109,8 +112,8 @@ export function Home() {
             className="hero-photo portal-hero-photo"
             src={active.image}
             alt={active.alt}
-            width={2400}
-            height={1600}
+            width={active.width}
+            height={active.height}
             fetchPriority="high"
           />
           <div className="portal-hero-shade" aria-hidden="true" />

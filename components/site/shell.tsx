@@ -69,6 +69,7 @@ function HeaderSearch({ mobile = false }: { mobile?: boolean }) {
 }
 export function Header({ path }: { path: string }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
   const root = useRef<HTMLElement>(null);
   const { user, organization: o } = useSite();
@@ -103,13 +104,34 @@ export function Header({ path }: { path: string }) {
       document.removeEventListener("keydown", escape);
     };
   }, [expanded, open]);
+  useEffect(() => {
+    const header = root.current;
+    const site = header?.parentElement;
+    if (!header || !site) return;
+    const measure = () =>
+      site.style.setProperty(
+        "--site-header-height",
+        `${header.getBoundingClientRect().height}px`,
+      );
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(header);
+    const updateScroll = () => setScrolled(window.scrollY > 24);
+    updateScroll();
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateScroll);
+      site.style.removeProperty("--site-header-height");
+    };
+  }, []);
   const toggle = (id: string) => setExpanded(expanded === id ? null : id);
   return (
     <>
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <header className="wbf-masthead" ref={root}>
+      <header className="wbf-masthead" ref={root} data-scrolled={scrolled}>
         <div className="navigation-backdrop" aria-hidden="true" />
         <div className="masthead-bar">
           <Brand full />

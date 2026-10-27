@@ -1,6 +1,13 @@
 "use client";
-import { useState } from "react";
-import { ArrowRight, ArrowUpRight, CalendarDays, MapPin } from "lucide-react";
+import { useRef, useState } from "react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CalendarDays,
+  MapPin,
+  Pause,
+  Play,
+} from "lucide-react";
 import { niceDate } from "@/lib/content";
 import { useSite } from "./context";
 import {
@@ -44,6 +51,8 @@ const pathways = [
 
 export function Home() {
   const { content, organization: o, user } = useSite();
+  const partnerViewport = useRef<HTMLDivElement>(null);
+  const [partnersPaused, setPartnersPaused] = useState(false);
   const [pathway, setPathway] = useState(pathways[0].value);
   const programs = content.filter((x) => x.kind === "program");
   const posts = content.filter((x) => x.kind === "post").slice(0, 3);
@@ -112,31 +121,86 @@ export function Home() {
             <p className="eyebrow">TOGETHER, WE GO FURTHER</p>
             <h2 id="partners-title">Our CSR &amp; Government Partners</h2>
           </div>
-          <ul className="portal-partner-grid">
-            {partners.map(([name, src, url]) => (
-              <li key={name}>
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${name} — official website`}
+          <div className="portal-partner-toolbar">
+            <button
+              type="button"
+              className="portal-partner-pause"
+              aria-label={
+                partnersPaused ? "Resume partner logos" : "Pause partner logos"
+              }
+              aria-pressed={partnersPaused}
+              onClick={() => {
+                if (partnersPaused && partnerViewport.current)
+                  partnerViewport.current.scrollLeft = 0;
+                setPartnersPaused(!partnersPaused);
+              }}
+            >
+              {partnersPaused ? (
+                <Play size={14} aria-hidden="true" />
+              ) : (
+                <Pause size={14} aria-hidden="true" />
+              )}
+              {partnersPaused ? "Resume" : "Pause"}
+            </button>
+          </div>
+          <div
+            className="portal-partner-viewport"
+            ref={partnerViewport}
+            onScroll={(event) => {
+              if (event.currentTarget.scrollLeft > 0) setPartnersPaused(true);
+            }}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget))
+                event.currentTarget.scrollLeft = 0;
+            }}
+            onPointerDown={(event) => {
+              if (event.pointerType === "touch") setPartnersPaused(true);
+            }}
+          >
+            <div className="portal-partner-track" data-paused={partnersPaused}>
+              {[false, true].map((duplicate) => (
+                <ul
+                  className="portal-partner-grid"
+                  key={String(duplicate)}
+                  aria-label={duplicate ? undefined : "Foundation partners"}
+                  aria-hidden={duplicate || undefined}
                 >
-                  {src === "government-partners.jpg" ? (
-                    <svg viewBox="0 0 222 60" role="img" aria-label={name}>
-                      <title>{name}</title>
-                      <image
-                        href="/partners/government-partners.jpg"
-                        width="900"
-                        height="60"
-                      />
-                    </svg>
-                  ) : (
-                    <img src={`/partners/${src}`} alt={name} loading="lazy" />
-                  )}
-                </a>
-              </li>
-            ))}
-          </ul>
+                  {partners.map(([name, src, url]) => (
+                    <li key={name}>
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${name} — official website`}
+                        tabIndex={duplicate ? -1 : undefined}
+                      >
+                        {src === "government-partners.jpg" ? (
+                          <svg
+                            viewBox="0 0 222 60"
+                            role="img"
+                            aria-label={name}
+                          >
+                            <title>{name}</title>
+                            <image
+                              href="/partners/government-partners.jpg"
+                              width="900"
+                              height="60"
+                            />
+                          </svg>
+                        ) : (
+                          <img
+                            src={`/partners/${src}`}
+                            alt={name}
+                            loading="lazy"
+                          />
+                        )}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

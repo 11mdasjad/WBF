@@ -11,14 +11,14 @@ const volunteers = {
   image: "/images/volunteering.jpg",
   alt: "People joining hands — illustrative photograph",
 };
-const skills = {
-  image: "/images/women-skill-training.jpeg",
-  alt: "Women practising sewing at a WBF skills session",
+const store = {
+  image: "/images/e-store-banner.png",
+  alt: "Green shopping artwork with a person using a phone, product displays and shopping bags",
 };
 
 export function pageBanner(path: string): PageBanner {
   const page = path.split("/").filter(Boolean)[0] || "home";
-  if (["store", "product"].includes(page)) return skills;
+  if (["store", "product"].includes(page)) return store;
   if (
     [
       "our-work",

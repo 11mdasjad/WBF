@@ -142,24 +142,22 @@ test("header donation and combined access link reach donation, login and registr
     ).toBeVisible();
   }
 });
-test("home highlights and interest guide lead to the selected WBF programme", async ({
+test("home has one static banner and the interest guide opens the selected pathway", async ({
   page,
 }) => {
   await page.goto("/");
-  await page
-    .getByRole("button", { name: "Next highlight", exact: true })
-    .click();
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Learning together.",
+  await expect(page.locator(".portal-hero .hero-photo")).toHaveCount(1);
+  await expect(page.locator(".portal-hero .hero-photo")).toHaveAttribute(
+    "src",
+    "/images/community-landscape-banner.png",
   );
-  await expect(
-    page.getByRole("button", { name: "Show highlight 2" }),
-  ).toHaveAttribute("aria-pressed", "true");
-  await page
-    .getByRole("link", { name: "Discover skills programmes", exact: true })
-    .click();
-  await expect(page).toHaveURL(/focus-areas\/women-empowerment/);
-  await page.goto("/");
+  await expect(page.locator(".portal-hero-controls")).toHaveCount(0);
+  await expect(page.locator('[aria-roledescription="carousel"]')).toHaveCount(
+    0,
+  );
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Empowering",
+  );
   await page
     .getByLabel("How would you like to take part?")
     .selectOption("partner");
@@ -167,16 +165,6 @@ test("home highlights and interest guide lead to the selected WBF programme", as
     .getByRole("link", { name: "Explore this option", exact: true })
     .click();
   await expect(page).toHaveURL(/csr-partnerships/);
-  await page.goto("/");
-  await page
-    .getByRole("button", { name: "Next highlight", exact: true })
-    .click();
-  await page
-    .getByRole("button", { name: "Previous highlight", exact: true })
-    .click();
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Empowering",
-  );
 });
 test("all audited routes return successfully and unexpected routes return 404", async ({
   request,

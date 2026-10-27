@@ -1,13 +1,6 @@
 "use client";
 import { useState } from "react";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  ChevronLeft,
-  ChevronRight,
-  CalendarDays,
-  MapPin,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarDays, MapPin } from "lucide-react";
 import { niceDate } from "@/lib/content";
 import { useSite } from "./context";
 import {
@@ -51,7 +44,6 @@ const pathways = [
 
 export function Home() {
   const { content, organization: o, user } = useSite();
-  const [slide, setSlide] = useState(0);
   const [pathway, setPathway] = useState(pathways[0].value);
   const programs = content.filter((x) => x.kind === "program");
   const posts = content.filter((x) => x.kind === "post").slice(0, 3);
@@ -65,66 +57,41 @@ export function Home() {
     )
     .slice(0, 2);
   const selectedPath = pathways.find((x) => x.value === pathway)!;
-  const slides = [
-    {
-      eyebrow: "PEOPLE. PURPOSE. POSSIBILITY.",
-      title: o.heroTitle || "Empowering communities.\nFor a brighter tomorrow.",
-      text:
-        o.heroText ||
-        "Together, we create opportunities for people to learn, thrive and build a better future.",
-      image: "/images/community-landscape-banner.png",
-      width: 1672,
-      height: 941,
-      alt: "Community gathering beneath a tree overlooking a lake and mountains — illustrative image",
-      link: "/our-work/",
-      action: "Explore our work",
-      note: "Illustrative image",
-    },
-    {
-      eyebrow: "SKILLS FOR EVERYDAY POSSIBILITY",
-      title: "Learning together.\nGrowing with confidence.",
-      text: "Discover our work in education, practical skills and opportunities for women and communities.",
-      image: "/images/women-skill-training.jpeg",
-      width: 2976,
-      height: 1984,
-      alt: "Women practising sewing at a WBF skills training session",
-      link: "/focus-areas/women-empowerment/",
-      action: "Discover skills programmes",
-      note: "WBF skills training",
-    },
-  ];
-  const active = slides[slide];
+  const hero = {
+    eyebrow: "PEOPLE. PURPOSE. POSSIBILITY.",
+    title: o.heroTitle || "Empowering communities.\nFor a brighter tomorrow.",
+    text:
+      o.heroText ||
+      "Together, we create opportunities for people to learn, thrive and build a better future.",
+    image: "/images/community-landscape-banner.png",
+    width: 1672,
+    height: 941,
+    alt: "Community gathering beneath a tree overlooking a lake and mountains — illustrative image",
+    link: "/our-work/",
+    action: "Explore our work",
+    note: "Illustrative image",
+  };
   return (
     <>
-      <section
-        className="portal-hero"
-        aria-roledescription="carousel"
-        aria-label="Foundation highlights"
-      >
-        <div
-          className="portal-hero-stage"
-          id="foundation-highlight"
-          role="group"
-          aria-roledescription="slide"
-          aria-label={`${slide + 1} of ${slides.length}`}
-        >
+      <section className="portal-hero" aria-label="Welcome to WBF">
+        <div className="portal-hero-stage">
           <img
             className="hero-photo portal-hero-photo"
-            src={active.image}
-            alt={active.alt}
-            width={active.width}
-            height={active.height}
+            src={hero.image}
+            alt={hero.alt}
+            width={hero.width}
+            height={hero.height}
             fetchPriority="high"
           />
           <div className="portal-hero-shade" aria-hidden="true" />
           <div className="container portal-hero-inner">
             <div className="portal-hero-copy">
-              <p className="eyebrow">{active.eyebrow}</p>
-              <h1>{active.title}</h1>
-              <p className="portal-hero-description">{active.text}</p>
+              <p className="eyebrow">{hero.eyebrow}</p>
+              <h1>{hero.title}</h1>
+              <p className="portal-hero-description">{hero.text}</p>
               <div className="portal-hero-actions">
-                <ButtonLink href={active.link} light>
-                  {active.action}
+                <ButtonLink href={hero.link} light>
+                  {hero.action}
                 </ButtonLink>
                 <a
                   className="portal-hero-secondary"
@@ -134,41 +101,8 @@ export function Home() {
                 </a>
               </div>
             </div>
-            <span className="portal-photo-note">{active.note}</span>
+            <span className="portal-photo-note">{hero.note}</span>
           </div>
-        </div>
-        <div className="portal-hero-controls">
-          <button
-            type="button"
-            aria-label="Previous highlight"
-            aria-controls="foundation-highlight"
-            onClick={() =>
-              setSlide((slide + slides.length - 1) % slides.length)
-            }
-          >
-            <ChevronLeft size={18} />
-          </button>
-          {slides.map((s, i) => (
-            <button
-              className={slide === i ? "selected" : ""}
-              key={s.eyebrow}
-              type="button"
-              aria-label={`Show highlight ${i + 1}`}
-              aria-pressed={slide === i}
-              aria-controls="foundation-highlight"
-              onClick={() => setSlide(i)}
-            >
-              <span>{String(i + 1).padStart(2, "0")}</span>
-            </button>
-          ))}
-          <button
-            type="button"
-            aria-label="Next highlight"
-            aria-controls="foundation-highlight"
-            onClick={() => setSlide((slide + 1) % slides.length)}
-          >
-            <ChevronRight size={18} />
-          </button>
         </div>
       </section>
 

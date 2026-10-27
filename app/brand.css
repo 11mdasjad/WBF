@@ -91,7 +91,7 @@
     transparent
   );
 }
-.glass-site :is(.portal-hero-stage, .portal-hero-controls button.selected) {
+.glass-site .portal-hero-stage {
   background: var(--brand-deep);
 }
 .glass-site .portal-photo-note {

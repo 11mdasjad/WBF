@@ -135,7 +135,7 @@ export function PageHero({
   image,
   imageAlt,
   compact = false,
-  layout = "image-first",
+  layout = "overlay",
   children,
 }: {
   eyebrow?: string;
@@ -167,6 +167,8 @@ export function PageHero({
           imageAlt || (image ? "Community programme photograph" : fallback.alt)
         }
         fetchPriority="high"
+        width={layout === "image-first" ? 2048 : undefined}
+        height={layout === "image-first" ? 768 : undefined}
         onError={(event) => {
           if (event.currentTarget.getAttribute("src") !== fallback.image)
             event.currentTarget.src = fallback.image;

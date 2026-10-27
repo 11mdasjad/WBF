@@ -40,7 +40,7 @@ test("home renders eight programs, photos and real navigation without runtime er
   await expect(page).toHaveURL(/our-work/);
   expect(errors).toEqual([]);
 });
-test("homepage image is clear of the header and sticky navigation remains usable", async ({
+test("homepage image continues behind the header and sticky navigation remains usable", async ({
   page,
 }) => {
   for (const width of [390, 1440]) {
@@ -54,17 +54,14 @@ test("homepage image is clear of the header and sticky navigation remains usable
       .poll(async () => {
         const header = await page.getByRole("banner").boundingBox();
         const photo = await page.locator(".hero-photo").boundingBox();
-        return !!header && !!photo && photo.y >= header.y + header.height - 1;
+        return (
+          !!header &&
+          !!photo &&
+          Math.abs(photo.y - header.y) < 1 &&
+          photo.y + photo.height > header.y + header.height
+        );
       })
       .toBeTruthy();
-    const photo = (await page.locator(".hero-photo").boundingBox())!;
-    const copy = (await page.locator(".portal-hero-copy").boundingBox())!;
-    expect(copy.y).toBeGreaterThanOrEqual(photo.y + photo.height);
-    expect(
-      await page
-        .locator(".hero-photo")
-        .evaluate((img) => getComputedStyle(img).objectFit),
-    ).toBe("contain");
     await page.evaluate(() => window.scrollTo(0, 500));
     await expect(page.getByRole("banner")).toHaveAttribute(
       "data-scrolled",

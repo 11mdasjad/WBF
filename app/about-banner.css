@@ -4,24 +4,26 @@
 }
 .about-banner {
   position: relative;
-  margin-top: 0;
+  margin-top: calc(-1 * var(--site-header-height));
   overflow: hidden;
   background: #174a2b;
   color: #fff;
 }
 .about-banner-photo {
-  position: relative;
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
 }
 .about-banner-inner {
   position: relative;
-  display: block;
-  min-height: 0;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(680px, 45vw, 860px);
+  padding-top: calc(var(--site-header-height) + 40px);
+  padding-bottom: 38px;
 }
 .glass-site .about-banner-link {
   background: #eef6e4dc;
@@ -54,6 +56,19 @@
 @media (max-width: 900px) {
   .glass-site.is-about {
     --site-header-height: 140px;
+  }
+  .about-banner-photo {
+    height: max(calc(var(--site-header-height) + 285px), 75vw);
+    object-position: right center;
+  }
+  .about-banner-inner {
+    display: block;
+    min-height: 0;
+    padding-top: max(
+      calc(var(--site-header-height) + 250px),
+      calc(75vw - 35px)
+    );
+    padding-bottom: 38px;
   }
   .about-banner-copy {
     position: relative;

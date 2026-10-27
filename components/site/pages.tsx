@@ -1356,6 +1356,7 @@ export function SearchPage({ initialQuery = "" }: { initialQuery?: string }) {
         <label className="search-field large">
           <Search size={22} />
           <input
+            autoFocus
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search programs, stories, events…"

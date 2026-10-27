@@ -72,6 +72,11 @@
     border-color 160ms ease;
 }
 .glass-site .portal-register {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  white-space: nowrap;
   padding: 11px 22px;
   background: #eef6e6;
   color: #235c36;
@@ -230,7 +235,8 @@
     gap: 10px 16px;
   }
   .glass-site .portal-register {
-    display: none;
+    padding-inline: 12px;
+    font-size: 13px;
   }
   .glass-site :is(.masthead-donate, .masthead-account-button) {
     padding-inline: 12px;
@@ -285,6 +291,53 @@
     box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+}
+/* Keep registration visible while reducing secondary controls on tight rows. */
+@media (min-width: 901px) and (max-width: 1199px) {
+  .glass-site .masthead-account-button {
+    width: 46px;
+    justify-content: center;
+    padding-inline: 10px;
+  }
+  .glass-site .masthead-account-button > span,
+  .glass-site .masthead-account-button > svg:last-child {
+    display: none;
+  }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .glass-site .masthead-bar {
+    gap: 12px;
+  }
+  .glass-site .portal-register {
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+  .glass-site .masthead-donate {
+    padding-inline: 12px;
+  }
+  .glass-site .masthead-account-button {
+    width: 44px;
+    justify-content: center;
+    padding-inline: 10px;
+  }
+  .glass-site .masthead-account-button > span,
+  .glass-site .masthead-account-button > svg:last-child,
+  .glass-site .donate-now,
+  .glass-site .donate-arrow {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .glass-site .portal-register {
+    min-height: 40px;
+    padding: 8px 7px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 370px) {
+  .glass-site .brand-full small {
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

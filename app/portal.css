@@ -727,9 +727,6 @@
   .glass-site .masthead-bar {
     gap: 0 24px;
   }
-  .portal-register {
-    display: none;
-  }
   .portal-opportunities {
     grid-template-columns: 1fr;
   }
@@ -799,11 +796,6 @@
   }
   .glass-site .masthead-nav {
     grid-column: 1 / -1;
-  }
-}
-@media (max-width: 1280px) {
-  .glass-site .portal-register {
-    display: none;
   }
 }
 @media (max-width: 900px) {

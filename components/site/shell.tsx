@@ -116,11 +116,9 @@ export function Header({ path }: { path: string }) {
           <HeaderSearch />
 
           <div className="masthead-actions">
-            {!user && (
-              <a href="/register/" className="portal-register">
-                Register
-              </a>
-            )}
+            <a href="/register/" className="portal-register">
+              Register
+            </a>
             <a className="masthead-donate" href="/donate/">
               <Heart size={19} />
               <span>

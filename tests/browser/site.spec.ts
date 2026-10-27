@@ -40,6 +40,28 @@ test("home renders eight programs, photos and real navigation without runtime er
   await expect(page).toHaveURL(/our-work/);
   expect(errors).toEqual([]);
 });
+test("header Register stays visible and opens registration across screen sizes", async ({
+  page,
+}) => {
+  for (const width of [320, 390, 601, 768, 901, 1024, 1199, 1360, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const register = page
+      .getByRole("banner")
+      .getByRole("link", { name: "Register", exact: true });
+    await expect(register).toBeVisible();
+    await register.click();
+    await expect(page).toHaveURL(/\/register\/?$/);
+    await expect(
+      page.getByRole("textbox", { name: /^Email address/ }),
+    ).toBeVisible();
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= window.innerWidth + 1,
+      ),
+    ).toBeTruthy();
+  }
+});
 test("home highlights and interest guide lead to the selected WBF programme", async ({
   page,
 }) => {

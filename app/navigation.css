@@ -101,12 +101,13 @@
   transform: none;
 }
 .glass-site .masthead-nav {
-  justify-self: center;
-  width: max-content;
+  justify-self: stretch;
+  justify-content: space-between;
+  width: 100%;
   max-width: 100%;
-  gap: 18px;
+  gap: 10px;
   padding: 4px 14px;
-  margin: 8px 0;
+  margin: 0;
   border: 1px solid var(--nav-edge);
   border-radius: 16px;
   background: linear-gradient(115deg, #ffffff09, transparent 55%);
@@ -191,6 +192,20 @@
 }
 .glass-site .wbf-masthead :is(a, button):focus-visible {
   outline-color: #d2e6bc;
+}
+@media (min-width: 1200px) {
+  .glass-site .masthead-nav {
+    grid-column: 1 / -1;
+    justify-self: end;
+    width: calc(100% - 320px);
+  }
+}
+@media (min-width: 901px) and (max-width: 1199px) {
+  .glass-site .masthead-nav {
+    justify-self: center;
+    width: max-content;
+    justify-content: center;
+  }
 }
 @media (max-width: 1100px) and (min-width: 901px) {
   .glass-site .masthead-nav {

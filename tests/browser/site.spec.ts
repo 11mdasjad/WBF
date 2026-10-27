@@ -67,9 +67,7 @@ test("homepage image continues behind the header and sticky navigation remains u
       "data-scrolled",
       "true",
     );
-    await page
-      .getByRole("button", { name: "Account menu", exact: true })
-      .click();
+    await page.getByRole("button", { name: "Dashboards", exact: true }).click();
     await expect(
       page.getByRole("link", { name: "Sign in", exact: true }),
     ).toBeVisible();
@@ -91,6 +89,24 @@ test("header Register stays visible and opens registration across screen sizes",
       .getByRole("banner")
       .getByRole("link", { name: "Register", exact: true });
     await expect(register).toBeVisible();
+    const header = page.getByRole("banner");
+    await expect(
+      header.getByText("Non-Profit Organisation", { exact: true }),
+    ).toBeVisible();
+    const controls = [
+      header.getByRole("link", { name: "Location", exact: true }),
+      header.getByRole("button", { name: "Dashboards", exact: true }),
+      register,
+      header.getByRole("link", { name: "Login", exact: true }),
+    ];
+    let previousRight = 0;
+    for (const control of controls) {
+      await expect(control).toBeVisible();
+      const box = await control.boundingBox();
+      expect(box!.x).toBeGreaterThanOrEqual(previousRight);
+      expect(box!.x + box!.width).toBeLessThanOrEqual(width);
+      previousRight = box!.x + box!.width;
+    }
     await register.click();
     await expect(page).toHaveURL(/\/register\/?$/);
     await expect(
@@ -101,6 +117,34 @@ test("header Register stays visible and opens registration across screen sizes",
         () => document.documentElement.scrollWidth <= window.innerWidth + 1,
       ),
     ).toBeTruthy();
+  }
+});
+test("header location and login open their destinations and dashboard menu supports Escape", async ({
+  page,
+}) => {
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const header = page.getByRole("banner");
+    await header.getByRole("link", { name: "Location", exact: true }).click();
+    await expect(page).toHaveURL(/\/contact\/?#office-location$/);
+    await expect(page.locator("#office-location")).toBeVisible();
+    await header.getByRole("link", { name: "Login", exact: true }).click();
+    await expect(page).toHaveURL(/\/login\/?$/);
+    await expect(
+      page.getByRole("textbox", { name: /^Email address/ }),
+    ).toBeVisible();
+    const dashboards = header.getByRole("button", {
+      name: "Dashboards",
+      exact: true,
+    });
+    await dashboards.click();
+    await expect(
+      header.getByRole("link", { name: "Sign in", exact: true }),
+    ).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dashboards).toHaveAttribute("aria-expanded", "false");
+    await expect(dashboards).toBeFocused();
   }
 });
 test("home highlights and interest guide lead to the selected WBF programme", async ({

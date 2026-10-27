@@ -65,6 +65,9 @@ export function Brand({
           </span>
         )}
       </span>
+      {full && (
+        <span className="brand-classification">Non-Profit Organisation</span>
+      )}
     </a>
   );
 }

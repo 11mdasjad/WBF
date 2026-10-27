@@ -554,7 +554,10 @@ export function Contact({ partnership = false }: { partnership?: boolean }) {
         }
         compact
       />
-      <section className="section container contact-layout">
+      <section
+        id="office-location"
+        className="section container contact-layout"
+      >
         <div>
           <h2>
             {partnership ? "Build something meaningful." : "Come say hello."}

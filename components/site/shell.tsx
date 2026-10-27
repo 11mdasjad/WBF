@@ -4,10 +4,9 @@ import {
   Menu,
   X,
   Search,
-  User,
-  Heart,
+  MapPin,
+  LayoutDashboard,
   ArrowUpRight,
-  ArrowRight,
   ChevronDown,
   Home,
   ShoppingBag,
@@ -138,15 +137,12 @@ export function Header({ path }: { path: string }) {
           <HeaderSearch />
 
           <div className="masthead-actions">
-            <a href="/register/" className="portal-register">
-              Register
-            </a>
-            <a className="masthead-donate" href="/donate/">
-              <Heart size={19} />
-              <span>
-                Donate <span className="donate-now">Now</span>
-              </span>
-              <ArrowRight size={18} className="donate-arrow" />
+            <a
+              className="masthead-location header-action"
+              href="/contact/#office-location"
+            >
+              <MapPin size={18} aria-hidden="true" />
+              <span>Location</span>
             </a>
             <div
               className="masthead-account"
@@ -160,13 +156,13 @@ export function Header({ path }: { path: string }) {
               <button
                 type="button"
                 className="masthead-account-button"
-                aria-label="Account menu"
+                aria-label="Dashboards"
                 aria-expanded={expanded === "header-account"}
                 aria-controls="header-account"
                 onClick={() => toggle("header-account")}
               >
-                <User size={20} />
-                <span>Account</span>
+                <LayoutDashboard size={19} aria-hidden="true" />
+                <span>Dashboards</span>
                 <ChevronDown size={13} />
               </button>
               <div
@@ -202,20 +198,26 @@ export function Header({ path }: { path: string }) {
                 )}
               </div>
             </div>
-            <button
-              type="button"
-              className="masthead-toggle"
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              aria-controls="wbf-navigation"
-              onClick={() => {
-                setOpen(!open);
-                setExpanded(null);
-              }}
-            >
-              {open ? <X size={23} /> : <Menu size={23} />}
-            </button>
+            <a href="/register/" className="portal-register">
+              Register
+            </a>
+            <a href="/login/" className="masthead-login header-action">
+              Login
+            </a>
           </div>
+          <button
+            type="button"
+            className="masthead-toggle"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="wbf-navigation"
+            onClick={() => {
+              setOpen(!open);
+              setExpanded(null);
+            }}
+          >
+            {open ? <X size={23} /> : <Menu size={23} />}
+          </button>
           <nav
             id="wbf-navigation"
             className={"masthead-nav" + (open ? " is-open" : "")}

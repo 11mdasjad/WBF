@@ -293,53 +293,6 @@
     -webkit-backdrop-filter: none;
   }
 }
-/* Keep registration visible while reducing secondary controls on tight rows. */
-@media (min-width: 901px) and (max-width: 1199px) {
-  .glass-site .masthead-account-button {
-    width: 46px;
-    justify-content: center;
-    padding-inline: 10px;
-  }
-  .glass-site .masthead-account-button > span,
-  .glass-site .masthead-account-button > svg:last-child {
-    display: none;
-  }
-}
-@media (min-width: 601px) and (max-width: 900px) {
-  .glass-site .masthead-bar {
-    gap: 12px;
-  }
-  .glass-site .portal-register {
-    min-height: 44px;
-    padding: 8px 12px;
-  }
-  .glass-site .masthead-donate {
-    padding-inline: 12px;
-  }
-  .glass-site .masthead-account-button {
-    width: 44px;
-    justify-content: center;
-    padding-inline: 10px;
-  }
-  .glass-site .masthead-account-button > span,
-  .glass-site .masthead-account-button > svg:last-child,
-  .glass-site .donate-now,
-  .glass-site .donate-arrow {
-    display: none;
-  }
-}
-@media (max-width: 600px) {
-  .glass-site .portal-register {
-    min-height: 40px;
-    padding: 8px 7px;
-    font-size: 11px;
-  }
-}
-@media (max-width: 370px) {
-  .glass-site .brand-full small {
-    display: none;
-  }
-}
 @media (prefers-reduced-motion: reduce) {
   .glass-site .wbf-masthead * {
     transition: none;
@@ -363,5 +316,234 @@
   .glass-site .masthead-dropdown,
   .glass-site .masthead-nav-item > .masthead-dropdown {
     background: #1b6837;
+  }
+}
+
+/* WBF identity and the four persistent portal actions. */
+.glass-site .brand-classification {
+  border-left: 1px solid #ffffff40;
+  padding-left: 14px;
+  max-width: 125px;
+  color: #eff5e9;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.glass-site .header-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 46px;
+  padding: 10px 16px;
+  border: 1px solid #ffffff66;
+  border-radius: 9px;
+  color: var(--nav-ink);
+  background: #ffffff09;
+  font-size: 14px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.glass-site .header-action:hover {
+  background: #ffffff1a;
+}
+.glass-site .masthead-location {
+  border-color: transparent;
+  background: transparent;
+  padding-inline: 8px;
+}
+.glass-site .masthead-actions {
+  gap: 10px;
+}
+.glass-site .masthead-account-button {
+  width: auto;
+  height: auto;
+  min-height: 46px;
+  padding: 10px 14px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.glass-site .masthead-account-button > span,
+.glass-site .masthead-account-button > svg:last-child {
+  display: inline;
+}
+.glass-site .account-dropdown {
+  z-index: 4;
+}
+#office-location {
+  scroll-margin-top: calc(var(--site-header-height, 170px) + 24px);
+}
+@media (min-width: 1200px) {
+  .glass-site .masthead-bar {
+    grid-template-columns: minmax(0, 1fr) clamp(180px, 22vw, 360px) minmax(
+        0,
+        1fr
+      );
+    gap: 12px 20px;
+  }
+  .glass-site .brand-full {
+    gap: 10px;
+  }
+  .glass-site .brand-full > img {
+    width: 72px;
+    height: 72px;
+  }
+  .glass-site .brand-full strong {
+    font-size: 34px;
+  }
+  .glass-site .brand-full small {
+    font-size: 13px;
+  }
+  .glass-site .brand-full .brand-tagline {
+    font-size: 9px;
+  }
+  .glass-site .portal-register {
+    padding-inline: 18px;
+  }
+}
+@media (min-width: 901px) and (max-width: 1399px) {
+  .glass-site .masthead-bar {
+    grid-template-columns: auto minmax(140px, 1fr) auto;
+    gap: 10px 14px;
+  }
+  .glass-site .brand-full .brand-tagline {
+    display: none;
+  }
+  .glass-site .brand-full > img {
+    width: 60px;
+    height: 60px;
+  }
+  .glass-site .brand-full strong {
+    font-size: 29px;
+  }
+  .glass-site .brand-full small {
+    font-size: 11px;
+  }
+  .glass-site .brand-classification {
+    max-width: 98px;
+    font-size: 12px;
+    padding-left: 10px;
+  }
+  .glass-site .masthead-actions {
+    gap: 7px;
+  }
+  .glass-site :is(.header-action, .masthead-account-button, .portal-register) {
+    padding-inline: 10px;
+    font-size: 13px;
+  }
+  .glass-site .masthead-location {
+    padding-inline: 4px;
+  }
+}
+@media (min-width: 901px) and (max-width: 1199px) {
+  .glass-site .masthead-bar {
+    grid-template-columns: 1fr auto;
+  }
+  .glass-site .masthead-actions {
+    grid-column: 2;
+  }
+  .glass-site .masthead-bar > .masthead-search {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: min(100%, 480px);
+    justify-self: center;
+    min-height: 42px;
+  }
+  .glass-site .masthead-nav {
+    grid-row: 3;
+  }
+}
+@media (max-width: 900px) {
+  .glass-site .masthead-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    padding: 10px 16px;
+  }
+  .glass-site .brand-full {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .glass-site .masthead-toggle {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .glass-site .masthead-actions {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: stretch;
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .glass-site :is(.header-action, .masthead-account-button, .portal-register) {
+    width: 100%;
+    min-height: 44px;
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+  .glass-site .masthead-account-button {
+    justify-content: center;
+  }
+  .glass-site .account-dropdown {
+    left: 0;
+    right: auto;
+    min-width: 210px;
+  }
+  .glass-site .masthead-nav {
+    max-height: calc(100dvh - var(--site-header-height, 160px) - 20px);
+  }
+}
+@media (max-width: 600px) {
+  .glass-site .brand-full {
+    gap: 9px;
+  }
+  .glass-site .brand-full > img {
+    width: 48px;
+    height: 48px;
+  }
+  .glass-site .brand-full small {
+    display: block;
+    font-size: 9px;
+    max-width: none;
+    white-space: nowrap;
+  }
+  .glass-site .brand-classification {
+    max-width: 92px;
+    padding-left: 9px;
+    font-size: 11px;
+  }
+  .glass-site .masthead-actions {
+    grid-template-columns: 0.95fr 1.35fr 1fr 0.75fr;
+    gap: 6px;
+  }
+  .glass-site :is(.header-action, .masthead-account-button, .portal-register) {
+    padding-inline: 5px;
+    font-size: 12px;
+  }
+  .glass-site .masthead-actions svg {
+    display: none;
+  }
+}
+@media (max-width: 370px) {
+  .glass-site .masthead-bar {
+    padding-inline: 10px;
+  }
+  .glass-site .brand-full {
+    gap: 6px;
+  }
+  .glass-site .brand-full .brand-wordmark {
+    padding-left: 6px;
+  }
+  .glass-site .brand-full small {
+    font-size: 8px;
+  }
+  .glass-site .brand-classification {
+    max-width: 83px;
+    padding-left: 6px;
+    font-size: 10px;
+  }
+  .glass-site :is(.header-action, .masthead-account-button, .portal-register) {
+    font-size: 11px;
   }
 }

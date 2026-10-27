@@ -67,7 +67,9 @@ for (const width of [390, 1440]) {
               !!photo &&
               !!header &&
               !!heading &&
-              Math.abs(photo.y - header.y) < 2 &&
+              (route.startsWith("/store/") || route.startsWith("/product/")
+                ? photo.y >= header.y + header.height - 1
+                : Math.abs(photo.y - header.y) < 2) &&
               heading.y >= header.y + header.height
             );
           },
@@ -108,6 +110,43 @@ test("E-Store navigation opens the shop on desktop and mobile", async ({
     await expect(
       page.getByRole("textbox", { name: "Search products" }),
     ).toBeVisible();
+  }
+});
+
+test("E-Store artwork remains uncropped and clear of the header and text", async ({
+  page,
+}) => {
+  for (const width of [320, 390, 768, 1440, 1952]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto("/store/");
+    await expect(page.locator("html")).toHaveAttribute("data-hydrated", "true");
+    const photo = page.locator(".page-hero-photo");
+    await expect(photo).toHaveAttribute("src", "/images/e-store-banner.png");
+    await expect
+      .poll(() =>
+        photo.evaluate(
+          (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
+        ),
+      )
+      .toBeTruthy();
+    const imageBox = (await photo.boundingBox())!;
+    const header = (await page.getByRole("banner").boundingBox())!;
+    const copy = (await page.locator(".page-hero-copy").boundingBox())!;
+    expect(imageBox.y).toBeGreaterThanOrEqual(header.y + header.height - 1);
+    expect(copy.y).toBeGreaterThanOrEqual(imageBox.y + imageBox.height);
+    expect(imageBox.width / imageBox.height).toBeCloseTo(8 / 3, 2);
+    expect(await photo.evaluate((img) => getComputedStyle(img).objectFit)).toBe(
+      "contain",
+    );
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBeTruthy();
+    await page.screenshot({
+      path: `outputs/e-store-clear-${width}.png`,
+      fullPage: false,
+    });
   }
 });
 

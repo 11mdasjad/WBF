@@ -135,6 +135,7 @@ export function PageHero({
   image,
   imageAlt,
   compact = false,
+  layout = "overlay",
   children,
 }: {
   eyebrow?: string;
@@ -143,6 +144,7 @@ export function PageHero({
   image?: string;
   imageAlt?: string;
   compact?: boolean;
+  layout?: "overlay" | "image-first";
   children?: React.ReactNode;
 }) {
   const { path } = useSite();
@@ -151,7 +153,11 @@ export function PageHero({
   const headingId = useId();
   return (
     <section
-      className={"page-hero with-image" + (compact ? " compact" : "")}
+      className={
+        "page-hero with-image" +
+        (compact ? " compact" : "") +
+        (layout === "image-first" ? " image-first" : "")
+      }
       aria-labelledby={headingId}
     >
       <img
@@ -161,6 +167,8 @@ export function PageHero({
           imageAlt || (image ? "Community programme photograph" : fallback.alt)
         }
         fetchPriority="high"
+        width={layout === "image-first" ? 2048 : undefined}
+        height={layout === "image-first" ? 768 : undefined}
         onError={(event) => {
           if (event.currentTarget.getAttribute("src") !== fallback.image)
             event.currentTarget.src = fallback.image;

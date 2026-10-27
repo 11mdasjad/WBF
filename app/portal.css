@@ -48,7 +48,7 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  padding: 7px max(24px, calc((100vw - 1320px) / 2));
+  padding: 4px max(24px, calc((100vw - 1320px) / 2));
   background: #163f32;
   color: #f4faf5;
   font-size: 11px;
@@ -77,36 +77,38 @@
   justify-content: space-between;
   gap: 0 36px;
   max-width: 1368px;
-  padding: 18px 24px 0;
+  padding: 10px 24px 0;
   min-height: 0;
 }
 .glass-site .brand-full {
   gap: 12px;
 }
 .glass-site .brand-full > img {
-  width: 64px;
-  height: 64px;
+  width: 50px;
+  height: 50px;
 }
 .glass-site .brand-full .brand-wordmark {
   padding-left: 13px;
 }
 .glass-site .brand-full strong {
-  font-size: 30px;
-  line-height: 1.1;
+  font-size: 25px;
+  line-height: 1.05;
 }
 .glass-site .brand-full small {
-  font-size: 11px;
+  font-size: 10px;
+  line-height: 1.35;
   max-width: none;
   white-space: nowrap;
 }
 .glass-site .brand-full .brand-tagline {
   display: block;
-  font-size: 9px;
+  font-size: 8px;
+  line-height: 1.4;
 }
 .glass-site .masthead-bar > .masthead-search {
   width: 100%;
   display: flex;
-  min-height: 46px;
+  min-height: 40px;
   background: #ffffffa6;
   border: 1px solid #d3e1d7;
   border-radius: 10px;
@@ -122,19 +124,20 @@
 .portal-register {
   font-weight: 650;
   font-size: 13px;
-  padding: 12px 8px;
+  padding: 8px 8px;
 }
 .glass-site .masthead-donate {
   background: linear-gradient(130deg, #1d6047, #123f32);
   border-radius: 10px;
-  min-height: 44px;
+  min-height: 40px;
   box-shadow: 0 5px 14px #194b3020;
-  padding: 11px 17px;
+  padding: 8px 15px;
 }
 .glass-site .masthead-account-button {
   border-color: #c7d9ce;
   border-radius: 10px;
-  min-height: 44px;
+  min-height: 40px;
+  padding-block: 8px;
 }
 .glass-site .masthead-nav {
   grid-column: 1 / -1;
@@ -167,7 +170,7 @@
 }
 .glass-site .masthead-nav-label > button {
   width: 28px;
-  height: 42px;
+  height: 36px;
 }
 .glass-site .masthead-nav-item > .masthead-dropdown {
   position: absolute;
@@ -756,7 +759,7 @@
   }
   .glass-site .masthead-bar {
     display: flex;
-    padding: 14px 20px;
+    padding: 10px 20px;
     justify-content: space-between;
   }
   .glass-site .masthead-bar > .masthead-search {
@@ -843,7 +846,7 @@
 }
 @media (max-width: 600px) {
   .portal-utility {
-    padding: 7px 14px;
+    padding: 5px 14px;
     font-size: 10px;
     gap: 8px;
   }
@@ -854,7 +857,7 @@
     display: none;
   }
   .glass-site .masthead-bar {
-    padding: 12px;
+    padding: 10px 12px;
     gap: 6px;
   }
   .glass-site .brand-full {

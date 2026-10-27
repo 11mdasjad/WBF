@@ -105,8 +105,8 @@
   width: max-content;
   max-width: 100%;
   gap: 18px;
-  padding: 6px 16px;
-  margin: 16px 0 14px;
+  padding: 4px 14px;
+  margin: 8px 0;
   border: 1px solid var(--nav-edge);
   border-radius: 16px;
   background: linear-gradient(115deg, #ffffff09, transparent 55%);
@@ -126,7 +126,7 @@
     border-color 160ms ease;
 }
 .glass-site .masthead-nav-label > a {
-  padding: 10px 10px 10px 14px;
+  padding: 8px 10px 8px 12px;
   color: inherit;
 }
 .glass-site .masthead-nav-label > button {
@@ -159,7 +159,7 @@
   -webkit-backdrop-filter: blur(20px) saturate(125%);
 }
 .glass-site .masthead-nav-item > .masthead-dropdown {
-  top: calc(100% + 16px);
+  top: calc(100% + 12px);
 }
 .glass-site .masthead-dropdown > a {
   min-height: 44px;

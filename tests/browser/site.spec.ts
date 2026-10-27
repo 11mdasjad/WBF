@@ -25,13 +25,13 @@ test("home renders eight programs, photos and real navigation without runtime er
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Opportunity begins",
+    "Empowering",
   );
-  await expect(page.locator(".documentary-card")).toHaveCount(8);
-  await expect(page.locator(".story-card")).toHaveCount(2);
+  await expect(page.locator(".program-card")).toHaveCount(8);
+  await expect(page.locator(".story-card")).toHaveCount(3);
   expect(
     await page
-      .locator(".real-hero > img")
+      .locator(".hero-photo")
       .evaluate((e: HTMLImageElement) => e.complete && e.naturalWidth > 0),
   ).toBeTruthy();
   await page
@@ -300,7 +300,9 @@ test("structured CMS sections preview and publish with visibility controls", asy
     .getByRole("dialog")
     .getByLabel("Content type")
     .selectOption("page");
-  await page.getByLabel(/^Title/).fill("Structured community page");
+  await page
+    .getByLabel(/^Title/)
+    .fill("Structured community page");
   await page.getByLabel("URL slug").fill(slug);
   await page.getByRole("button", { name: "Add section" }).click();
   await page.getByLabel("Section heading").fill("A published section");

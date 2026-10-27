@@ -67,11 +67,11 @@ test("homepage image continues behind the header and sticky navigation remains u
       "data-scrolled",
       "true",
     );
-    await page.getByRole("button", { name: "Dashboards", exact: true }).click();
     await expect(
-      page.getByRole("link", { name: "Sign in", exact: true }),
+      page
+        .getByRole("banner")
+        .getByRole("link", { name: "Login & Register", exact: true }),
     ).toBeVisible();
-    await page.keyboard.press("Escape");
     await page.evaluate(() => window.scrollTo(0, 0));
     await expect(page.getByRole("banner")).toHaveAttribute(
       "data-scrolled",
@@ -79,7 +79,7 @@ test("homepage image continues behind the header and sticky navigation remains u
     );
   }
 });
-test("header Register stays visible and opens registration across screen sizes", async ({
+test("header Donate and combined Login & Register stay visible across screen sizes", async ({
   page,
 }) => {
   for (const width of [320, 390, 601, 768, 901, 1024, 1199, 1360, 1440]) {
@@ -87,17 +87,18 @@ test("header Register stays visible and opens registration across screen sizes",
     await page.goto("/");
     const register = page
       .getByRole("banner")
-      .getByRole("link", { name: "Register", exact: true });
+      .getByRole("link", { name: "Login & Register", exact: true });
     await expect(register).toBeVisible();
     const header = page.getByRole("banner");
     await expect(
       header.getByText("Non-Profit Organisation", { exact: true }),
     ).toBeVisible();
-    const controls = [
-      header.getByRole("link", { name: "Location", exact: true }),
+    await expect(
       header.getByRole("button", { name: "Dashboards", exact: true }),
+    ).toHaveCount(0);
+    const controls = [
+      header.getByRole("link", { name: "Donate", exact: true }),
       register,
-      header.getByRole("link", { name: "Login", exact: true }),
     ];
     let previousRight = 0;
     for (const control of controls) {
@@ -108,7 +109,7 @@ test("header Register stays visible and opens registration across screen sizes",
       previousRight = box!.x + box!.width;
     }
     await register.click();
-    await expect(page).toHaveURL(/\/register\/?$/);
+    await expect(page).toHaveURL(/\/login\/?$/);
     await expect(
       page.getByRole("textbox", { name: /^Email address/ }),
     ).toBeVisible();
@@ -119,32 +120,26 @@ test("header Register stays visible and opens registration across screen sizes",
     ).toBeTruthy();
   }
 });
-test("header location and login open their destinations and dashboard menu supports Escape", async ({
+test("header donation and combined access link reach donation, login and registration", async ({
   page,
 }) => {
   for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
     const header = page.getByRole("banner");
-    await header.getByRole("link", { name: "Location", exact: true }).click();
-    await expect(page).toHaveURL(/\/contact\/?#office-location$/);
-    await expect(page.locator("#office-location")).toBeVisible();
-    await header.getByRole("link", { name: "Login", exact: true }).click();
+    await header.getByRole("link", { name: "Donate", exact: true }).click();
+    await expect(page).toHaveURL(/\/donate\/?$/);
+    await header
+      .getByRole("link", { name: "Login & Register", exact: true })
+      .click();
     await expect(page).toHaveURL(/\/login\/?$/);
+    await page
+      .getByRole("link", { name: "Create an account", exact: true })
+      .click();
+    await expect(page).toHaveURL(/\/register\/?$/);
     await expect(
       page.getByRole("textbox", { name: /^Email address/ }),
     ).toBeVisible();
-    const dashboards = header.getByRole("button", {
-      name: "Dashboards",
-      exact: true,
-    });
-    await dashboards.click();
-    await expect(
-      header.getByRole("link", { name: "Sign in", exact: true }),
-    ).toBeVisible();
-    await page.keyboard.press("Escape");
-    await expect(dashboards).toHaveAttribute("aria-expanded", "false");
-    await expect(dashboards).toBeFocused();
   }
 });
 test("home highlights and interest guide lead to the selected WBF programme", async ({

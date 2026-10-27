@@ -4,8 +4,7 @@ import {
   Menu,
   X,
   Search,
-  MapPin,
-  LayoutDashboard,
+  Heart,
   ArrowUpRight,
   ChevronDown,
   Home,
@@ -71,7 +70,7 @@ export function Header({ path }: { path: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
   const root = useRef<HTMLElement>(null);
-  const { user, organization: o } = useSite();
+  const { organization: o } = useSite();
   const links: { label: string; href: string; visible: boolean }[] =
     o.navigation ||
     navigation.map(([label, href]) => ({ label, href, visible: true }));
@@ -134,75 +133,13 @@ export function Header({ path }: { path: string }) {
         <div className="navigation-backdrop" aria-hidden="true" />
         <div className="masthead-bar">
           <Brand full />
-          <HeaderSearch />
-
           <div className="masthead-actions">
-            <a
-              className="masthead-location header-action"
-              href="/contact/#office-location"
-            >
-              <MapPin size={18} aria-hidden="true" />
-              <span>Location</span>
+            <a className="masthead-donate header-action" href="/donate/">
+              <Heart size={19} aria-hidden="true" />
+              <span>Donate</span>
             </a>
-            <div
-              className="masthead-account"
-              onBlur={(e) => {
-                if (!e.currentTarget.contains(e.relatedTarget))
-                  setExpanded((current) =>
-                    current === "header-account" ? null : current,
-                  );
-              }}
-            >
-              <button
-                type="button"
-                className="masthead-account-button"
-                aria-label="Dashboards"
-                aria-expanded={expanded === "header-account"}
-                aria-controls="header-account"
-                onClick={() => toggle("header-account")}
-              >
-                <LayoutDashboard size={19} aria-hidden="true" />
-                <span>Dashboards</span>
-                <ChevronDown size={13} />
-              </button>
-              <div
-                id="header-account"
-                className="masthead-dropdown account-dropdown"
-                hidden={expanded !== "header-account"}
-              >
-                <p>
-                  {user
-                    ? `Hello, ${user.name?.split(" ")[0] || "friend"}`
-                    : "Welcome to WBF"}
-                </p>
-                {user ? (
-                  <>
-                    <a href="/user/">
-                      My dashboard <ArrowUpRight size={13} />
-                    </a>
-                    {user.permissions?.length > 0 && (
-                      <a href="/admin/">
-                        Admin dashboard <ArrowUpRight size={13} />
-                      </a>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <a href="/login/">
-                      Sign in <ArrowUpRight size={13} />
-                    </a>
-                    <a href="/register/">
-                      Create an account <ArrowUpRight size={13} />
-                    </a>
-                  </>
-                )}
-              </div>
-            </div>
-            <a href="/register/" className="portal-register">
-              Register
-            </a>
-            <a href="/login/" className="masthead-login header-action">
-              Login
+            <a href="/login/" className="portal-register header-action">
+              Login &amp; Register
             </a>
           </div>
           <button

@@ -22,6 +22,7 @@ import {
   ShieldCheck,
   ChevronRight,
 } from "lucide-react";
+import { authenticPhoto, programPhotos } from "@/lib/photography";
 import { useSite } from "./context";
 import { contentPath, niceDate, type Entry } from "@/lib/content";
 export const iconMap: Record<string, any> = {
@@ -140,7 +141,12 @@ export function PageHero({
         "page-hero " + (image ? "with-image " : "") + (compact ? "compact" : "")
       }
     >
-      {image && <img src={image} alt="Illustrative community photography" />}
+      {image && (
+        <img
+          src={authenticPhoto(image)}
+          alt="Illustrative community photography"
+        />
+      )}
       <div className="container">
         <div className="breadcrumbs">
           <a href="/">Home</a>
@@ -154,10 +160,29 @@ export function PageHero({
     </section>
   );
 }
+function ProgramPhoto({ slug, fallback }: { slug: string; fallback?: string }) {
+  const photo = programPhotos[slug];
+  return photo?.crop ? (
+    <svg
+      viewBox={photo.crop}
+      preserveAspectRatio="xMidYMid slice"
+      role="img"
+      aria-label={photo.alt}
+    >
+      <title>{photo.alt}</title>
+      <image href={photo.src} width={photo.width} height={photo.height} />
+    </svg>
+  ) : (
+    <img
+      src={photo?.src || authenticPhoto(fallback)}
+      alt={photo?.alt || "Community programme photograph"}
+      loading="lazy"
+    />
+  );
+}
 export function ProgramGrid({
   items,
   limit,
-  photographic = false,
   split = false,
 }: {
   items: Entry[];
@@ -166,175 +191,39 @@ export function ProgramGrid({
   split?: boolean;
 }) {
   return (
-    <div className={"program-grid" + (split ? " work-focus-grid" : photographic ? " focus-photo-grid" : "")}>
-      {items.slice(0, limit).map((p, i) => {
-        const Icon =
-          photographic && p.slug === "women-empowerment"
-            ? Users
-            : iconMap[p.data.icon] || Sprout;
-        if (split) {
-          // Reuse only the photographic regions of the existing supplied artwork.
-          const crops: Record<string, string> = {
-            "education-skill": "226 202 166 155",
-            "women-empowerment": "600 202 168 155",
-            "health-hygiene": "956 202 110 155",
-            "legal-aid-human-rights": "1260 202 340 155",
-            environment: "230 536 150 154",
-            sports: "630 536 150 154",
-            "art-culture-heritage": "956 536 130 154",
-            "sustainable-development-goals": "1360 536 150 154",
-          };
-          return (
-            <a className="work-focus-card" href={contentPath(p)} key={p.id} aria-label={"Explore " + p.title}>
-              <div className="work-focus-copy">
-                <div className="work-focus-card-top">
-                  <span className="work-focus-icon"><Icon size={30} strokeWidth={1.5} aria-hidden="true" /></span>
-                  <span className="work-focus-number">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-                <h3>{p.title}</h3>
-                <p>{p.slug === "health-hygiene" ? "Care with dignity for healthier communities." : p.summary}</p>
-                <span className="work-focus-arrow" aria-hidden="true"><ArrowUpRight size={22} /></span>
-              </div>
-              <div className="work-focus-photo" aria-hidden="true">
-                {crops[p.slug] ? (
-                  <svg viewBox={crops[p.slug]} preserveAspectRatio="xMidYMid slice">
-                    <image href="/images/focus-reference.png" width="1731" height="909" />
-                  </svg>
-                ) : <img src={p.image} alt="" loading="lazy" />}
-              </div>
-              <svg className="work-focus-card-wave" viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M0 100Q18 37 83 28Q143 18 200 0V100Z" fill="currentColor" fillOpacity=".5" />
-                <path d="M35 100Q92 50 200 37V100Z" fill="currentColor" fillOpacity=".3" />
-              </svg>
-            </a>
-          );
-        }
-        if (photographic) {
-          const photos: Record<
-            string,
-            {
-              src: string;
-              alt: string;
-              crop?: string;
-              width?: number;
-              height?: number;
-            }
-          > = {
-            "education-skill": {
-              src: "youth-education.jpeg",
-              alt: "Participants learning practical technical skills at a WBF training centre",
-            },
-            "women-empowerment": {
-              src: "../women-skill-training.jpeg",
-              alt: "Women practising sewing skills during a WBF training session",
-            },
-            "health-hygiene": {
-              src: "community-healthcare.jpeg",
-              alt: "Healthcare professionals assisting a visitor at a WBF free health check-up camp",
-            },
-            "legal-aid-human-rights": {
-              src: "Screenshot-2026-04-27-at-3.08.50-PM.png",
-              alt: "Community legal-awareness meeting with the Well Being Foundation",
-              crop: "80 197 640 470",
-              width: 796,
-              height: 1058,
-            },
-            environment: {
-              src: "Screenshot-2026-04-27-at-3.16.07-PM.png",
-              alt: "Participants planting a sapling during a WBF tree-plantation drive",
-              crop: "48 146 635 313",
-              width: 812,
-              height: 1048,
-            },
-            sports: {
-              src: "IMG_5870-3-1024x768.jpeg",
-              alt: "A coach briefing young participants at a WBF sports session",
-            },
-            "art-culture-heritage": {
-              src: "ways4.jpg",
-              alt: "Children showing their drawings at a community art activity",
-            },
-            "sustainable-development-goals": {
-              src: "from-local-to.jpeg",
-              alt: "Community outreach supporting women and families",
-            },
-          };
-          const photo = photos[p.slug];
-          const summaries: Record<string, string> = {
-            "education-skill":
-              "Learning that opens doors to brighter opportunities.",
-            "women-empowerment":
-              "Confidence. Voice. Independence for a stronger tomorrow.",
-            "health-hygiene": "Care with dignity for healthier communities.",
-            "legal-aid-human-rights":
-              "Rights, awareness and support within everyone’s reach.",
-            environment: "A healthier, cleaner and more sustainable tomorrow.",
-            sports: "Room to play. Space to grow with confidence.",
-            "art-culture-heritage": "Keeping creativity and traditions alive.",
-            "sustainable-development-goals":
-              "Progress, connected communities and lasting change.",
-          };
-          return (
-            <a
-              className="program-card focus-photo-card"
-              href={contentPath(p)}
-              key={p.id}
-              data-focus={p.slug}
-              aria-label={"Explore " + p.title}
-            >
-              <div className="focus-card-photo">
-                {photo?.crop ? (
-                  <svg
-                    viewBox={photo.crop}
-                    preserveAspectRatio="xMidYMid slice"
-                    role="img"
-                    aria-label={photo.alt}
-                  >
-                    <title>{photo.alt}</title>
-                    <image
-                      href={`/images/focus/${photo.src}`}
-                      width={photo.width}
-                      height={photo.height}
-                    />
-                  </svg>
-                ) : (
-                  <img
-                    src={photo ? `/images/focus/${photo.src}` : p.image}
-                    alt={photo?.alt || p.title}
-                    loading="lazy"
-                  />
-                )}
-              </div>
-              <div className="focus-card-copy">
-                <span className="program-icon">
-                  <Icon size={29} strokeWidth={1.6} />
-                </span>
-                <span className="program-number">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3>{p.title}</h3>
-                <p>{summaries[p.slug] || p.summary}</p>
-                <span className="circle-arrow">
-                  <ArrowUpRight size={19} />
-                </span>
-              </div>
-            </a>
-          );
-        }
-        return (
-          <a className="program-card" href={contentPath(p)} key={p.id}>
-            <span className="program-number">0{i + 1}</span>
-            <div className="program-icon">
-              <Icon size={30} strokeWidth={1.3} />
-            </div>
+    <div
+      className={
+        "program-grid " + (split ? "work-focus-grid" : "focus-photo-grid")
+      }
+    >
+      {items.slice(0, limit).map((p, i) => (
+        <a
+          data-program-card
+          className={
+            split ? "work-focus-card" : "program-card focus-photo-card"
+          }
+          href={contentPath(p)}
+          key={p.id}
+          aria-label={"Explore " + p.title}
+        >
+          <div className={split ? "work-focus-photo" : "focus-card-photo"}>
+            <ProgramPhoto slug={p.slug} fallback={p.image} />
+          </div>
+          <div className={split ? "work-focus-copy" : "focus-card-copy"}>
+            <span className={split ? "work-focus-number" : "program-number"}>
+              {String(i + 1).padStart(2, "0")}
+            </span>
             <h3>{p.title}</h3>
             <p>{p.summary}</p>
-            <span className="circle-arrow">
-              <ArrowUpRight size={18} />
+            <span
+              className={split ? "work-focus-arrow" : "circle-arrow"}
+              aria-hidden="true"
+            >
+              <ArrowUpRight size={19} />
             </span>
-          </a>
-        );
-      })}
+          </div>
+        </a>
+      ))}
     </div>
   );
 }
@@ -374,12 +263,12 @@ export function StoryCards({
                 <img
                   src={
                     p.slug === "announcing-2026-womens-skill-graduation"
-                      ? "/images/womens-graduation.png"
+                      ? "/images/women-skill-training.jpeg"
                       : p.image || "/images/community.jpg"
                   }
                   alt={
                     p.slug === "announcing-2026-womens-skill-graduation"
-                      ? "Women celebrating graduation with caps and diplomas"
+                      ? "Women practising sewing at a WBF skills session"
                       : ""
                   }
                   loading="lazy"
@@ -424,7 +313,7 @@ export function StoryCards({
         <article className="story-card" key={p.id}>
           <a href={contentPath(p)} className="story-image">
             <img
-              src={p.image || "/images/community.jpg"}
+              src={authenticPhoto(p.image)}
               alt={
                 p.kind === "post"
                   ? "Illustrative photograph for " + p.category
@@ -458,9 +347,6 @@ export function CTABand() {
   return (
     <section className="cta-band" aria-labelledby={titleId}>
       <div className="container cta-inner">
-        <div className="cta-symbol" aria-hidden="true">
-          <HeartHandshake size={68} strokeWidth={1.2} />
-        </div>
         <div className="cta-copy">
           <p className="eyebrow">
             A little of your time. A world of possibility.
@@ -491,7 +377,6 @@ export function Empty({
 }) {
   return (
     <div className="empty-state">
-      <Sprout size={35} strokeWidth={1.2} />
       <h3>{title}</h3>
       <p>{text}</p>
       {href && (

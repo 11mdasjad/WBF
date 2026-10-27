@@ -1,0 +1,980 @@
+/* Shared glass surfaces: real photography, readable panels, no decorative artwork. */
+:root {
+  --glass-surface: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --glass-shadow: 0 12px 36px rgba(25, 55, 44, 0.07), inset 0 1px 0 #fff;
+}
+body {
+  background: #eff3ef;
+}
+.glass-site,
+.admin-app {
+  background: linear-gradient(135deg, #e8efea 0%, #f5f3ed 44%, #e7efed 100%);
+  color: #243e34;
+}
+.glass-site {
+  --ivory: #f4f5f0;
+  --paper: #ffffffb8;
+  --muted: #586b61;
+}
+.glass-site
+  :is(
+    .wbf-masthead,
+    .masthead-bar,
+    .masthead-dropdown,
+    .banner-copy,
+    .banner-purpose-card,
+    .program-card,
+    .work-focus-card,
+    .story-card,
+    .event-card,
+    .job-card,
+    .product-card,
+    .form-card,
+    .contact-form,
+    .donation-card,
+    .application-card,
+    .account-card,
+    .detail-aside,
+    .opportunity-card,
+    .resource-card,
+    .document-card,
+    .profile-publication,
+    .gather-event,
+    .participation-option,
+    .store-notice,
+    .listing-toolbar,
+    .faq-item
+  ),
+:is(
+  .admin-card,
+  .admin-stat,
+  .admin-topbar,
+  .admin-sidebar,
+  .admin-signin > div
+) {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(18px) saturate(115%);
+  -webkit-backdrop-filter: blur(18px) saturate(115%);
+  border-radius: 20px;
+}
+.glass-site
+  :is(
+    .section,
+    .about-showcase,
+    .focus-showcase,
+    .change-showcase,
+    .news-showcase,
+    .gather-showcase,
+    .participation-showcase,
+    .partners-showcase,
+    .about-purpose-section,
+    .about-journey-section,
+    .work-focus-areas,
+    .profile-overview
+  ) {
+  background: transparent;
+}
+.glass-site
+  :is(
+    .home-hero,
+    .about-showcase,
+    .focus-showcase,
+    .change-showcase,
+    .news-showcase,
+    .gather-showcase,
+    .participation-showcase,
+    .community-invitation,
+    .our-story-hero,
+    .about-purpose-section,
+    .about-purpose-values,
+    .about-journey-section,
+    .about-journey-invitation,
+    .work-focus-areas,
+    .work-focus-card,
+    .focus-photo-card,
+    .profile-banner,
+    .profile-purpose,
+    .forest-footer,
+    .wbf-masthead,
+    .page-hero
+  )::before,
+.glass-site
+  :is(
+    .home-hero,
+    .about-showcase,
+    .focus-showcase,
+    .change-showcase,
+    .news-showcase,
+    .gather-showcase,
+    .participation-showcase,
+    .community-invitation,
+    .our-story-hero,
+    .about-purpose-section,
+    .about-purpose-values,
+    .about-journey-section,
+    .about-journey-invitation,
+    .work-focus-areas,
+    .work-focus-card,
+    .focus-photo-card,
+    .profile-banner,
+    .profile-purpose,
+    .forest-footer,
+    .wbf-masthead,
+    .page-hero
+  )::after,
+.glass-site :is(h1, h2, h3) em::after {
+  content: none;
+}
+.glass-site :is(.wbf-masthead) {
+  border-radius: 0;
+  padding: 0;
+  background: #f5f8f2cc;
+}
+.glass-site .masthead-bar {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding-block: 14px;
+}
+.glass-site .masthead-dropdown {
+  background: #fafcf7f5;
+  border-radius: 16px;
+}
+.glass-site :is(.masthead-search, .masthead-account-button, .masthead-toggle) {
+  border-radius: 12px;
+  background: #ffffff80;
+}
+.glass-site
+  :is(
+    .button,
+    .banner-primary,
+    .banner-story,
+    .about-discover,
+    .focus-explore,
+    .change-approach-link,
+    .work-hero-button,
+    .invitation-action > a
+  ) {
+  border-radius: 12px;
+  box-shadow: 0 4px 14px #1f513518;
+}
+.glass-site :is(.button.secondary, .button.light, .banner-story) {
+  background: #ffffffbf;
+  border: 1px solid #ffffffed;
+  color: #254b3c;
+}
+.glass-site a:hover {
+  transform: none;
+}
+.glass-site .editorial-hero {
+  display: flex;
+  align-items: center;
+  position: relative;
+  isolation: isolate;
+  width: min(94%, 1520px);
+  margin: 26px auto 0;
+  min-height: 660px;
+  height: auto;
+  background: #dbe5de;
+  border-radius: 28px;
+  overflow: hidden;
+  padding: 30px;
+}
+.glass-site .editorial-hero .banner-visual {
+  position: absolute;
+  inset: 0 0 0 29%;
+  width: auto;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+.glass-site .editorial-hero .hero-photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  object-position: 60% center;
+  transform: none;
+  border-radius: 0;
+  clip-path: none;
+  mask-image: none;
+}
+.glass-site .editorial-hero .banner-inner {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  display: block;
+}
+.glass-site .editorial-hero .banner-copy {
+  width: min(49%, 620px);
+  max-width: none;
+  margin: 0;
+  padding: 38px;
+  background: #f8faf1d6;
+  border-radius: 24px;
+}
+.glass-site #main-content .banner-copy h1 {
+  font-size: clamp(36px, 4.4vw, 65px);
+  line-height: 1.06;
+  margin: 20px 0;
+}
+.glass-site .banner-copy h1 > span {
+  display: block;
+}
+.glass-site .banner-description {
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 100%;
+  color: #465e50;
+}
+.glass-site .banner-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.glass-site .banner-community {
+  flex-wrap: wrap;
+}
+.glass-site .banner-scroll {
+  right: 24px;
+  bottom: 50px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #ffffffc9;
+  background: #ffffff9c;
+  box-shadow: none;
+  backdrop-filter: blur(12px);
+}
+.glass-site .editorial-hero .hero-photo-credit {
+  bottom: 17px;
+  right: 20px;
+  font-size: 10px;
+  background: #15382b80;
+  padding: 5px 9px;
+  border-radius: 7px;
+}
+.glass-site .banner-purpose {
+  background: transparent;
+  padding: 22px 3% 12px;
+  margin: 0 auto;
+}
+.glass-site .banner-purpose-card {
+  max-width: 1450px;
+  padding: 24px;
+  margin: auto;
+}
+.glass-site :is(.banner-fact, .banner-sustainability) > svg:first-child {
+  display: none;
+}
+.glass-site .banner-purpose-quote {
+  font-style: normal;
+}
+.glass-site .about-showcase {
+  padding-block: 75px;
+}
+.glass-site .about-showcase-grid {
+  align-items: center;
+  gap: 6%;
+}
+.glass-site .about-collage {
+  min-height: 0;
+  height: auto;
+  padding: 0;
+}
+.glass-site .about-classroom-collage .about-portrait {
+  position: static;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.12;
+  object-fit: cover;
+  border: 7px solid #ffffffaa;
+  border-radius: 24px;
+  box-shadow: var(--glass-shadow);
+  transform: none;
+  clip-path: none;
+}
+.glass-site .about-values li {
+  padding: 12px 0;
+}
+.glass-site .about-showcase-copy h2 em {
+  padding: 0;
+}
+.glass-site
+  :is(
+    .about-showcase-copy h2 em,
+    .focus-showcase-intro h2 em,
+    .change-copy h2 em,
+    .news-showcase-heading h2 em,
+    .gather-intro h2 em,
+    .participation-copy h2 em
+  )::before {
+  content: none;
+}
+.glass-site .focus-photo-grid,
+.glass-site .work-focus-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.glass-site :is(.focus-photo-card, .work-focus-card) {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 8px;
+  overflow: hidden;
+  height: auto;
+}
+.glass-site :is(.focus-card-photo, .work-focus-photo) {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1.3;
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 0;
+}
+.glass-site :is(.focus-card-photo, .work-focus-photo) > :is(img, svg) {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none;
+}
+.glass-site :is(.focus-card-copy, .work-focus-copy) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: static;
+  min-height: 210px;
+  padding: 20px 14px 14px;
+  background: transparent;
+  flex: 1;
+}
+.glass-site
+  :is(.focus-card-copy, .work-focus-copy)
+  > :is(.program-number, .work-focus-number) {
+  position: static;
+  color: #64786c;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.glass-site #main-content :is(.focus-photo-card, .work-focus-card) h3 {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 10px;
+}
+.glass-site :is(.focus-photo-card, .work-focus-card) p {
+  color: #576c5e;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.glass-site :is(.circle-arrow, .work-focus-arrow) {
+  margin-top: auto;
+  border-radius: 10px;
+  background: #ffffffb3;
+  color: #2e5643;
+  border: 1px solid #cddad0;
+}
+.glass-site .work-focus-heading {
+  padding-inline: 0;
+  min-height: 0;
+  margin-bottom: 26px;
+}
+.glass-site .work-focus-intro {
+  max-width: 100%;
+}
+.glass-site .work-focus-areas {
+  width: min(92%, 1450px);
+  margin: auto;
+  padding-block: 60px;
+}
+.glass-site .change-showcase {
+  width: min(92%, 1450px);
+  margin: 35px auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 32px;
+  align-items: stretch;
+  overflow: visible;
+}
+.glass-site .change-photo {
+  position: relative;
+  width: 100%;
+  min-height: 450px;
+}
+.glass-site .change-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}
+.glass-site .change-content {
+  padding: 32px;
+  width: auto;
+  background: #ffffff87;
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+}
+.glass-site .change-main {
+  gap: 24px;
+}
+.glass-site .change-steps {
+  counter-reset: step;
+}
+.glass-site .change-steps li {
+  counter-increment: step;
+}
+.glass-site .change-steps li::before {
+  content: "0" counter(step);
+  font-size: 12px;
+  color: #667c6a;
+  margin-top: 5px;
+}
+.glass-site .change-principles svg {
+  display: none;
+}
+.glass-site .news-category svg {
+  display: none;
+}
+.glass-site .news-category {
+  background: #ffffffe6;
+  color: #234c39;
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+.glass-site .news-photo-card {
+  overflow: hidden;
+}
+.glass-site :is(.news-photo, .story-image) img {
+  object-fit: cover;
+}
+.glass-site .gather-photo {
+  align-self: stretch;
+}
+.glass-site .gather-photo > img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  border-radius: 22px;
+}
+.glass-site .gather-event {
+  padding: 18px;
+  margin-bottom: 12px;
+}
+.glass-site .gather-date {
+  border-radius: 12px;
+  background: #e5eee4b3;
+}
+.glass-site .participation-photo > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 0.85;
+  object-fit: cover;
+  border-radius: 24px;
+}
+.glass-site .participation-options {
+  gap: 14px;
+}
+.glass-site .participation-option {
+  grid-template-columns: 22px minmax(0, 1fr) 32px;
+  padding: 23px 18px;
+  gap: 12px;
+}
+.glass-site
+  :is(
+    .community-invitation,
+    .cta-band,
+    .about-journey-invitation,
+    .values-band,
+    .profile-purpose
+  ) {
+  background: #d9e7de80;
+  border-block: 1px solid #ffffffbc;
+  backdrop-filter: blur(14px);
+}
+.glass-site .invitation-grid {
+  grid-template-columns: 1fr auto;
+  padding-block: 35px;
+}
+.glass-site .invitation-copy {
+  padding: 0;
+}
+.glass-site .cta-inner {
+  gap: 35px;
+}
+.glass-site .our-story-hero {
+  min-height: 480px;
+  margin: 25px 3%;
+  border-radius: 24px;
+}
+.glass-site .our-story-visual {
+  inset: 0;
+}
+.glass-site .our-story-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.glass-site .our-story-panel {
+  inset: 0;
+  border-radius: 0;
+  background: linear-gradient(90deg, #092f26c9, #092f260d);
+  box-shadow: none;
+}
+.glass-site .our-story-content {
+  padding-block: 38px 65px;
+}
+.glass-site .our-story-description {
+  max-width: 530px;
+}
+.glass-site .about-purpose-art {
+  position: static;
+}
+.glass-site .about-purpose-art > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.1;
+  object-fit: cover;
+  border-radius: 24px;
+}
+.glass-site .values-grid > div {
+  background: #ffffff80;
+  padding: 28px;
+  border: 1px solid #ffffffd9;
+  border-radius: 20px;
+}
+.glass-site .about-journey-milestones > li {
+  background: #ffffff80;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 25px;
+}
+.glass-site .about-journey-milestones::before {
+  content: none;
+}
+.glass-site .journey-dot {
+  display: none;
+}
+.glass-site .about-journey-heading {
+  max-width: 100%;
+}
+.glass-site .about-journey-invitation > .container {
+  grid-template-columns: 1fr auto;
+}
+.glass-site .work-hero {
+  margin: 24px 3% 0;
+  border-radius: 26px;
+  min-height: 550px;
+}
+.glass-site .work-hero-content {
+  padding-block: 36px 55px;
+}
+.glass-site .work-hero-pillars {
+  gap: 15px;
+}
+.glass-site .work-hero-pillars > li {
+  background: #ffffff17;
+  border: 1px solid #ffffff47;
+  border-radius: 12px;
+  padding: 12px 16px;
+  backdrop-filter: blur(12px);
+}
+.glass-site .profile-banner {
+  margin: 24px 3% 0;
+  border-radius: 24px;
+  background: #e4ede4;
+  overflow: hidden;
+}
+.glass-site .profile-banner-art {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 48%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+.glass-site .profile-banner .container {
+  position: relative;
+}
+.glass-site .profile-community-portrait {
+  aspect-ratio: 1.2;
+  object-fit: cover;
+  border-radius: 24px;
+}
+.glass-site .page-hero {
+  background: #e4ece18c;
+  margin: 24px 3% 0;
+  border: 1px solid #ffffffd9;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.glass-site .page-hero.with-image {
+  background: #243f32;
+  border: none;
+}
+.glass-site .page-hero.with-image > img {
+  opacity: 0.46;
+}
+.glass-site .forest-footer {
+  background: #203d31ed;
+  border-radius: 26px 26px 0 0;
+  border-top: 1px solid #ffffff66;
+  padding-top: 60px;
+}
+.glass-site .footer-main {
+  padding-bottom: 45px;
+}
+.glass-site :is(input, textarea, select) {
+  background: #ffffffb8;
+  border-color: #c3d0c7;
+  border-radius: 10px;
+  color: #213b2c;
+}
+.glass-site :is(input, textarea, select):focus-visible {
+  outline: 2px solid #4b8069;
+  outline-offset: 2px;
+}
+.glass-site
+  :is(
+    .form-card,
+    .contact-form,
+    .donation-card,
+    .application-card,
+    .account-card
+  ) {
+  background: #ffffffc7;
+}
+.glass-site .modal-backdrop {
+  background: #193c2e77;
+  backdrop-filter: blur(8px);
+}
+.glass-site :is(.cart-panel, .modal) {
+  background: #f7faf5f5;
+  border: 1px solid white;
+  box-shadow: 0 25px 70px #0b251e30;
+  backdrop-filter: blur(22px);
+}
+.admin-app {
+  --paper: #ffffffb8;
+}
+.admin-sidebar {
+  border-radius: 0;
+  background: #f1f6efde;
+}
+.admin-topbar {
+  border-radius: 0;
+  background: #f7faf5d9;
+}
+.admin-app :is(.admin-card, .admin-stat) {
+  background: #ffffffbd;
+}
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  :root {
+    --glass-surface: #f6f9f3;
+  }
+  .glass-site .editorial-hero .banner-copy,
+  .glass-site .masthead-dropdown {
+    background: #f5f8f0;
+  }
+}
+@media (max-width: 1100px) {
+  .glass-site .editorial-hero .banner-copy {
+    width: 55%;
+    padding: 28px;
+  }
+  .glass-site .focus-photo-grid,
+  .glass-site .work-focus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .glass-site .change-showcase {
+    grid-template-columns: 1fr;
+  }
+  .glass-site .change-photo {
+    min-height: 0;
+    height: 370px;
+  }
+  .glass-site .participation-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .glass-site .participation-options {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .glass-site .participation-option {
+    grid-template-columns: minmax(0, 1fr) 24px;
+  }
+  .glass-site .participation-number {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 760px) {
+  .glass-site .editorial-hero {
+    display: block;
+    margin-top: 16px;
+    padding: 0 14px 16px;
+    min-height: 0;
+    border-radius: 20px;
+  }
+  .glass-site .editorial-hero .banner-visual {
+    position: relative;
+    inset: auto;
+    width: calc(100% + 28px);
+    margin-left: -14px;
+    height: 310px;
+  }
+  .glass-site .editorial-hero .hero-photo {
+    object-position: center 40%;
+  }
+  .glass-site .editorial-hero .banner-inner {
+    margin-top: -45px;
+  }
+  .glass-site .editorial-hero .banner-copy {
+    width: 100%;
+    padding: 26px 22px;
+    border-radius: 18px;
+    background: #f8faf1eb;
+  }
+  .glass-site #main-content .banner-copy h1 {
+    font-size: clamp(35px, 7vw, 52px);
+  }
+  .glass-site .banner-copy h1 > span {
+    display: inline;
+  }
+  .glass-site .banner-copy h1 > span::after {
+    content: " ";
+  }
+  .glass-site .banner-scroll {
+    display: none;
+  }
+  .glass-site .editorial-hero .hero-photo-credit {
+    bottom: 55px;
+  }
+  .glass-site .banner-purpose {
+    padding-inline: 4%;
+  }
+  .glass-site .banner-purpose-card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+  .glass-site .about-showcase {
+    padding-block: 45px;
+  }
+  .glass-site .about-showcase-grid {
+    gap: 30px;
+  }
+  .glass-site .about-classroom-collage .about-portrait {
+    aspect-ratio: 1.3;
+  }
+  .glass-site .change-content {
+    padding: 25px 20px;
+  }
+  .glass-site .change-main {
+    grid-template-columns: 1fr;
+  }
+  .glass-site .change-principles {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .glass-site .change-principles > * + * {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .glass-site .gather-photo > img {
+    min-height: 0;
+    height: 300px;
+  }
+  .glass-site .participation-grid {
+    grid-template-columns: 1fr;
+  }
+  .glass-site .participation-photo > img {
+    aspect-ratio: 1.4;
+  }
+  .glass-site .participation-options {
+    grid-template-columns: 1fr;
+  }
+  .glass-site .participation-option {
+    grid-template-columns: 22px minmax(0, 1fr) 32px;
+  }
+  .glass-site .participation-number {
+    grid-column: auto;
+  }
+  .glass-site :is(.invitation-grid, .about-journey-invitation > .container) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .glass-site .work-hero {
+    margin: 16px 3% 0;
+    min-height: 560px;
+  }
+  .glass-site .work-hero-content {
+    width: 90%;
+    padding-block: 25px 40px;
+  }
+  .glass-site .work-hero-pillars {
+    flex-wrap: wrap;
+  }
+  .glass-site .work-hero-pillars > li {
+    padding: 10px 12px;
+    border-left: 1px solid #ffffff47;
+  }
+  .glass-site .work-focus-areas {
+    padding-block: 40px;
+  }
+  .glass-site .profile-banner-art {
+    width: 100%;
+    opacity: 0.14;
+  }
+  .glass-site .profile-banner :is(h1, .profile-banner-description) {
+    max-width: 100%;
+  }
+  .glass-site .our-story-content {
+    padding-block: 28px 42px;
+  }
+  .glass-site .our-story-panel {
+    background: #092f2680;
+  }
+  .glass-site .our-story-hero {
+    min-height: 400px;
+  }
+  .glass-site .page-hero {
+    margin-top: 16px;
+  }
+  .glass-site .cta-inner {
+    gap: 25px;
+  }
+}
+@media (max-width: 480px) {
+  .glass-site .focus-photo-grid,
+  .glass-site .work-focus-grid {
+    grid-template-columns: 1fr;
+  }
+  .glass-site :is(.focus-card-copy, .work-focus-copy) {
+    min-height: 190px;
+  }
+  .glass-site .change-photo {
+    height: 300px;
+  }
+  .glass-site .gather-event {
+    padding: 12px;
+    gap: 10px;
+  }
+  .glass-site .gather-event-photo {
+    width: 55px;
+  }
+  .glass-site .banner-community > a {
+    padding-left: 0;
+    border: 0;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass-site {
+    --glass-surface: #f7f9f3;
+  }
+  .glass-site .banner-copy,
+  .glass-site .masthead-dropdown {
+    background: #f7f9f3;
+  }
+}
+/* Contrast and shared account surfaces. */
+.glass-site .values-grid h3 {
+  color: #244737;
+}
+.glass-site .values-grid p {
+  color: #516759;
+}
+.glass-site .values-grid > div + div {
+  padding: 28px;
+  border: 1px solid #ffffffd9;
+}
+.glass-site .about-journey-milestones {
+  gap: 20px;
+}
+.glass-site .banner-tomorrow::after {
+  content: none;
+}
+.glass-site :is(.lucide-leaf, .lucide-sprout) {
+  display: none;
+}
+.glass-site .banner-sustainability {
+  border-radius: 12px;
+}
+.glass-site .cta-inner {
+  display: flex;
+}
+.glass-site
+  :is(
+    .auth-panel,
+    .account-sidebar,
+    .team-card,
+    .account-record,
+    .process-card,
+    .resource-card
+  ) {
+  background: #ffffffb8;
+  border: 1px solid #ffffffed;
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.glass-site .auth-section {
+  width: min(94%, 1400px);
+  margin: 26px auto;
+  gap: 24px;
+}
+.glass-site .auth-story {
+  border-radius: 24px;
+  overflow: hidden;
+}
+.glass-site .auth-panel {
+  padding: 45px;
+}
+.glass-site .auth-story > img {
+  object-fit: cover;
+}
+.glass-site .account-sidebar {
+  align-self: start;
+}
+.admin-app .admin-sidebar {
+  background: #203e32ed;
+  color: #d4e1d4;
+}
+@media (max-width: 760px) {
+  .glass-site .banner-copy h1 > span {
+    display: block;
+  }
+  .glass-site .banner-copy h1 > span::after {
+    content: none;
+  }
+  .glass-site .auth-section {
+    grid-template-columns: 1fr;
+  }
+  .glass-site .auth-panel {
+    padding: 28px 22px;
+  }
+  .glass-site .cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

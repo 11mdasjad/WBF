@@ -42,13 +42,11 @@ export function About() {
     <>
       <section className="our-story-hero" aria-labelledby="our-story-title">
         <div className="our-story-visual" aria-hidden="true">
-          <svg viewBox="990 0 1182 724" preserveAspectRatio="xMidYMid slice">
-            <image
-              href="/images/our-story-reference.png"
-              width="2172"
-              height="724"
-            />
-          </svg>
+          <img
+            src="/images/community.jpg"
+            alt="Children gathered for a group activity — illustrative photograph"
+            loading="lazy"
+          />
         </div>
         <div className="our-story-panel" aria-hidden="true" />
         <div className="container our-story-content">
@@ -65,52 +63,12 @@ export function About() {
             <br />
             <em>of change.</em>
           </h1>
-          <svg
-            className="our-story-underline"
-            viewBox="0 0 400 20"
-            aria-hidden="true"
-          >
-            <path d="M3 15Q175-3 395 7Q182 2 10 19Z" fill="currentColor" />
-          </svg>
+
           <p className="our-story-description">
             A shared belief in dignity. A commitment to work alongside
             communities.
           </p>
         </div>
-        <svg
-          className="our-story-leaf"
-          viewBox="0 0 200 220"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M8 215Q105 140 165 8M59 169Q8 160 15 101Q58 119 59 169ZM89 130Q80 70 127 46Q127 98 89 130ZM119 82Q120 28 165 8Q160 53 119 82ZM64 164Q114 124 164 151Q119 184 64 164ZM105 105Q149 64 191 86Q152 121 105 105Z"
-            stroke="currentColor"
-            strokeWidth="1.6"
-          />
-        </svg>
-        <svg
-          className="our-story-waves"
-          viewBox="0 0 1440 125"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M0 90Q175 0 330 43T650 104T950 70T1220 75T1440 18V125H0Z"
-            fill="#bdc7a0"
-            fillOpacity=".75"
-          />
-          <path
-            d="M0 98C140 125 195 0 330 52S480 148 640 106S780 42 930 107S1280 95 1440 30V125H0Z"
-            fill="#f8f6ee"
-          />
-          <path
-            d="M0 105Q235 35 430 104T810 85T1130 105T1440 39"
-            stroke="#c9ceac"
-            strokeWidth="1.5"
-            fill="none"
-          />
-        </svg>
       </section>
       <section className="about-purpose-section">
         <div className="container intro-section about-purpose-grid">
@@ -144,18 +102,11 @@ export function About() {
             </ButtonLink>
           </div>
           <div className="about-purpose-art">
-            <svg
-              viewBox="800 0 865 625"
-              role="img"
-              aria-label="Woman in a colourful sari, with botanical decoration and the message Stronger Communities, Brighter Futures"
-            >
-              <title>Stronger Communities, Brighter Futures</title>
-              <image
-                href="/images/about-purpose-reference.png"
-                width="1695"
-                height="928"
-              />
-            </svg>
+            <img
+              src="/images/women-skill-training.jpeg"
+              alt="Women practising sewing at a WBF skills session"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
@@ -171,12 +122,6 @@ export function About() {
             ],
           ].map(([Icon, title, text]: any) => (
             <div key={title}>
-              <div className="purpose-value-icon">
-                <span>
-                  <Icon size={29} strokeWidth={1.2} />
-                </span>
-                <i />
-              </div>
               <h3>{title}</h3>
               <p>{text}</p>
             </div>
@@ -187,15 +132,6 @@ export function About() {
         className="about-journey-section"
         aria-labelledby="about-journey-heading"
       >
-        <div className="about-journey-art" aria-hidden="true">
-          <svg viewBox="1040 0 767 305" preserveAspectRatio="xMidYMid slice">
-            <image
-              href="/images/about-journey-reference.png"
-              width="1807"
-              height="870"
-            />
-          </svg>
-        </div>
         <div className="container">
           <div className="about-journey-heading">
             <p className="eyebrow">
@@ -231,9 +167,7 @@ export function About() {
               <li key={date}>
                 <span className="journey-dot" aria-hidden="true" />
                 <p className="journey-date">{date}</p>
-                <span className="journey-icon">
-                  <Icon size={27} strokeWidth={1.4} aria-hidden="true" />
-                </span>
+
                 <h3>{title}</h3>
                 <p>{text}</p>
               </li>
@@ -246,12 +180,6 @@ export function About() {
         aria-labelledby="journey-invitation-title"
       >
         <div className="container">
-          <HeartHandshake
-            className="journey-invitation-icon"
-            size={68}
-            strokeWidth={1.2}
-            aria-hidden="true"
-          />
           <div className="journey-invitation-copy">
             <p className="eyebrow">
               A LITTLE OF YOUR TIME. A WORLD OF POSSIBILITY.
@@ -268,21 +196,6 @@ export function About() {
             Join our community
           </ButtonLink>
         </div>
-        <svg
-          className="journey-invitation-leaf"
-          viewBox="0 0 180 260"
-          aria-hidden="true"
-          fill="none"
-        >
-          <path
-            d="M12 260Q72 140 133 5"
-            stroke="currentColor"
-            strokeWidth="2"
-          />
-          <g fill="currentColor" fillOpacity=".65">
-            <path d="M40 205Q-8 173 7 128Q43 155 40 205ZM62 163Q32 112 62 72Q83 118 62 163ZM94 95Q75 37 133 5Q127 61 94 95ZM38 212Q92 150 151 165Q108 217 38 212ZM67 148Q115 88 169 99Q128 150 67 148Z" />
-          </g>
-        </svg>
       </section>
     </>
   );
@@ -299,35 +212,46 @@ export function Work() {
           fetchPriority="high"
         />
         <div className="work-hero-shade" aria-hidden="true" />
-        <div className="work-hero-orbit" aria-hidden="true" />
+
         <div className="container work-hero-content">
           <nav className="work-hero-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Home</a>
             <span aria-hidden="true">/</span>
             <span aria-current="page">Our Work</span>
           </nav>
-          <p className="work-hero-eyebrow">OUR WORK <span /></p>
+          <p className="work-hero-eyebrow">
+            OUR WORK <span />
+          </p>
           <h1 id="work-hero-title">
             Many ways to make
-            <br />
-            a <em>difference.
-              <svg viewBox="0 0 280 20" aria-hidden="true" fill="none">
-                <path d="M4 12Q126 0 276 12M42 18Q126 1 250 8" />
-              </svg>
-            </em>
+            <br />a <em>difference.</em>
           </h1>
           <p className="work-hero-description">
             Eight connected focus areas. Practical action. People at the centre.
           </p>
           <ul className="work-hero-pillars" aria-label="Our work at a glance">
             {[
-              { Icon: BookOpen, title: "Education", detail: "Brighter futures" },
-              { Icon: HeartPulse, title: "Health", detail: "Stronger communities" },
-              { Icon: Sprout, title: "Livelihood", detail: "Sustainable change" },
+              {
+                Icon: BookOpen,
+                title: "Education",
+                detail: "Brighter futures",
+              },
+              {
+                Icon: HeartPulse,
+                title: "Health",
+                detail: "Stronger communities",
+              },
+              {
+                Icon: Sprout,
+                title: "Livelihood",
+                detail: "Sustainable change",
+              },
             ].map(({ Icon, title, detail }) => (
               <li key={title}>
-                <span className="work-hero-icon"><Icon aria-hidden="true" /></span>
-                <span><strong>{title}</strong><small>{detail}</small></span>
+                <span>
+                  <strong>{title}</strong>
+                  <small>{detail}</small>
+                </span>
               </li>
             ))}
           </ul>
@@ -335,51 +259,30 @@ export function Work() {
             Explore Our Work <ArrowRight size={22} aria-hidden="true" />
           </a>
         </div>
-        <svg className="work-hero-leaves" viewBox="0 0 160 220" fill="none" aria-hidden="true">
-          <path d="M-12 217Q45 140 55 28M22 160Q-10 112 6 85Q39 109 22 160ZM35 126Q17 69 38 43Q62 85 35 126ZM47 83Q34 32 55 8Q73 47 47 83ZM12 184Q59 128 109 145Q79 182 12 184ZM30 142Q73 95 122 105Q84 144 30 142ZM42 105Q82 58 113 66Q93 100 42 105Z" />
-          <path d="M17 176L97 149M32 135L109 110M45 98L102 71M26 147L9 98M39 115L38 58M50 72L55 24M-25 4Q71 27 149 217" />
-        </svg>
-        <svg className="work-hero-wave" viewBox="0 0 1440 115" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 40C230 150 340 16 565 88C760 150 1050 160 1440 0V115H0Z" fill="var(--ivory)" />
-          <path d="M0 32C235 143 330 10 570 83" fill="none" stroke="#d7d5bb" strokeWidth="2" />
-          <path d="M1110 115Q1290 73 1440 0V115Z" fill="#687c5c" />
-          <path d="M1225 115Q1340 78 1440 48V115Z" fill="#395c45" fillOpacity=".7" />
-        </svg>
       </section>
-      <section className="section work-focus-areas" id="work-focus-areas" aria-labelledby="work-focus-title">
+      <section
+        className="section work-focus-areas"
+        id="work-focus-areas"
+        aria-labelledby="work-focus-title"
+      >
         <div className="work-focus-heading">
           <div className="work-focus-intro">
             <p className="eyebrow">OUR FOCUS AREAS</p>
             <h2 id="work-focus-title">
-              A more complete picture<br />
-              of <em>well-being.
-                <svg viewBox="0 0 230 16" fill="none" aria-hidden="true">
-                  <path d="M3 9Q99 0 226 9M65 14L193 10" />
-                </svg>
-              </em>
+              A more complete picture
+              <br />
+              of <em>well-being.</em>
             </h2>
-            <p className="work-focus-description">Learning, health, rights, culture and the environment all shape a community’s future.</p>
-          </div>
-          <div className="work-focus-art" aria-hidden="true">
-            <p>People<br />Communities<br />Stronger<br />Futures<span /></p>
-            <div className="work-focus-portrait">
-              <svg viewBox="226 202 166 155" preserveAspectRatio="xMidYMid slice">
-                <image href="/images/focus-reference.png" width="1731" height="909" />
-              </svg>
-            </div>
-            <svg className="work-focus-sprig" viewBox="0 0 130 210" fill="none">
-              <path d="M115 205Q48 125 37 12" stroke="currentColor" strokeWidth="2" />
-              <g fill="currentColor" fillOpacity=".65" stroke="currentColor" strokeWidth="1.5">
-                <path d="M45 67Q8 52 5 12Q42 27 45 67Z" />
-                <path d="M51 97Q38 60 68 36Q79 73 51 97Z" />
-                <path d="M64 130Q14 123 9 94Q43 90 64 130Z" />
-                <path d="M84 163Q65 121 100 103Q112 141 84 163Z" />
-                <path d="M104 192Q65 196 48 177Q79 161 104 192Z" />
-              </g>
-            </svg>
+            <p className="work-focus-description">
+              Learning, health, rights, culture and the environment all shape a
+              community’s future.
+            </p>
           </div>
         </div>
-        <ProgramGrid items={content.filter((x) => x.kind === "program")} split />
+        <ProgramGrid
+          items={content.filter((x) => x.kind === "program")}
+          split
+        />
       </section>
       <CTABand />
     </>
@@ -568,7 +471,6 @@ export function Team() {
                         .map((n) => n[0])
                         .join("")}
                     </span>
-                    <Leaf size={45} strokeWidth={0.8} />
                   </div>
                 )}
                 <div>
@@ -1063,18 +965,12 @@ export function Resources({ page }: { page: string }) {
     return (
       <div className="organization-profile-page">
         <section className="profile-banner" aria-labelledby="profile-title">
-          <svg
+          <img
             className="profile-banner-art"
-            viewBox="475 0 549 403"
-            preserveAspectRatio="xMidYMid slice"
-            aria-hidden="true"
-          >
-            <image
-              href="/images/profile-reference.png"
-              width="1024"
-              height="1536"
-            />
-          </svg>
+            src="/images/volunteering.jpg"
+            alt="People bringing their hands together — illustrative photograph"
+            loading="lazy"
+          />
           <div className="container">
             <nav className="profile-breadcrumb" aria-label="Breadcrumb">
               <a href="/">Home</a>
@@ -1109,10 +1005,9 @@ export function Resources({ page }: { page: string }) {
             </div>
             <img
               className="profile-community-portrait"
-              src="/images/profile-community.png"
-              alt="Smiling woman with a group of women, with the message Stronger Communities, Brighter Futures"
-              width="1238"
-              height="1271"
+              src="/images/women-skill-training.jpeg"
+              alt="Women working at sewing machines in a WBF training session"
+              loading="lazy"
             />
           </div>
           <div className="profile-publications">
@@ -1150,18 +1045,6 @@ export function Resources({ page }: { page: string }) {
           className="profile-purpose"
           aria-labelledby="profile-purpose-title"
         >
-          <svg
-            className="profile-purpose-art"
-            viewBox="510 1183 514 353"
-            preserveAspectRatio="xMidYMid slice"
-            aria-hidden="true"
-          >
-            <image
-              href="/images/profile-reference.png"
-              width="1024"
-              height="1536"
-            />
-          </svg>
           <div className="container">
             <p className="eyebrow">OUR PURPOSE</p>
             <h2 id="profile-purpose-title">

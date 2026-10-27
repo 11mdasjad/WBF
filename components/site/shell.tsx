@@ -327,30 +327,7 @@ function FooterSocialIcon({
     </svg>
   );
 }
-function FooterFoliage({ className }: { className: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 240 400"
-      fill="none"
-      aria-hidden="true"
-    >
-      <g
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M115 400C101 324 132 253 138 185S132 81 155 6M121 313 67 267M132 253l61-47M138 182 88 135M139 116l51-54" />
-        <path d="M139 110C99 85 118 35 155 6c12 54 7 81-16 104ZM140 170c8-53 42-81 84-94-3 41-40 72-84 94ZM136 231c-54-18-72-54-72-96 48 25 73 55 72 96ZM126 293c28-54 64-70 111-62-24 41-62 59-111 62ZM116 353c-50-19-77-49-80-88 49 13 79 40 80 88ZM121 377c28-43 61-58 102-50-28 35-58 48-102 50Z" />
-        <path
-          d="m139 109 16-99m-14 157 80-88m-86 150-68-91m61 151 105-55m-119 116-75-81m84 105 96-44M146 73l-19-22m19 23 15-18m-14 79 35-5m-16-15 23-3m-88 76-20-13m28 25 12-12m37 78 41-3m-59 14 20-23m-84 66-19-4m30 14 3-19"
-          strokeOpacity=".65"
-        />
-      </g>
-    </svg>
-  );
-}
+
 export function Footer() {
   const { organization: o } = useSite();
   const socials = [
@@ -365,30 +342,6 @@ export function Footer() {
   ].filter((s) => s.href);
   return (
     <footer className="site-footer forest-footer">
-      <FooterFoliage className="footer-foliage footer-foliage-left" />
-      <FooterFoliage className="footer-foliage footer-foliage-right" />
-      <svg
-        className="footer-landscape"
-        viewBox="0 0 1600 190"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M0 12C160 36 115 182 300 150S437 128 550 177 735 170 890 165 1163 213 1300 146 1460 37 1600 19V190H0Z"
-          fill="#829363"
-          fillOpacity=".22"
-        />
-        <path
-          d="M0 76C172 113 190 194 340 172S490 195 660 180 900 140 1060 182 1360 167 1600 89V190H0Z"
-          fill="#a8ad77"
-          fillOpacity=".16"
-        />
-        <path
-          d="M0 132C135 135 147 185 285 183S520 170 695 189 1040 150 1180 185 1430 129 1600 141V190H0Z"
-          fill="#c1be89"
-          fillOpacity=".12"
-        />
-      </svg>
       <div className="container">
         <div className="footer-main">
           <div className="footer-brand">
@@ -412,11 +365,6 @@ export function Footer() {
                 </a>
               ))}
             </div>
-            <p className="footer-signoff">
-              Stronger Communities
-              <br />
-              <span>Brighter Futures</span>
-            </p>
           </div>
           {footerGroups.map(([title, ...links]) => (
             <nav

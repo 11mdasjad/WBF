@@ -5,11 +5,7 @@ import { readExecutionProfile } from "./scripts/execution-profile.mjs";
 import { configureToolEnvironment } from "./scripts/tool-environment.mjs";
 import { sites } from "./scripts/vite/sites-vite-plugin";
 import { connectorPreview } from "./scripts/vite/connector-preview-plugin.mjs";
-
-const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
-  "00000000-0000-4000-8000-000000000000";
-
-const { d1, r2 } = hostingConfig;
+import { storageBindings } from "./scripts/cloudflare-bindings.mjs";
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
@@ -20,23 +16,6 @@ const localBindingConfig = {
   // Workerd's native node:console exposes a throwing createTask stub. React's
   // development runtime detects it as supported and crashes during import.
   compatibility_flags: ["nodejs_compat", "disable_nodejs_console_module"],
-  d1_databases: d1
-    ? [
-        {
-          binding: d1,
-          database_name: "site-creator-d1",
-          database_id: SITE_CREATOR_PLACEHOLDER_DATABASE_ID,
-        },
-      ]
-    : [],
-  r2_buckets: r2
-    ? [
-        {
-          binding: r2,
-          bucket_name: "site-creator-r2",
-        },
-      ]
-    : [],
 };
 
 export default defineConfig(async ({ command }) => {
@@ -63,6 +42,7 @@ export default defineConfig(async ({ command }) => {
         inspectorPort: false,
         config: {
           ...localBindingConfig,
+          ...storageBindings(hostingConfig, command),
           ...(command === "serve"
             ? {
                 services: [
